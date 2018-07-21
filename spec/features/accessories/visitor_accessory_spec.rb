@@ -7,7 +7,7 @@ require "rails_helper"
 
 describe "a visitor" do
   describe "visits accessory show" do
-    it "sees the accessory and can add to cart" do
+    xit "sees the accessory and can add to cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
       visit accessory_show_path(acc_1)
@@ -25,7 +25,7 @@ describe "a visitor" do
   end
 
   describe "visits retired accessory show" do
-    it "sees the accessory and can add to cart" do
+    xit "sees the accessory and can add to cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 1, image_url: "90jasd", description: "1209390jioas")
 
       visit accessory_show_path(acc_1)

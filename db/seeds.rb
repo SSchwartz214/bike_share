@@ -7,20 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-def random_reduce(data)
-  while(data.count > 7500)
-    data.delete(rand(data.count))
-  end
-end
 
-def seed_data(path)
+# def cull_data(path, new_path, cull_target)
+#   raw_input = File.open(path)
+#   new_data = []
+#   raw_input.each do |line|
+#     new_data.push(line)
+#   end
+#
+#   while new_data.length > cull_target
+#     index = rand(new_data.length - 1) + 1
+#     new_data.delete_at(index)
+#   end
+#   File.write(new_path, new_data.join)
+# end
+
+def seed_data(path, data_type)
   raw_input = CSV.open(path, headers: true, header_converters: :symbol)
-  binding.pry
-  random_reduce(raw_input) if raw_input.count > 7500
   raw_input.each do |pre_hash|
     data = pre_hash.to_h
-    # data_type.create(data)
+    data.each_key do |key|
+      unless data_type.column_names.include?(key.to_s)
+        data.delete(key)
+      end
+    end
+    data_type.create(data)
   end
 end
 
-seed_data('./data/station.csv')
+seed_data('./data/station.csv', Station)
+seed_data('./data/trip.csv', Trip)
+seed_data('./data/weather.csv', Condition)

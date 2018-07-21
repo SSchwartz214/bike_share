@@ -1,0 +1,24 @@
+<div class="all-forms">
+  <%= form_for @user do |f| %>
+      <%= f.label "first name" %>
+    <div class="form-group">
+      <%= f.text_field :first_name%>
+    </div>
+      <%= f.label "last name" %>
+    <div class="form-group">
+      <%= f.text_field :last_name %>
+    </div>
+      <%= f.label :username %>
+    <div class="form-group">
+      <%= f.text_field :username %>
+    </div>
+      <%= f.label :password %>
+    <div class="form-group">
+      <%= f.text_field :password %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create Account" %>
+    </div>
+  </div>
+</div>
+<% end %>

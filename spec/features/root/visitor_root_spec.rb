@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "a visitor" do
   describe "visits /" do
-    xit "can click on login" do
+    it "can click on login" do
       visit "/"
 
       click_on "Login"
@@ -10,13 +10,13 @@ describe "a visitor" do
       expect(current_path).to eq("/login")
     end
 
-    xit "can click on create account and fill out a form" do
+    it "can click on create account and fill out a form" do
       first_name = "iajd"
       last_name = "0912j"
       username = "oiasd"
       password = "09j90dj"
 
-      visit "/login"
+      visit "/"
 
       click_on "Create Account"
 
@@ -36,6 +36,7 @@ describe "a visitor" do
       expect(page).to have_content(last_name)
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Logout")
+      expect(User.count).to eq(1)
     end
   end
 end

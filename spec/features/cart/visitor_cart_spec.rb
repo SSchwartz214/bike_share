@@ -88,17 +88,30 @@ describe "a visitor" do
       expect(current_path).to eq("/cart")
       expect(page).to have_content("Quantity: 2")
     end
-    it "can increment item in cart" do
+    it "can decrement item in cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
-      #TODO: add 2 acc_1 to cart
+      #TODO: add 1 acc_1 to cart
 
       visit "/cart"
+
+      expect(page).to have_content("Total: #{(acc_2.price * 2)}")
 
       find('#decrement').click #TODO: adjust name of ID for increment and decrement click
 
       expect(current_path).to eq("/cart")
       expect(page).to have_content("Quantity: 1")
+      expect(page).to have_content("Total: 0")
+    end
+
+    it "can not check out" do
+      acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
+
+      #TODO: add 1 acc_1 to cart
+
+      visit "/cart"
+
+      expect(page).to_not have_content("Check Out")
     end
   end
 end

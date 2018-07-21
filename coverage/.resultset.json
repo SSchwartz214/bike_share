@@ -1,0 +1,173 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/accessory.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/condition_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/condition.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/order_accessory_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/order_accessory.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/order_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/order.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/station_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/station.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/trip_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/trip.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/spec/models/user_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/sethsmacbookpro/turing/2module/projects/bike_share/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1532197072
+  }
+}

@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20180720224107) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.integer "role", default: 0
   end
 

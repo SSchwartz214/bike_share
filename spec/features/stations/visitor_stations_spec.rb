@@ -28,7 +28,7 @@ describe "a visitor" do
 
       expect(current_path).to eq("/:#{station_1.name}")
 
-      tation_1.name)
+      expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
       expect(page).to have_content(station_1.installation_date)

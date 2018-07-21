@@ -4,7 +4,7 @@ describe "a visitor" do
   describe "visits /bike-shop" do
     it "sees a list of accessories" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
-      acc_1 = Accessory.create!(name: "8ad98h", price: 1234, status: 0, image_url: "iads", description: "0ijas0j")
+      acc_2 = Accessory.create!(name: "8ad98h", price: 1234, status: 0, image_url: "iads", description: "0ijas0j")
 
       visit '/bike-shop'
 

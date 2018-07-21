@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "a visitor" do
-  visits "conditions index" do
+  describe "conditions index" do
     it "can see all conditions and attributes" do
       condition_1 = Condition.create!(end_date: "8/29/2013", max_temperature: 1234, mean_temperuate: 511, min_temperature: 123, mean_humididity: 75, mean_visibility: 10, mean_wind_speed: 27, precipitation: 11)
 
@@ -29,7 +29,7 @@ describe "a visitor" do
     end
   end
 
-  visits "conditions show" do
+  describe "conditions show" do
     it "can see all attributes for condition" do
       condition_1 = Condition.create!(end_date: "8/29/2013", max_temperature: 1234, mean_temperuate: 511, min_temperature: 123, mean_humididity: 75, mean_visibility: 10, mean_wind_speed: 27, precipitation: 11)
 

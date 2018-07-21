@@ -6,7 +6,7 @@ describe "a visitor" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
 
-      visit stations_index_path
+      visit stations_path
 
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
@@ -22,11 +22,13 @@ describe "a visitor" do
 
   describe "station show page" do
     it "can see station attributes and station name in url" do
-      station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+      name = "pjas90dj"
 
-      visit station_show_path(station_1)
+      station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013", slug: name)
 
-      expect(current_path).to eq("/:#{station_1.name}")
+      visit "/#{station_1.slug}"
+
+      expect(current_path).to eq("/#{station_1.name}")
 
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)

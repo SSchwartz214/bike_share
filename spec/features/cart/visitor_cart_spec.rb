@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "a visitor" do
   describe "carts" do
-    it "sees a list of accessories added to cart" do
+    xit "sees a list of accessories added to cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
       acc_2 = Accessory.create!(name: "8ad98h", price: 1234, status: 0, image_url: "iads", description: "0ijas0j")
 
@@ -24,7 +24,7 @@ describe "a visitor" do
       expect(page).to have_content("Total: #{(acc_2.price * 2) + acc_1.price}")
     end
 
-    it "can create an account and still visit cart" do
+    xit "can create an account and still visit cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
       acc_2 = Accessory.create!(name: "8ad98h", price: 1234, status: 0, image_url: "iads", description: "0ijas0j")
 
@@ -60,7 +60,7 @@ describe "a visitor" do
       expect(page).to have_content("Total: #{(acc_2.price * 2) + acc_1.price}")
     end
 
-    it "can remove accessories from cart" do
+    xit "can remove accessories from cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
       visit "/cart"
@@ -76,7 +76,7 @@ describe "a visitor" do
       expect(current_path).to eq(accessory_show(acc_1))
     end
 
-    it "can increment item in cart" do
+    xit "can increment item in cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
       #TODO: add 1 acc_1 to cart
@@ -88,7 +88,7 @@ describe "a visitor" do
       expect(current_path).to eq("/cart")
       expect(page).to have_content("Quantity: 2")
     end
-    it "can decrement item in cart" do
+    xit "can decrement item in cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
       #TODO: add 1 acc_1 to cart
@@ -104,7 +104,7 @@ describe "a visitor" do
       expect(page).to have_content("Total: 0")
     end
 
-    it "can not check out" do
+    xit "can not check out" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
 
       #TODO: add 1 acc_1 to cart

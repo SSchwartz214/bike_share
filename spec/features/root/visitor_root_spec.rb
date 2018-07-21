@@ -36,6 +36,7 @@ describe "a visitor" do
       expect(page).to have_content(last_name)
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Logout")
+      expect(User.count).to eq(1)
     end
   end
 end

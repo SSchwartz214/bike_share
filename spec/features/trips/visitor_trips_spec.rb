@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "a visitor" do
-  visits "trips index" do
+  describe "trips index" do
     it "can see all trips and attributes" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -27,7 +27,7 @@ describe "a visitor" do
     end
   end
 
-  visits "trip show path" do
+  describe "trip show path" do
     it "can see trip information" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")

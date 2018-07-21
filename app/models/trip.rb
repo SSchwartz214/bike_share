@@ -7,4 +7,8 @@ class Trip < ApplicationRecord
   validates_presence_of :bike_id
   validates_presence_of :subscription_type
   validates_presence_of :zip_code
+
+  def start_station_name
+    Station.find(:start_station_id).name
+  end
 end

@@ -16,7 +16,7 @@ describe "a visitor" do
       username = "oiasd"
       password = "09j90dj"
 
-      visit "/login"
+      visit "/"
 
       click_on "Create Account"
 
@@ -36,6 +36,7 @@ describe "a visitor" do
       expect(page).to have_content(last_name)
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Logout")
+      expect(User.count).to eq(1)
     end
   end
 end

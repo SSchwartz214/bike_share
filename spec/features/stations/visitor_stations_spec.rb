@@ -26,7 +26,7 @@ describe "a visitor" do
 
       station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013", slug: name)
 
-      visit station_path(station_1)
+      visit "/#{station_1.slug}"
 
       expect(current_path).to eq("/#{station_1.name}")
 

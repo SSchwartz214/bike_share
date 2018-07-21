@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "welcome#index"
 
+  resources :users, only: [:new]
   resources :stations, param: :slug, only: [:index]
 
   get '/:slug', to: 'stations#show'
+  get '/login', to: 'login#index'
 end

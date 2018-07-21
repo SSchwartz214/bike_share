@@ -6,7 +6,6 @@ class StationsController < ApplicationController
   end
 
   def show
-
   end
 
   private

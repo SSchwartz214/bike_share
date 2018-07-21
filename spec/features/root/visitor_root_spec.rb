@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "a visitor" do
   describe "visits /" do
-    xit "can click on login" do
+    it "can click on login" do
       visit "/"
 
       click_on "Login"
@@ -10,7 +10,7 @@ describe "a visitor" do
       expect(current_path).to eq("/login")
     end
 
-    xit "can click on create account and fill out a form" do
+    it "can click on create account and fill out a form" do
       first_name = "iajd"
       last_name = "0912j"
       username = "oiasd"

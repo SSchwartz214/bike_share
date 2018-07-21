@@ -21,7 +21,7 @@ describe "a visitor" do
   end
 
   describe "station show page" do
-    it "can see station attributes and station name in url" do
+    xit "can see station attributes and station name in url" do
       name = "pjas90dj"
 
       station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013", slug: name)

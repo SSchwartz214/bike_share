@@ -16,7 +16,7 @@ describe "a visitor" do
       username = "oiasd"
       password = "09j90dj"
 
-      visit "/login"
+      visit "/"
 
       click_on "Create Account"
 

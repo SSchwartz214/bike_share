@@ -26,7 +26,7 @@ describe "a visitor" do
 
       visit station_show_path(station_1)
 
-      expect(current_path).to eq("/:#{station_1.name}")
+      expect(current_path).to eq("/#{station_1.name}")
 
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)

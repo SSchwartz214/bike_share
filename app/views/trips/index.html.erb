@@ -2,9 +2,12 @@
 
 <% @trips.each do |trip| %>
   <div class="trip-row row">
-    <p><%= trip.name %></p>
+    <p><%= trip.duration %></p>
+    <p><%= trip.start_station.name %></p>
     <p><%= trip.start_date %></p>
-    <p><%= trip. %></p>
-    <p><%= trip.installation_date %></p>
+    <p><%= trip.end_station.name %></p>
+    <p><%= trip.end_date %></p>
+    <p><%= trip.subscription_type %></p>
+    <p><%= trip.zip_code %></p>
   </div>
 <% end %>

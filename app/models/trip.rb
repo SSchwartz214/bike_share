@@ -7,4 +7,12 @@ class Trip < ApplicationRecord
   def self.avg_duration
     average(:duration)
   end
+
+  def self.longest_ride
+    maximum(:duration)
+  end
+
+  def self.shortest_ride
+    minimum(:duration)
+  end
 end

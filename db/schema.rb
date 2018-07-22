@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20180722205944) do
   end
 
   create_table "conditions", force: :cascade do |t|
-    t.string "end_date"
+    t.datetime "end_date"
     t.integer "max_temperature"
     t.integer "mean_temperature"
     t.integer "min_temperature"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180722205944) do
   create_table "order_accessories", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "accessory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["accessory_id"], name: "index_order_accessories_on_accessory_id"
     t.index ["order_id"], name: "index_order_accessories_on_order_id"
   end
@@ -65,15 +67,15 @@ ActiveRecord::Schema.define(version: 20180722205944) do
     t.string "name"
     t.integer "dock_count"
     t.string "city"
-    t.string "installation_date"
+    t.datetime "installation_date"
     t.string "slug"
   end
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.string "start_date"
+    t.datetime "start_date"
     t.integer "start_station_id"
-    t.string "end_date"
+    t.datetime "end_date"
     t.integer "end_station_id"
     t.integer "bike_id"
     t.string "subscription_type"

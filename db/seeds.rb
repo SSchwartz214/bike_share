@@ -25,7 +25,11 @@ require 'time'
 
 def to_date_time(date_string)
   unless date_string.nil?
-    Date.strptime(date_string, '%m/%d/%Y')
+    if date_string.length < 11
+      Date.strptime(date_string, '%m/%d/%Y')
+    else
+      DateTime.strptime(date_string, '%m/%d/%Y %H:%M')
+    end
   end
 end
 
@@ -35,14 +39,16 @@ def seed_data(path, data_type)
     data = pre_hash.to_h
     changes = {}
     data.each_key do |key|
-      unless data_type.column_names.include?(key.to_s)
-        data.delete(key)
-      end
-
       if key.to_s.downcase.include?("date")
         changes[key] = to_date_time(data[key])
       end
+
+      unless data_type.column_names.include?(key.to_s)
+        data.delete(key)
+        changes.delete(key)
+      end
     end
+
     changes.each_key do |key|
       data[key] = changes[key]
     end
@@ -51,5 +57,5 @@ def seed_data(path, data_type)
 end
 
 seed_data('./data/station.csv', Station)
-# seed_data('./data/trip.csv', Trip)
-# seed_data('./data/weather.csv', Condition)
+seed_data('./data/trip.csv', Trip)
+seed_data('./data/weather.csv', Condition)

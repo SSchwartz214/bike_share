@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 20180722205944) do
   end
 
   create_table "conditions", force: :cascade do |t|
-    t.datetime "end_date"
-    t.integer "max_temperature"
-    t.integer "mean_temperature"
-    t.integer "min_temperature"
-    t.integer "mean_humididity"
-    t.integer "mean_visibility"
-    t.integer "mean_wind_speed"
-    t.integer "precipitation"
+    t.datetime "date"
+    t.integer "max_temperature_f"
+    t.integer "mean_temperature_f"
+    t.integer "min_temperature_f"
+    t.integer "mean_humidity"
+    t.integer "mean_visibility_miles"
+    t.integer "mean_wind_speed_mph"
+    t.integer "precipitation_inches"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|

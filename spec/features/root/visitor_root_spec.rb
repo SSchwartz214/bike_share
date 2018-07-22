@@ -4,7 +4,7 @@ describe "a visitor" do
   describe "visits /" do
     it "can click on login" do
       visit "/"
-      
+
       click_on "Login"
 
       expect(current_path).to eq("/login")
@@ -33,7 +33,7 @@ describe "a visitor" do
 
       expect(current_path).to eq("/dashboard")
 
-      expect(page).to have_content("Logged in as #{username}")
+      expect(page).to have_content("Logged in as #{first_name}")
       expect(page).to have_content(first_name)
       expect(page).to have_content(last_name)
       expect(page).to_not have_content("Login")

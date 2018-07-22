@@ -6,11 +6,12 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find_by(slug: params[:slug])
+
   end
 
   private
 
   def set_station
+    @station = Station.friendly.find(params[:id])
   end
 end

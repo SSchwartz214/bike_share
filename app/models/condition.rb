@@ -1,10 +1,10 @@
 class Condition < ApplicationRecord
-  validates_presence_of :end_date
-  validates_presence_of :max_temperature
-  validates_presence_of :mean_temperature
-  validates_presence_of :min_temperature
-  validates_presence_of :mean_humididity
-  validates_presence_of :mean_visibility
-  validates_presence_of :mean_wind_speed
-  validates_presence_of :precipitation
+  validates_presence_of :date
+  validates_presence_of :max_temperature_f
+  validates_presence_of :mean_temperature_f
+  validates_presence_of :min_temperature_f
+  validates_presence_of :mean_humidity
+  validates_presence_of :mean_visibility_miles
+  validates_presence_of :mean_wind_speed_mph
+  validates_presence_of :precipitation_inches
 end

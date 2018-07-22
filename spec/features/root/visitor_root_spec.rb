@@ -4,7 +4,7 @@ describe "a visitor" do
   describe "visits /" do
     it "can click on login" do
       visit "/"
-
+      
       click_on "Login"
 
       expect(current_path).to eq("/login")
@@ -27,7 +27,9 @@ describe "a visitor" do
       fill_in :user_username, with: username
       fill_in :user_password, with: password
 
-      click_on "Create Account"
+      within ".create-account" do
+        click_on "Create Account"
+      end
 
       expect(current_path).to eq("/dashboard")
 

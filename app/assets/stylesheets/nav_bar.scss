@@ -1,0 +1,15 @@
+@import "shared_values";
+
+.fa-bicycle {
+  color: $important-text-color;
+  font-size: 25px;
+  padding-right: 5px;
+}
+
+.navbar-color {
+  background-color: $primary-color;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}

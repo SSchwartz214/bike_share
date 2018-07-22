@@ -1,14 +1,6 @@
 class Trip < ApplicationRecord
-  validates_presence_of :duration
-  validates_presence_of :start_date
-  validates_presence_of :start_station_id
-  validates_presence_of :end_date
-  validates_presence_of :end_station_id
-  validates_presence_of :bike_id
-  validates_presence_of :subscription_type
-  validates_presence_of :zip_code
+  validates_presence_of :duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, :zip_code
 
-  def start_station_name
-    Station.find(:start_station_id).name
-  end
+  belongs_to :start_station, class_name: "Station"
+  belongs_to :end_station, class_name: "Station"
 end

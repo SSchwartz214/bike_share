@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721204311) do
+ActiveRecord::Schema.define(version: 20180721234658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,11 +72,13 @@ ActiveRecord::Schema.define(version: 20180721204311) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.integer "role", default: 0
   end
 
   add_foreign_key "order_accessories", "accessories"
   add_foreign_key "order_accessories", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "trips", "stations", column: "end_station_id"
+  add_foreign_key "trips", "stations", column: "start_station_id"
 end

@@ -2,18 +2,18 @@
 
 <div class="row table-heading">
   <div class="col-sm-1">
-    <p>Duration</p>
+    <p>Duration (minutes)</p>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-2">
     <p>Start station</p>
   </div>
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     <p>Start date</p>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-2">
     <p>End station</p>
   </div>
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     <p>End date</p>
   </div>
   <div class="col-sm-2">
@@ -28,19 +28,19 @@
 <% @trips.each do |trip| %>
 <div class="row station-row">
   <div class="col-sm-1">
-    <p><%= trip.duration %></p>
+    <p><%= trip.duration/60 %></p>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-2">
     <p><%= trip.start_station.name %></p>
   </div>
-  <div class="col-sm-1">
-    <p><%= trip.start_date %></p>
+  <div class="col-sm-2">
+    <p><%= trip.start_date.to_s.chomp(":00 UTC") %></p>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-2">
     <p><%= trip.end_station.name %></p>
   </div>
-  <div class="col-sm-1">
-    <p><%= trip.end_date %></p>
+  <div class="col-sm-2">
+    <p><%= trip.end_date.to_s.chomp(":00 UTC") %></p>
   </div>
   <div class="col-sm-2">
     <p><%= trip.subscription_type %></p>

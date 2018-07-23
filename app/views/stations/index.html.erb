@@ -28,7 +28,7 @@
       <p><%= station.city %></p>
     </div>
     <div class="col-sm-3">
-      <p><%= station.installation_date %></p>
+      <p><%= station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
     </div>
   </div>
 <% end %>

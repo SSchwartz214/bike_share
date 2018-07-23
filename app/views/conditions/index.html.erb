@@ -28,7 +28,7 @@
 </div>
 
 <div class="index-container">
-  <%= @conditions.each do |condition| %>
+  <% @conditions.each do |condition| %>
   <div class="row station-row">
     <div class="col-sm-2">
       <p><%= condition.date.to_s.chomp("00:00:00 UTC") %></p>
@@ -56,4 +56,12 @@
     </div>
   </div>
   <% end %>
+</div>
+
+<div class="styled_pagination">
+  <div class="page_info">
+    <%= page_entries_info @trips %>
+  <br/>
+    <%= will_paginate @trips, :container => false %>
+  </div>
 </div>

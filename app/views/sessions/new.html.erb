@@ -1,7 +1,26 @@
+
+<div class="center-form">
+<h3>Log in to your account</h3>
+
 <%= form_for login_path do %>
   <%= label_tag :username %>
-  <%= text_field_tag :username %>
+  <div class="form-group">
+    <%= text_field_tag :username %>
+  </div>
   <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Log in" %>
+  <div class="form-group">
+    <%= password_field_tag :password %>
+  </div>
+  <%= link_to login_path do %>
+  <section class="main-button">
+  <a>
+    <%= submit_tag "Log in", class:"text reset-button" %>
+    <span class="line -right"></span>
+    <span class="line -top"></span>
+    <span class="line -left"></span>
+    <span class="line -bottom"></span>
+  </a>
+</section>
 <% end %>
+<% end %>
+</div>

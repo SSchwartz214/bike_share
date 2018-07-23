@@ -7,6 +7,9 @@ class Station < ApplicationRecord
   validates_presence_of :city
   validates_presence_of :installation_date
 
+  has_many :start_trips, class_name: 'Trip', foreign_key: 'start_station_id', dependent: :destroy
+  has_many :end_trips, class_name: 'Trip', foreign_key: 'end_station_id', dependent: :destroy
+
   def to_param
     slug
   end
@@ -38,4 +41,9 @@ class Station < ApplicationRecord
   def self.oldest
     find_by(installation_date: minimum(:installation_date))
   end
+
+  def self.most_starting_rides
+    joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
+  end
+
 end

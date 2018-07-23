@@ -17,7 +17,7 @@ class Trip < ApplicationRecord
   end
 
   def self.most_starting_rides
-
     Station.joins(:trips).where.maximum(:start_station)
+
   end
 end

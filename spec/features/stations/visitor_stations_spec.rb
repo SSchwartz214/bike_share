@@ -11,12 +11,12 @@ describe "a visitor" do
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_1.installation_date.to_s.chomp("00:00:00 UTC"))
 
       expect(page).to have_content(station_2.name)
       expect(page).to have_content(station_2.dock_count)
       expect(page).to have_content(station_2.city)
-      expect(page).to have_content(station_2.installation_date)
+      expect(page).to have_content(station_2.installation_date.to_s.chomp("00:00:00 UTC"))
     end
   end
 
@@ -31,7 +31,7 @@ describe "a visitor" do
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_1.installation_date.to_s.chomp("00:00:00 UTC"))
     end
   end
 end

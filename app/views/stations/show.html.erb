@@ -1,5 +1,8 @@
 <h2><%= @station.name %></h2>
 
-<p>City: <%= @station.city %></p>
-<p>Dock count: <%= @station.dock_count %></p>
-<p>Installation date: <%= @station.installation_date %></p>
+<p><strong>City:</strong><p>
+<p><%= @station.city %></p>
+<p><strong>Dock count:</strong><p>
+<p><%= @station.dock_count %></p>
+<p><strong>Installation date:</strong><p>
+<p><%= @station.installation_date.to_s.chomp("00:00:00 UTC") %></p>

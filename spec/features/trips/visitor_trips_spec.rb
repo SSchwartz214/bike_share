@@ -15,17 +15,17 @@ describe "a visitor" do
 
       visit trips_path
 
-      expect(page).to have_content(trip_1.duration)
-      expect(page).to have_content(trip_1.start_date)
+      expect(page).to have_content(trip_1.duration/60)
+      expect(page).to have_content(trip_1.start_date.to_s.chomp(":00 UTC"))
       expect(page).to have_content(station_1.name) #NOT start station ID, the actual station
-      expect(page).to have_content(trip_1.end_date)
+      expect(page).to have_content(trip_1.end_date.to_s.chomp(":00 UTC"))
       expect(page).to have_content(station_2.name) #see above
       expect(page).to have_content(trip_1.subscription_type)
       expect(page).to have_content(trip_1.zip_code)
 
       expect(page).to have_content(station_3.name)
       expect(page).to have_content(trip_2.subscription_type)
-      expect(page).to have_content(trip_2.duration)
+      expect(page).to have_content(trip_2.duration/60)
     end
   end
 
@@ -38,10 +38,10 @@ describe "a visitor" do
 
       visit trip_path(trip_1)
 
-      expect(page).to have_content(trip_1.duration)
-      expect(page).to have_content(trip_1.start_date)
+      expect(page).to have_content(trip_1.duration/60)
+      expect(page).to have_content(trip_1.start_date.to_s.chomp(":00 UTC"))
       expect(page).to have_content(station_1.name) #NOT start station ID, the actual station
-      expect(page).to have_content(trip_1.end_date)
+      expect(page).to have_content(trip_1.end_date.to_s.chomp(":00 UTC"))
       expect(page).to have_content(station_2.name) #see above
       expect(page).to have_content(trip_1.subscription_type)
       expect(page).to have_content(trip_1.zip_code)

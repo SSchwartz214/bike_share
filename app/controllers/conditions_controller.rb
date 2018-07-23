@@ -1,6 +1,6 @@
 class ConditionsController < ApplicationController
   def index
-    @conditions = Condition.all
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show

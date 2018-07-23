@@ -24,8 +24,9 @@
   </div>
 </div>
 
-<div class="index-container">
+<div class="index-container trips-container">
 <% @trips.each do |trip| %>
+<%= link_to trip_path(trip) do %>
 <div class="row station-row">
   <div class="col-sm-1">
     <p><%= trip.duration/60 %></p>
@@ -49,6 +50,7 @@
     <p><%= trip.zip_code %></p>
   </div>
 </div>
+<% end %>
 <% end %>
 </div>
 

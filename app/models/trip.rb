@@ -4,6 +4,10 @@ class Trip < ApplicationRecord
   belongs_to :start_station, class_name: "Station"
   belongs_to :end_station, class_name: "Station"
 
+  def seconds_to_time(seconds)
+    [seconds / 3600, seconds / 60 % 60, seconds % 60].map { |t| t.to_s.rjust(2,'0') }.join(':')
+  end
+
   def self.avg_duration
     average(:duration)
   end

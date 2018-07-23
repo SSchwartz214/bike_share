@@ -1,3 +1,7 @@
+<div class="center-form">
+
+<h3>Make an account</h3>
+
 <div class="all-forms">
   <%= form_for @user do |f| %>
       <%= f.label "first name" %>
@@ -14,11 +18,17 @@
     </div>
       <%= f.label :password %>
     <div class="form-group">
-      <%= f.text_field :password %>
+      <%= f.password_field :password %>
     </div>
-    <div class="form-group">
-      <%= f.submit "Create Account" %>
-    </div>
+    <section class="main-button create-account">
+    <a>
+      <%= f.submit "Create Account", class:"text reset-button" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
   </div>
 </div>
 <% end %>
+</div>

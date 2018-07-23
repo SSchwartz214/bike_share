@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721234658) do
+ActiveRecord::Schema.define(version: 20180722205944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,19 +24,33 @@ ActiveRecord::Schema.define(version: 20180721234658) do
   end
 
   create_table "conditions", force: :cascade do |t|
-    t.string "end_date"
-    t.integer "max_temperature"
-    t.integer "mean_temperature"
-    t.integer "min_temperature"
-    t.integer "mean_humididity"
-    t.integer "mean_visibility"
-    t.integer "mean_wind_speed"
-    t.integer "precipitation"
+    t.datetime "date"
+    t.integer "max_temperature_f"
+    t.integer "mean_temperature_f"
+    t.integer "min_temperature_f"
+    t.integer "mean_humidity"
+    t.integer "mean_visibility_miles"
+    t.integer "mean_wind_speed_mph"
+    t.integer "precipitation_inches"
+  end
+
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "order_accessories", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "accessory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["accessory_id"], name: "index_order_accessories_on_accessory_id"
     t.index ["order_id"], name: "index_order_accessories_on_order_id"
   end
@@ -53,15 +67,15 @@ ActiveRecord::Schema.define(version: 20180721234658) do
     t.string "name"
     t.integer "dock_count"
     t.string "city"
-    t.string "installation_date"
+    t.datetime "installation_date"
     t.string "slug"
   end
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.string "start_date"
+    t.datetime "start_date"
     t.integer "start_station_id"
-    t.string "end_date"
+    t.datetime "end_date"
     t.integer "end_station_id"
     t.integer "bike_id"
     t.string "subscription_type"

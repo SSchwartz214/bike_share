@@ -13,3 +13,12 @@
 .navbar-brand, .nav-link {
   color: white;
 }
+
+.navbar-brand {
+  font-family: $logo-font;
+}
+
+.dark-text {
+  color: LightGray;
+  font-size: .85em;
+}

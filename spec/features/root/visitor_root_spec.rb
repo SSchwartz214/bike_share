@@ -27,11 +27,13 @@ describe "a visitor" do
       fill_in :user_username, with: username
       fill_in :user_password, with: password
 
-      click_on "Create Account"
+      within ".create-account" do
+        click_on "Create Account"
+      end
 
       expect(current_path).to eq("/dashboard")
 
-      expect(page).to have_content("Logged in as #{username}")
+      expect(page).to have_content("Logged in as #{first_name}")
       expect(page).to have_content(first_name)
       expect(page).to have_content(last_name)
       expect(page).to_not have_content("Login")

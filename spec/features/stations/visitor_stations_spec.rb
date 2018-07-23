@@ -11,12 +11,12 @@ describe "a visitor" do
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_1.installation_date.to_s.chomp("00:00:00 UTC"))
 
       expect(page).to have_content(station_2.name)
       expect(page).to have_content(station_2.dock_count)
       expect(page).to have_content(station_2.city)
-      expect(page).to have_content(station_2.installation_date)
+      expect(page).to have_content(station_2.installation_date.to_s.chomp("00:00:00 UTC"))
     end
   end
 
@@ -24,16 +24,14 @@ describe "a visitor" do
     it "can see station attributes and station name in url" do
       name = "pjas90dj"
 
-      station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013", slug: name)
+      station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
 
-      visit "/#{station_1.slug}"
-
-      expect(current_path).to eq("/#{station_1.name}")
+      visit "/stations/#{station_1.name}"
 
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_1.installation_date.to_s.chomp("00:00:00 UTC"))
     end
   end
 end

@@ -1,10 +1,35 @@
 <h1> Stations</h1>
 
+<div class="row table-heading">
+  <div class="col-sm-5">
+    <p>Name<p>
+  </div>
+  <div class="col-sm-2">
+    <p>Dock count<p>
+  </div>
+  <div class="col-sm-2">
+    <p>City<p>
+  </div>
+  <div class="col-sm-3">
+    <p>Installation date<p>
+  </div>
+</div>
+
+<div class="index-container">
 <% @stations.each do |station| %>
-  <div class="station-row row">
-    <p><%= station.name %></p>
-    <p><%= station.dock_count %></p>
-    <p><%= station.city %></p>
-    <p><%= station.installation_date %></p>
+  <div class="row station-row">
+    <div class="col-sm-5">
+      <%= link_to station.name, station_path(station), class:"hvr-skew" %>
+    </div>
+    <div class="col-sm-2">
+      <p><%= station.dock_count %></p>
+    </div>
+    <div class="col-sm-2">
+      <p><%= station.city %></p>
+    </div>
+    <div class="col-sm-3">
+      <p><%= station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
+    </div>
   </div>
 <% end %>
+</div>

@@ -15,4 +15,9 @@ class Trip < ApplicationRecord
   def self.shortest_ride
     minimum(:duration)
   end
+
+  def self.most_starting_rides
+
+    Station.joins(:trips).where.maximum(:start_station)
+  end
 end

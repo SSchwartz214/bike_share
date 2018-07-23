@@ -20,4 +20,11 @@ class Trip < ApplicationRecord
     minimum(:duration)
   end
 
+  def self.month_by_month
+    group("DATE_TRUNC('month', start_date)").count
+    .inject({}) do |hash, (k, v)|
+      hash[k.to_date.to_s] = v
+      hash
+    end
+  end
 end

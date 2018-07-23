@@ -5,6 +5,26 @@
   background-color: none;
 }
 
+a {
+  color: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: none;
+  text-decoration: none;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.index-container a:hover {
+  color: $primary-color;
+  text-decoration: none;
+}
+
 .hvr-skew {
   display: inline-block;
   vertical-align: middle;

@@ -10,7 +10,7 @@ describe "a visitor" do
 
       visit conditions_path
 
-      expect(page).to have_content(condition_1.date)
+      expect(page).to have_content(condition_1.date.to_s.chomp("00:00:00 UTC"))
       expect(page).to have_content(condition_1.max_temperature_f)
       expect(page).to have_content(condition_1.mean_temperature_f)
       expect(page).to have_content(condition_1.min_temperature_f)
@@ -19,7 +19,7 @@ describe "a visitor" do
       expect(page).to have_content(condition_1.mean_wind_speed_mph) # in mph
       expect(page).to have_content(condition_1.precipitation_inches) # in inches
 
-      expect(page).to have_content(condition_2.date)
+      expect(page).to have_content(condition_2.date.to_s.chomp("00:00:00 UTC"))
       expect(page).to have_content(condition_2.max_temperature_f)
       expect(page).to have_content(condition_2.mean_temperature_f)
       expect(page).to have_content(condition_2.min_temperature_f)

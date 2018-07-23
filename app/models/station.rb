@@ -41,4 +41,16 @@ class Station < ApplicationRecord
   def self.oldest
     find_by(installation_date: minimum(:installation_date))
   end
+
+  def total_ride_starts
+    start_trips.count
+  end
+
+  def total_ride_ends
+    end_trips.count
+  end
+
+  def most_frequent_destination
+
+  end
 end

@@ -3,4 +3,21 @@ class Trip < ApplicationRecord
 
   belongs_to :start_station, class_name: "Station"
   belongs_to :end_station, class_name: "Station"
+
+  def self.avg_duration
+    average(:duration)
+  end
+
+  def self.longest_ride
+    maximum(:duration)
+  end
+
+  def self.shortest_ride
+    minimum(:duration)
+  end
+
+  def self.most_starting_rides
+
+    Station.joins(:trips).where.maximum(:start_station)
+  end
 end

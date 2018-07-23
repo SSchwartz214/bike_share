@@ -41,4 +41,9 @@ class Station < ApplicationRecord
   def self.oldest
     find_by(installation_date: minimum(:installation_date))
   end
+
+  def self.most_starting_rides
+    joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
+  end
+
 end

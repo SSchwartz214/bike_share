@@ -42,7 +42,6 @@ class Station < ApplicationRecord
     find_by(installation_date: minimum(:installation_date))
   end
 
-<<<<<<< HEAD
   def total_ride_starts
     start_trips.count
   end
@@ -52,16 +51,14 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_destination
+    Station.find(start_trips.group(:end_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
+  end
 
+  def most_frequent_start
+    Station.find(end_trips.group(:start_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
   end
 
   def self.most_starting_rides
     joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
   end
-=======
-  def self.most_starting_rides
-    joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
-  end
-
->>>>>>> 9423ba805304f839a58dbb1fee239cbd2e910e8c
 end

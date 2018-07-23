@@ -23,6 +23,23 @@ require 'time'
 #   File.write(new_path, new_data.join)
 # end
 
+# def cull_stupid_data(stupid_path, new_path)
+#   return_value = ""
+#   raw_input = File.open(stupid_path)
+#   new_data = Hash.new([])
+#   raw_input.each do |line|
+#     zip = line[-6..-2]
+#     new_data[zip] += [line]
+#   end
+#   first_line = new_data[new_data.keys.first]
+#   final_zip = new_data[new_data.keys[rand(new_data.keys.length)]]
+#   final_string = first_line.join + final_zip.join
+#
+#   File.write(new_path, final_string)
+# end
+
+
+
 def to_date_time(date_string)
   unless date_string.nil?
     if date_string.length < 11

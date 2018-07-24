@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'an admin visits a station index' do
-  xit 'deletes a station' do
+  it 'deletes a station' do
     admin = User.create(first_name: "wefwef", last_name: "Fefwfu", username: "Connor", password: "password", role: 1)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)

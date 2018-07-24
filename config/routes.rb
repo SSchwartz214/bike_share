@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
 
-  resources :conditions
+  resources :conditions, only: [:index, :show, :update, :edit, :destroy]
 
+  get "admin/condition/new", to: 'conditions#new'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

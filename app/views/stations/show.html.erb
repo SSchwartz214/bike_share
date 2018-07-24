@@ -6,3 +6,10 @@
 <p><%= @station.dock_count %></p>
 <p><strong>Installation date:</strong><p>
 <p><%= @station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
+
+<% if current_admin? %>
+
+  <%= button_to "Delete", station_path(@station), method: :delete %>
+  <%= button_to "Edit", edit_admin_station_path(@station), method: :get %>
+
+<% end %>

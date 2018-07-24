@@ -1,9 +1,10 @@
 @import "shared_values";
 
-.fa-bicycle {
+.fa-bicycle, .fa-credit-card, .fa-unlock-alt, .fa-undo {
   color: $important-text-color;
   font-size: 25px;
   padding-right: 5px;
+  padding-left: 10px;
 }
 
 .navbar-color {

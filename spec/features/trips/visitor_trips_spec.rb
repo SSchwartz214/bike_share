@@ -11,19 +11,16 @@ describe "a visitor" do
       trip_1 = Trip.create!(duration: 123, start_date: DateTime.strptime("8/29/2013 14:13", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station_2, subscription_type: "subscribed", zip_code: 12345, bike_id: 1)
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_2, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 
-      #TODO add pagination gem - verify 30 per page. Test pagination once gem is installed.
-
       visit trips_path
-
+      
       expect(page).to have_content(trip_1.duration/60)
       expect(page).to have_content(trip_1.start_date.to_s.chomp(":00 UTC"))
-      expect(page).to have_content(station_1.name) #NOT start station ID, the actual station
+      expect(page).to have_content(station_1.name)
       expect(page).to have_content(trip_1.end_date.to_s.chomp(":00 UTC"))
-      expect(page).to have_content(station_2.name) #see above
+      expect(page).to have_content(station_2.name)
       expect(page).to have_content(trip_1.subscription_type)
       expect(page).to have_content(trip_1.zip_code)
 
-      expect(page).to have_content(station_3.name)
       expect(page).to have_content(trip_2.subscription_type)
       expect(page).to have_content(trip_2.duration/60)
     end

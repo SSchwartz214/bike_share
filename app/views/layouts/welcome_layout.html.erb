@@ -3,11 +3,11 @@
   <head>
     <title>BikeShare</title>
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Questrial" rel="stylesheet">
-    <%= favicon_link_tag 'favicon-bicycle.ico' %>
   </head>
   <body>
     <% if current_user %>
@@ -15,12 +15,10 @@
     <% else %>
       <%= render partial: "./partials/anonymousnavbar" %>
     <% end %>
-    <main>
     <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>
       <%= yield %>
-  </main>
     <%= render partial:"./partials/footer" %>
   </body>
 </html>

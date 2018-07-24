@@ -1,9 +1,21 @@
 @import "shared_values";
 
-.fa-bicycle {
+.dropdown-menu {
+  background-color: $primary-color;
+  color: white;
+  border: 1px solid white;
+}
+
+.dropdown-menu a {
+  color: white;
+  padding-left: 10px;
+}
+
+.fa-bicycle, .fa-credit-card, .fa-unlock-alt, .fa-undo {
   color: $important-text-color;
   font-size: 25px;
   padding-right: 5px;
+  padding-left: 10px;
 }
 
 .navbar-color {
@@ -21,4 +33,9 @@
 .dark-text {
   color: LightGray;
   font-size: .85em;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: whitesmoke;
 }

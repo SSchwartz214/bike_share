@@ -1,6 +1,19 @@
-<p>Total Stations: <%= @total %></p>
-<p>Average Bikes Per Station: <%= @average_bikes %></p>
-<p>The highest number of bikes is <%= @most_bikes %> at <%= @most_bikes_station %></p>
-<p>The lowest number of bikes is <%= @fewest_bikes %> at <%= @fewest_bikes_station %></p>
-<p>The newest station is <%= @newest %></p>
-<p>The oldest station is <%= @oldest %> </p>
+<h2> Stations Dashboard</h2>
+
+<p><strong>Total Stations:</strong></p>
+<p><%= @total %></p>
+
+<p><strong>Average Bikes Per Station:</strong></p>
+<p><%= @average_bikes.to_i %></p>
+
+<p><strong>Highest number of bikes at a station:</strong></p>
+<p><%= @most_bikes %> at <%= @most_bikes_station %></p>
+
+<p><strong>Lowest number of bikes at a station:</strong></p>
+<p><%= @fewest_bikes %> at <%= @fewest_bikes_station %></p>
+
+<p><strong>Newest station:</strong></p>
+<p><%= @newest %></p>
+
+<p><strong>Oldest station:</strong></p>
+<p><%= @oldest %> </p>

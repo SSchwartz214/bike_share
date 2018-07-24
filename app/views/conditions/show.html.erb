@@ -1,5 +1,20 @@
 <h2>Weather on <%= @condition.date.to_s.chomp("00:00:00 UTC") %></h2>
 
+<div class="button-container">
+  <% if current_user&.admin? %>
+  <div class="edit-container">
+    <%= link_to edit_condition_path(@condition) do %>
+        <i class="far fa-edit link-text"><p class="hidden">Edit</p></i>
+    <% end %>
+  </div>
+  <div class="delete-container">
+    <%= link_to condition_path(@condition), method:"delete" do %>
+    <i class="far fa-trash-alt"></i>
+    <p class="hidden">Delete</p>
+    <% end %>
+  </div>
+  </div>
+  <% end %>
 
 <p><strong>Max Temperature:</strong></p>
 <p><%= @condition.max_temperature_f %></p>
@@ -21,30 +36,3 @@
 
 <p><strong>Precipitation:</strong></p>
 <p><%= @condition.precipitation_inches %></p>
-
-<% if current_user&.admin? %>
-<div class="button-container">
-  <div class="edit-container">
-  <section class="main-button create-account">
-    <%= link_to edit_condition_path(@condition) do %>
-        <p class="link-text">Edit</p>
-        <span class="line -right"></span>
-        <span class="line -top"></span>
-        <span class="line -left"></span>
-        <span class="line -bottom"></span>
-    <% end %>
-  </section>
-</div>
-<div class="delete-container">
-  <section class="main-button create-account">
-  <%= link_to condition_path(@condition), method:"delete" do %>
-      <p class="link-text">Delete</p>
-      <span class="line -right"></span>
-      <span class="line -top"></span>
-      <span class="line -left"></span>
-      <span class="line -bottom"></span>
-  <% end %>
-  </section>
-</div>
-</div>
-<% end %>

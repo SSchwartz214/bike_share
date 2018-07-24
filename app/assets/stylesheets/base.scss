@@ -32,6 +32,10 @@ h1, h2, h3 {
   padding-top: 15px;
 }
 
+h2 {
+  border-bottom: 2px solid $secondary-color;
+}
+
 p {
   margin-bottom: 3px;
 }

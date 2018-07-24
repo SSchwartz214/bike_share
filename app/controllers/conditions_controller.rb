@@ -1,5 +1,21 @@
 class ConditionsController < ApplicationController
   before_action :set_condition, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :update, :destroy, :new, :create]
+
+  def new
+    @condition = Condition.new
+  end
+
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+      flash[:success] = "Weather created!"
+      redirect_to condition_path(@condition)
+    else
+      flash.now[:alert] = @condition.errors.full_messages.join("<br>").html_safe
+      render :new
+    end
+  end
 
   def index
     @conditions = Condition.paginate(:page => params[:page], :per_page => 50)

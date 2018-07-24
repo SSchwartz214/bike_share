@@ -27,11 +27,11 @@
   </div>
 </div>
 
-<div class="index-container">
+<div class="index-container trips-container">
   <% @conditions.each do |condition| %>
   <div class="row station-row">
     <div class="col-sm-2">
-      <p><%= condition.date.to_s.chomp("00:00:00 UTC") %></p>
+      <%= link_to condition.date.to_s.chomp("00:00:00 UTC"), condition_path(condition), class:"hvr-skew" %>
     </div>
     <div class="col-sm-1">
       <p><%= condition.max_temperature_f %></p>

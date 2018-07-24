@@ -8,7 +8,7 @@ describe 'dashboard' do
     visit '/stations-dashboard'
 
     expect(page).to have_content(Station.count)
-    expect(page).to have_content(Station.average_bikes)
+    expect(page).to have_content(Station.average_bikes.to_i)
     expect(page).to have_content(Station.most_bikes)
     expect(page).to have_content(Station.most_bikes_station.name)
     expect(page).to have_content(Station.fewest_bikes)

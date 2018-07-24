@@ -1,0 +1,24 @@
+@import "shared_values";
+
+//
+
+.dashboard-background {
+    /* The image used */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/51/Bike-arc-covered-bike-racks.jpg");
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.welcome-heading {
+  color: white;
+  font-size: 55px;
+  background-color: rgba(122,100,100,.3);
+  width: 100%;
+  text-align: center;
+}

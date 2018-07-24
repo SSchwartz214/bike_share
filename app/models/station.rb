@@ -51,11 +51,11 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_destination
-    Station.find(start_trips.group(:end_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
+    Station.find(start_trips.group(:end_station_id).order(count_id: :desc).limit(1).count(:id).keys.first)
   end
 
   def most_frequent_start
-    Station.find(end_trips.group(:start_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
+    Station.find(end_trips.group(:start_station_id).order(count_id: :desc).limit(1).count(:id).keys.first)
   end
 
   def self.most_starting_rides

@@ -74,5 +74,21 @@ describe "an admin" do
       expect(page).to have_content(wind_spd)
       expect(page).to have_content(prec)
     end
+
+    it "can click on delete and remove condition" do
+      condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit condition_path(condition_1)
+
+      click_on "Delete"
+
+      expect(current_path).to eq(conditions_path)
+      expect(page).to have_content("Weather for 2013-08-29 deleted!")
+      expect(Condition.count).to eq(0)
+    end
   end
 end

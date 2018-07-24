@@ -24,6 +24,14 @@ class ConditionsController < ApplicationController
     end
   end
 
+  def destroy
+    date = @condition.date.to_s.chomp("00:00:00 UTC")
+    @condition.destroy
+
+    flash[:success] = "Weather for #{date} deleted!"
+    redirect_to conditions_path
+  end
+
   private
 
   def set_condition

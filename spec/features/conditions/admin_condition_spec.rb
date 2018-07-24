@@ -116,7 +116,7 @@ describe "an admin" do
       fill_in "condition[mean_wind_speed_mph]", with: wind_spd
       fill_in "condition[precipitation_inches]", with: prec
 
-      click_on "Control the weather"
+      click_on "Create the weather"
 
       expect(current_path).to eq(condition_path(Condition.first))
 

@@ -3,14 +3,14 @@ class ConditionsController < ApplicationController
   before_action :require_admin, only: [:edit, :update, :destroy, :new, :create]
 
   def new
-
+    @condition = Condition.new
   end
 
   def create
     @condition = Condition.new(condition_params)
     if @condition.save
       flash[:success] = "Weather created!"
-      redirect_to condition_show_path(@condition)
+      redirect_to condition_path(@condition)
     else
       flash.now[:alert] = @condition.errors.full_messages.join("<br>").html_safe
       render :new

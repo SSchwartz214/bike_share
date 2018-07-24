@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :trips, only: [:edit, :destroy]
+    resources :trips, only: [:edit, :update, :destroy]
   end
 
   resources :conditions

@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
   belongs_to :end_station, class_name: "Station"
 
   def seconds_to_time(seconds)
+    #TODO find ruby method
     [seconds / 3600, seconds / 60 % 60, seconds % 60].map { |t| t.to_s.rjust(2,'0') }.join(':')
   end
 
@@ -20,4 +21,21 @@ class Trip < ApplicationRecord
     minimum(:duration)
   end
 
+  def self.month_by_month
+    #TODO helper method to convert date
+    group("DATE_TRUNC('month', start_date)").count
+    .inject({}) do |hash, (k, v)|
+      hash[k.to_date.to_s] = v
+      hash
+    end
+  end
+
+  def self.by_year
+    #TODO helper method to convert date
+    group("DATE_TRUNC('year', start_date)").count
+    .inject({}) do |hash, (k, v)|
+      hash[k.to_date.to_s] = v
+      hash
+    end
+  end
 end

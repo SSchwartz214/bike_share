@@ -20,6 +20,12 @@
   <section id=<%= "display_#{station.id}" %>>
   <div class="row station-row">
     <div class="col-sm-5">
+      <% if current_user&.admin? %>
+        <%= link_to station_path(station), method:"delete" do %>
+          <i class="far fa-trash-alt"></i>
+          <p class="hidden">Delete</p>
+        <% end %>
+      <% end %>
       <%= link_to station.name, station_path(station), class:"hvr-skew" %>
     </div>
     <div class="col-sm-2">
@@ -32,9 +38,6 @@
       <p><%= station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
     </div>
   </div>
-  <% if current_admin? %>
-    <%= button_to "Delete", station_path(station), method: :delete %>
-  <% end %>
   </section>
 <% end %>
 </div>

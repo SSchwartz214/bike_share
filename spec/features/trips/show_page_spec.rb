@@ -1,10 +1,5 @@
 require 'rails_helper'
-# As an admin user,
-# When I visit the trip show,
-# I see everything a visitor can see,
-# I see a button to delete this trip,
-# I also see a button to edit this trip.
-# ** All Attributes must be present **
+
 describe 'user visits trip show page' do
   context 'as admin' do
     it 'allows admin to edit a trip' do
@@ -61,6 +56,7 @@ describe 'user visits trip show page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit trip_path(trip)
+
       expect(page).to_not have_content("Delete Trip")
     end
   end

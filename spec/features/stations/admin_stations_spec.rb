@@ -16,6 +16,7 @@ describe 'an admin visits a station index' do
       click_on("Delete")
     end
 
+    expect(page).to_not have_content(station_1.name)
 
   end
 end

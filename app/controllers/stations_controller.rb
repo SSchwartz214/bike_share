@@ -18,7 +18,12 @@ class StationsController < ApplicationController
     @fewest_bikes_station = Station.fewest_bikes_station.name
     @newest = Station.newest.name
     @oldest = Station.oldest.name
+  end
 
+  def destroy
+    set_station.destroy
+    flash[:success] = "Station deleted"
+    redirect_to stations_path
   end
 
   private

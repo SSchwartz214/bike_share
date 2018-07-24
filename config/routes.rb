@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create]
 
+  namespace :admin do
+    resources :stations, only: [:edit, :update]
+  end
+
   resources :conditions
 
   get '/dashboard', to: 'dashboard#index'

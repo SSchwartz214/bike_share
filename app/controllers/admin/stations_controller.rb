@@ -17,7 +17,9 @@ class Admin::StationsController < ApplicationController
   end
 
   def edit
+
   end
+
   def update
     @station.update(station_params)
     if @station.save

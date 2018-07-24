@@ -7,17 +7,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :admin do
-<<<<<<< HEAD
-    resources :stations, only: [:edit, :update]
+    resources :stations, only: [:edit, :update, :new, :create]
+    resources :dashboard, only: [:index]
   end
 
   resources :conditions
-=======
-    resources :dashboard, only: [:index]
-  end
->>>>>>> 6e85a68ea8bbb81d45bd02b9a9663d616c571832
-
-  resources :conditions, only: [:index, :show, :update, :edit, :destroy, :create]
 
   get "admin/condition/new", to: 'conditions#new'
   get '/dashboard', to: 'dashboard#index'

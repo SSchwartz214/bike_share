@@ -32,7 +32,9 @@
       <p><%= station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
     </div>
   </div>
-  <%= button_to "Delete", station_path(station), method: :delete %>
+  <% if current_admin? %>
+    <%= button_to "Delete", station_path(station), method: :delete %>
+  <% end %>
   </section>
 <% end %>
 </div>

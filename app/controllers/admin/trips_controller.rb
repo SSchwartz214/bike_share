@@ -1,5 +1,8 @@
 class Admin::TripsController < Admin::BaseController
-  before_action :require_admin
+
+  def index
+    @trips = Trip.all
+  end
 
   def edit
     @trip = Trip.find(params[:id])
@@ -9,6 +12,7 @@ class Admin::TripsController < Admin::BaseController
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
     if @trip.save
+      flash[:notice] = "Trip updated successfully!"
       redirect_to trip_path(@trip)
     else
       render :edit
@@ -18,15 +22,11 @@ class Admin::TripsController < Admin::BaseController
   def destroy
     trip = Trip.find(params[:id])
     trip.destroy
-    flash.notice = "Trip Deleted"
+    flash[:notice] = "Trip deleted!"
     redirect_to trips_path
   end
 
   private
-    def require_admin
-      render file: '/public/404' unless current_admin?
-    end
-
     def trip_params
       params.require(:trip).permit(:duration, :start_date, :start_station, :end_date, :end_station, :bike_id, :subscription_type, :zip_code)
     end

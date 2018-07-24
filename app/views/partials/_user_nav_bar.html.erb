@@ -7,10 +7,22 @@
   <% if current_user && !current_user.admin? %>
     <p class="dark-text"> Logged in as <%= current_user.first_name %></p>
   <%elsif current_user.admin? %>
-    <p class="dark-text"> Logged in as admin: <%= current_user.first_name %></p>  
+    <p class="dark-text"> Logged in as admin: <%= current_user.first_name %></p>
   <% end %>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Dashboards
+       </a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <%= link_to "Stations", stations_dashboard_path %>
+         <div class="dropdown-divider"></div>
+         <%= link_to "Trips", stations_dashboard_path %>
+         <div class="dropdown-divider"></div>
+         <%= link_to "Conditions", stations_dashboard_path %>
+       </div>
+     </li>
       <li class="nav-item active">
         <%= link_to "Stations", stations_path, class:"nav-link hvr-skew" %>
       </li>

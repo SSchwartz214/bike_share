@@ -1,5 +1,16 @@
 @import "shared_values";
 
+.dropdown-menu {
+  background-color: $primary-color;
+  color: white;
+  border: 1px solid white;
+}
+
+.dropdown-menu a {
+  color: white;
+  padding-left: 10px;
+}
+
 .fa-bicycle, .fa-credit-card, .fa-unlock-alt, .fa-undo {
   color: $important-text-color;
   font-size: 25px;

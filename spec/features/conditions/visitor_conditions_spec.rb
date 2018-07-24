@@ -36,7 +36,7 @@ describe "a visitor" do
 
       visit condition_path(condition_1)
 
-      expect(page).to have_content(condition_1.date)
+      expect(page).to have_content(condition_1.date.to_s.chomp("00:00:00 UTC"))
       expect(page).to have_content(condition_1.max_temperature_f)
       expect(page).to have_content(condition_1.mean_temperature_f)
       expect(page).to have_content(condition_1.min_temperature_f)

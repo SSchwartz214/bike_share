@@ -1,5 +1,17 @@
 @import "shared_values";
 
+.link-text {
+  color: black;
+}
+
+.edit-container, .delete-container {
+  width: 10%;
+}
+
+.button-container {
+  display: flex;
+}
+
 .reset-button {
   border: none;
   background-color: none;

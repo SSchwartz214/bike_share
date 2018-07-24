@@ -23,3 +23,8 @@
 
 <p><strong>Zip Code:</strong></p>
 <p><%= @trip.zip_code %></p>
+
+<% if current_admin? %>
+  <%= link_to 'Edit Trip', edit_admin_trip_path(@trip) %>
+  <%= link_to 'Delete Trip', admin_trip_path(@trip), method: 'delete' %>
+<% end %>

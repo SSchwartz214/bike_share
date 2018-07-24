@@ -1,7 +1,9 @@
 <h1> Stations</h1>
 
 <div class="row table-heading">
-  <div class="col-sm-5">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-4">
     <p>Name<p>
   </div>
   <div class="col-sm-2">
@@ -19,13 +21,15 @@
 <% @stations.each do |station| %>
   <section id=<%= "display_#{station.id}" %>>
   <div class="row station-row">
-    <div class="col-sm-5">
+    <div class="col-sm-1">
       <% if current_user&.admin? %>
         <%= link_to station_path(station), method:"delete" do %>
           <i class="far fa-trash-alt"></i>
           <p class="hidden">Delete</p>
         <% end %>
       <% end %>
+    </div>
+      <div class="col-sm-4">
       <%= link_to station.name, station_path(station), class:"hvr-skew" %>
     </div>
     <div class="col-sm-2">

@@ -7,8 +7,6 @@ class Admin::TripsController < Admin::BaseController
 
   def new
     @trip = Trip.new
-    # @start_station_names = Trip.start_station_names
-    # @end_station_names = Trip.end_station_names
   end
 
   def create

@@ -62,7 +62,7 @@ describe 'an admin visits a show page' do
 
     visit station_path(station_1)
 
-    expect(page).to have_button("Delete")
+    expect(page).to have_content("Delete")
   end
 
   it 'has an edit button' do
@@ -73,6 +73,6 @@ describe 'an admin visits a show page' do
 
     visit station_path(station_1)
 
-    expect(page).to have_button("Edit")
+    expect(page).to have_content("Edit")
   end
 end

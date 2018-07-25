@@ -51,6 +51,7 @@
   <section class="section-index-container">
   <div class="row station-row">
     <div class="col-sm-1">
+
         <% if current_user&.admin? %>
           <%= link_to edit_admin_condition_path(condition) do %>
               <i class="far fa-edit link-text">
@@ -61,12 +62,10 @@
             <p class="hidden">Delete</p>
           <% end %>
       <% end %>
-      <% if current_user %>
         <%= link_to condition_path(condition) do %>
           <i class="fas fa-info-circle"></i>
-          <p class="hidden">Show</p>
+          <p class="hidden">Info</p>
         <% end %>
-      <% end %>
     </div>
     <div class="col-sm-2">
       <%= link_to condition.date.to_s.chomp("00:00:00 UTC"), condition_path(condition), class:"hvr-skew" %>

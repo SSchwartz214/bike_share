@@ -18,13 +18,12 @@ describe 'user visits trip edit page' do
       find('#trip_start_station_id').find(:xpath, "option[2]").select_option
       select("aiojd", :from => :trip_end_station_id)
       select('Customer', :from => :trip_subscription_type)
-      find('#trip_subscription_type').find(:xpath, "option[2]").select_option
       fill_in :trip_zip_code, with: 12345
       fill_in :trip_bike_id, with: 2
 
       click_button "Update Trip"
 
-      expect(current_path).to eq(admin_trip_path(trip))
+      expect(current_path).to eq(trip_path(trip))
     end
   end
 end

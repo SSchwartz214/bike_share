@@ -1,7 +1,7 @@
 <h2><%= @station.name %></h2>
 
+<% if current_admin? %>
 <div class="button-container">
-  <% if current_admin? %>
   <div class="edit-container">
     <%= link_to edit_admin_station_path(@station) do %>
         <i class="far fa-edit link-text">
@@ -16,6 +16,7 @@
   </div>
 </div>
 <% end %>
+
 
 <p><strong>City:</strong><p>
 <p><%= @station.city %></p>

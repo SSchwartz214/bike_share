@@ -1,5 +1,22 @@
 <h2> Trip: <%= @trip.id %></h2>
 
+<% if current_admin? %>
+<div class="button-container">
+  <div class="edit-container">
+    <%= link_to edit_admin_trip_path(@trip) do %>
+        <i class="far fa-edit link-text">
+        <p class="hidden">Edit Trip</p></i>
+    <% end %>
+  </div>
+  <div class="delete-container">
+    <%= link_to admin_trip_path(@trip), method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+      <p class="hidden">Delete Trip</p>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
 <p><strong>Duration:</strong><p>
 <p><%= @trip.seconds_to_time(@trip.duration) %></p>
 
@@ -23,8 +40,3 @@
 
 <p><strong>Zip Code:</strong></p>
 <p><%= @trip.zip_code %></p>
-
-<% if current_admin? %>
-  <%= link_to 'Edit Trip', edit_admin_trip_path(@trip) %>
-  <%= link_to 'Delete Trip', admin_trip_path(@trip), method: 'delete' %>
-<% end %>

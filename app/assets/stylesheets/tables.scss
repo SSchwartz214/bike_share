@@ -7,3 +7,11 @@
 .index-container .section-index-container:nth-of-type(2n) {
   background-color: whitesmoke;
 }
+
+.mean-row {
+  text-align: center;
+}
+
+.table-border {
+  border-left: 1px solid $secondary-color;
+}

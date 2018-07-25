@@ -1,7 +1,7 @@
 <h2>Weather on <%= @condition.date.to_s.chomp("00:00:00 UTC") %></h2>
 
+<% if current_admin? %>
 <div class="button-container">
-  <% if current_admin? %>
   <div class="edit-container">
     <%= link_to edit_admin_condition_path(@condition) do %>
         <i class="far fa-edit link-text">

@@ -22,7 +22,10 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if @user.save
+    if @user.save && current_user.admin?
+      flash[:success] = "Your profile has been updated!"
+      redirect_to admin_dashboard_index_path
+    elsif @user.save && !current_user.admin?
       flash[:success] = "Your profile has been updated!"
       redirect_to dashboard_path
     else

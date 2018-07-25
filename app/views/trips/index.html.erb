@@ -29,6 +29,12 @@
 <%= link_to trip_path(trip) do %>
 <div class="row station-row">
   <div class="col-sm-1">
+
+    <% if current_admin? %>
+      <%= link_to 'Edit Trip', edit_admin_trip_path(trip) %>
+      <%= link_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
+    <% end %>
+
     <p><%= trip.duration/60 %></p>
   </div>
   <div class="col-sm-2">

@@ -1,5 +1,4 @@
 class Admin::TripsController < Admin::BaseController
-  before_action :require_admin
 
   def edit
     @trip = Trip.find(params[:id])

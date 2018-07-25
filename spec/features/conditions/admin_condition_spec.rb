@@ -164,7 +164,7 @@ describe "an admin" do
 
       click_on "Edit"
 
-      expect(current_path).to eq(edit_condition_path(condition_1))
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
     end
 
     it "can not see edit or delete buttons if it is not an admin" do

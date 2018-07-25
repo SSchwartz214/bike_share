@@ -36,11 +36,11 @@
   <div class="row station-row">
     <div class="col-sm-1">
         <% if current_user&.admin? %>
-          <%= link_to edit_condition_path(condition) do %>
+          <%= link_to edit_admin_condition_path(condition) do %>
               <i class="far fa-edit link-text">
               <p class="hidden">Edit</p></i>
           <% end %>
-          <%= link_to condition_path(condition), method:"delete" do %>
+          <%= link_to admin_condition_path(condition), method:"delete" do %>
             <i class="far fa-trash-alt"></i>
             <p class="hidden">Delete</p>
           <% end %>

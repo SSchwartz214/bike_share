@@ -13,13 +13,16 @@ describe 'user visits trip edit page' do
       visit edit_admin_trip_path(trip)
 
       fill_in :trip_duration, with: 100
-      fill_in :trip_start_date, with: "8/30/2013"
-      find('#trip_start_station_id').find(:xpath, "option[2]").select_option
+      fill_in :trip_start_date, with: "8/01/2013"
       fill_in :trip_end_date, with: "9/01/2013"
-      find('#trip_end_station_id').find(:xpath, "option[1]").select_option
-      # fill_in :trip_subscription_type, with: "Customer"
+      find('#trip_start_station_id').find(:xpath, "option[2]").select_option
+      select("aiojd", :from => :trip_end_station_id)
+      select('Customer', :from => :trip_subscription_type)
+      find('#trip_subscription_type').find(:xpath, "option[2]").select_option
       fill_in :trip_zip_code, with: 12345
       fill_in :trip_bike_id, with: 2
+
+      save_and_open_page
 
       click_button "Update Trip"
 

@@ -28,7 +28,6 @@ class Admin::TripsController < Admin::BaseController
   def update
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
-    require "pry"; binding.pry
     if @trip.save
       flash[:success] = "Trip #{@trip.id} updated!"
       redirect_to trip_path(@trip)
@@ -46,6 +45,6 @@ class Admin::TripsController < Admin::BaseController
 
   private
     def trip_params
-      params.require(:trip).permit(:duration, :start_date, :start_station, :end_date, :end_station, :bike_id, :subscription_type, :zip_code)
+      params.require(:trip).permit(:duration, :start_date, :start_station_id, :end_date, :end_station_id, :bike_id, :subscription_type, :zip_code)
     end
 end

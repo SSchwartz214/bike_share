@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stations, only: [:edit, :update, :new, :create]
     resources :dashboard, only: [:index]
-    resources :trips, only: [:edit, :update, :destroy]
+    resources :trips, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :conditions
+  resources :conditions, only: [:index, :show]
 
-  get "admin/condition/new", to: 'conditions#new'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

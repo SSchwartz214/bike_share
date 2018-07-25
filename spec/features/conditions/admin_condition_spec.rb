@@ -17,7 +17,7 @@ describe "an admin" do
 
       click_on "Edit"
 
-      expect(current_path).to eq(edit_condition_path(condition_1))
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
     end
 
     it "can not see delete or edit buttons if it is not an admin" do
@@ -49,7 +49,7 @@ describe "an admin" do
       wind_spd = 80
       prec = 25
 
-      visit edit_condition_path(condition_1)
+      visit edit_admin_condition_path(condition_1)
 
       fill_in "condition[date]", with: date
       fill_in "condition[mean_temperature_f]", with: mean_temp
@@ -105,7 +105,7 @@ describe "an admin" do
       wind_spd = 80
       prec = 25
 
-      visit admin_condition_new_path
+      visit new_admin_condition_path
 
       fill_in "condition[date]", with: date
       fill_in "condition[mean_temperature_f]", with: mean_temp
@@ -164,7 +164,7 @@ describe "an admin" do
 
       click_on "Edit"
 
-      expect(current_path).to eq(edit_condition_path(condition_1))
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
     end
 
     it "can not see edit or delete buttons if it is not an admin" do

@@ -4,6 +4,22 @@ class Admin::TripsController < Admin::BaseController
     @trips = Trip.all
   end
 
+  def new
+    @trip = Trip.new
+    # @start_station_names = Trip.start_station_names
+    # @end_station_names = Trip.end_station_names
+  end
+
+  def create
+    @trip = Trip.new(trip_params)
+    if @trip.save
+      flash[:success] = "Trip #{@trip.id} created!"
+      redirect_to trip_path(@trip)
+    else
+      render :new
+    end
+  end
+
   def edit
     @trip = Trip.find(params[:id])
   end
@@ -11,8 +27,9 @@ class Admin::TripsController < Admin::BaseController
   def update
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
+    require "pry"; binding.pry
     if @trip.save
-      flash[:notice] = "Trip updated successfully!"
+      flash[:success] = "Trip #{@trip.id} updated!"
       redirect_to trip_path(@trip)
     else
       render :edit

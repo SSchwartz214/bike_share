@@ -17,7 +17,7 @@ describe "an admin" do
 
       click_on "Edit"
 
-      expect(current_path).to eq(edit_condition_path(condition_1))
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
     end
 
     it "can not see delete or edit buttons if it is not an admin" do
@@ -49,7 +49,7 @@ describe "an admin" do
       wind_spd = 80
       prec = 25
 
-      visit edit_condition_path(condition_1)
+      visit edit_admin_condition_path(condition_1)
 
       fill_in "condition[date]", with: date
       fill_in "condition[mean_temperature_f]", with: mean_temp
@@ -105,7 +105,7 @@ describe "an admin" do
       wind_spd = 80
       prec = 25
 
-      visit admin_condition_new_path
+      visit new_admin_condition_path
 
       fill_in "condition[date]", with: date
       fill_in "condition[mean_temperature_f]", with: mean_temp
@@ -129,6 +129,55 @@ describe "an admin" do
       expect(page).to have_content(mean_vis)
       expect(page).to have_content(wind_spd)
       expect(page).to have_content(prec)
+    end
+
+    it "an admin can delete the condition from index page" do
+      condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit conditions_path
+
+      expect(page).to have_content(condition_1.max_temperature_f)
+
+      click_on "Delete"
+
+      expect(current_path).to eq(conditions_path)
+      expect(page).to have_content("Weather for 2013-08-29 deleted!")
+
+      expect(page).to_not have_content(condition_1.max_temperature_f)
+      expect(Condition.count).to eq(0)
+    end
+
+    it "an admin can edit the condition from index page" do
+      condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit conditions_path
+
+      expect(page).to have_content(condition_1.max_temperature_f)
+
+      click_on "Edit"
+
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
+    end
+
+    it "can not see edit or delete buttons if it is not an admin" do
+      condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+
+      default = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(default)
+
+      visit conditions_path
+
+      expect(page).to_not have_content("Delete")
+      expect(page).to_not have_content("Edit")
     end
   end
 end

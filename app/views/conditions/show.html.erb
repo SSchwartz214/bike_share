@@ -1,15 +1,15 @@
 <h2>Weather on <%= @condition.date.to_s.chomp("00:00:00 UTC") %></h2>
 
 <div class="button-container">
-  <% if current_user&.admin? %>
+  <% if current_admin? %>
   <div class="edit-container">
-    <%= link_to edit_condition_path(@condition) do %>
+    <%= link_to edit_admin_condition_path(@condition) do %>
         <i class="far fa-edit link-text">
         <p class="hidden">Edit</p></i>
     <% end %>
   </div>
   <div class="delete-container">
-    <%= link_to condition_path(@condition), method:"delete" do %>
+    <%= link_to admin_condition_path(@condition), method: :delete do %>
       <i class="far fa-trash-alt"></i>
       <p class="hidden">Delete</p>
     <% end %>

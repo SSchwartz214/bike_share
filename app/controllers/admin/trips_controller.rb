@@ -1,5 +1,6 @@
 class Admin::TripsController < Admin::BaseController
 
+
   def index
     @trips = Trip.all
   end

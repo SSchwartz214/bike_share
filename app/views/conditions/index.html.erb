@@ -1,6 +1,10 @@
 <h1>Conditions</h1>
 
 <div class="row table-heading">
+  <div class="col-sm-1">
+
+
+  </div>
   <div class="col-sm-2">
     <p>Date<p>
   </div>
@@ -30,6 +34,18 @@
 <div class="index-container trips-container">
   <% @conditions.each do |condition| %>
   <div class="row station-row">
+    <div class="col-sm-1">
+        <% if current_user&.admin? %>
+          <%= link_to edit_admin_condition_path(condition) do %>
+              <i class="far fa-edit link-text">
+              <p class="hidden">Edit</p></i>
+          <% end %>
+          <%= link_to admin_condition_path(condition), method:"delete" do %>
+            <i class="far fa-trash-alt"></i>
+            <p class="hidden">Delete</p>
+          <% end %>
+      <% end %>
+    </div>
     <div class="col-sm-2">
       <%= link_to condition.date.to_s.chomp("00:00:00 UTC"), condition_path(condition), class:"hvr-skew" %>
     </div>

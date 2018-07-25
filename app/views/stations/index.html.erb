@@ -27,6 +27,10 @@
           <i class="far fa-trash-alt"></i>
           <p class="hidden">Delete</p>
         <% end %>
+        <%= link_to edit_admin_station_path(station), method: :get do %>
+          <i class="far fa-edit"></i>
+          <p class="hidden">Edit</p>
+        <% end %>
       <% end %>
     </div>
       <div class="col-sm-4">

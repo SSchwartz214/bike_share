@@ -4,17 +4,17 @@ Rails.application.routes.draw do
 
   resources :stations, only: [:index, :show, :destroy]
   resources :trips, only: [:index, :show]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   namespace :admin do
     resources :stations, only: [:edit, :update, :new, :create]
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :conditions
+  resources :conditions, only: [:index, :show]
 
-  get "admin/condition/new", to: 'conditions#new'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

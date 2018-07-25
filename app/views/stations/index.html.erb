@@ -19,22 +19,28 @@
 
 <div class="index-container">
 <% @stations.each do |station| %>
-  <section id=<%= "display_#{station.id}" %>>
+<section class="section-index-container" id=<%= "display_#{station.id}" %>>
   <div class="row station-row">
     <div class="col-sm-1">
       <% if current_user&.admin? %>
+      <%= link_to edit_admin_station_path(station), method: :get do %>
+      <i class="far fa-edit"></i>
+      <p class="hidden">Edit</p>
+      <% end %>
         <%= link_to station_path(station), method:"delete" do %>
           <i class="far fa-trash-alt"></i>
           <p class="hidden">Delete</p>
         <% end %>
-        <%= link_to edit_admin_station_path(station), method: :get do %>
-          <i class="far fa-edit"></i>
+      <% end %>
+      <% if current_user %>
+        <%= link_to station_path(station) do %>
+          <i class="fas fa-info-circle"></i>
           <p class="hidden">Edit</p>
         <% end %>
       <% end %>
     </div>
       <div class="col-sm-4">
-      <%= link_to station.name, station_path(station), class:"hvr-skew" %>
+        <p><%= station.name %></p>
     </div>
     <div class="col-sm-2">
       <p><%= station.dock_count %></p>

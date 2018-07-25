@@ -1,5 +1,4 @@
-class Admin::StationsController < ApplicationController
-  before_action :require_admin
+class Admin::StationsController < Admin::BaseController
   before_action :set_station, only: [:edit, :update]
 
   def new

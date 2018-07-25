@@ -1,9 +1,9 @@
 <div class="center-form">
 
-<h3>Edit weather</h3>
+<h3>Create weather</h3>
 
 <div class="all-forms">
-  <%= form_for @condition do |f| %>
+  <%= form_for [:admin, @condition] do |f| %>
       <%= f.label :date %>
     <div class="form-group">
       <%= f.date_field :date%>
@@ -38,7 +38,7 @@
     </div>
     <section class="main-button create-account">
     <a>
-      <%= f.submit "Control the weather", class:"text reset-button" %>
+      <%= f.submit "Create the weather", class:"text reset-button" %>
       <span class="line -right"></span>
       <span class="line -top"></span>
       <span class="line -left"></span>

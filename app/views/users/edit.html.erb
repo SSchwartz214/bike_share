@@ -1,5 +1,5 @@
 
-<h3>Make an account</h3>
+<h3>Update your profile</h3>
 
 <div class="all-forms">
   <%= form_for @user do |f| %>
@@ -11,17 +11,13 @@
     <div class="form-group">
       <%= f.text_field :last_name %>
     </div>
-      <%= f.label :username %>
+      <%= f.label "User name" %>
     <div class="form-group">
       <%= f.text_field :username %>
     </div>
-      <%= f.label :password %>
-    <div class="form-group">
-      <%= f.password_field :password %>
-    </div>
     <section class="main-button create-account">
     <a>
-      <%= f.submit "Create Account", class:"text reset-button" %>
+      <%= f.submit "Update profile", class:"text reset-button" %>
       <span class="line -right"></span>
       <span class="line -top"></span>
       <span class="line -left"></span>

@@ -1,4 +1,5 @@
-<h3>Edit a trip</h3>
+
+<h3>Create a trip</h3>
 
 <div class="all-forms">
 <%= form_for [:admin, @trip] do |f| %>
@@ -15,7 +16,7 @@
 
   <%= f.label :start_station %>
   <div class="form-group">
-    <%= f.collection_select :start_station_id, Station.order(:name), :id, :name %>
+    <%= f.collection_select :start_station_id, Station.all, :id, :name %>
   </div>
 
   <%= f.label :end_date %>
@@ -25,7 +26,7 @@
 
   <%= f.label :end_station %>
   <div class="form-group">
-    <%= f.collection_select :end_station_id, Station.order(:name), :id, :name %>
+    <%= f.collection_select :end_station_id, Station.all, :id, :name %>
   </div>
 
   <%= f.label :subscription_type %>
@@ -45,7 +46,7 @@
 
   <section class="main-button create-account">
     <a>
-      <%= f.submit "Update Trip", class:"text reset-button" %>
+      <%= f.submit "Create Trip", class:"text reset-button" %>
       <span class="line -right"></span>
       <span class="line -top"></span>
       <span class="line -left"></span>

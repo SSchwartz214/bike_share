@@ -1,9 +1,27 @@
 @import "shared_values";
 
-//
+.admin-edit {
+  padding-left: 10px;
+}
+
+.dashboard-icon {
+  padding-right: 15px;
+  font-size: 30px;
+}
+
+.fa-sun {
+  color: gold;
+}
+
+.fa-map-marked-alt {
+  color: $important-text-color;
+}
+
+.fa-building {
+  color: $primary-color;
+}
 
 .dashboard-background {
-    /* The image used */
     display: flex;
     align-items: center;
     justify-content: center;

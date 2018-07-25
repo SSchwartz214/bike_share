@@ -1,13 +1,5 @@
 require 'rails_helper'
-#   As an admin user,
-# When I visit admin trip edit,
-# I fill in a form with all trip attributes,
-# When I click "Update Trip",
-# I am directed to that trip's show page,
-# I see the updated trip's information,
-# I also see a flash message that I have updated that trip.
-#
-# ** All Attributes must be present **
+
 describe 'user visits trip edit page' do
   context 'as an admin' do
     it 'allows admin to edit a trip' do
@@ -25,7 +17,7 @@ describe 'user visits trip edit page' do
       find('#trip_start_station_id').find(:xpath, "option[2]").select_option
       fill_in :trip_end_date, with: "9/01/2013"
       find('#trip_end_station_id').find(:xpath, "option[1]").select_option
-      fill_in :trip_subscription_type, with: "subscribed"
+      # fill_in :trip_subscription_type, with: "Customer"
       fill_in :trip_zip_code, with: 12345
       fill_in :trip_bike_id, with: 2
 

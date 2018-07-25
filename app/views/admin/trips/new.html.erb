@@ -7,13 +7,13 @@
   <%= f.date_field :start_date %>
 
   <%= f.label :start_station %>
-  <%= f.collection_select :start_station_id, Station.order(:name), :id, :name %>
+  <%= f.collection_select :start_station_id, Station.all, :id, :name %>
 
   <%= f.label :end_date %>
   <%= f.date_field :end_date %>
 
   <%= f.label :end_station %>
-  <%= f.collection_select :end_station_id, Station.order(:name), :id, :name %>
+  <%= f.collection_select :end_station_id, Station.all, :id, :name %>
 
   <%= f.label :subscription_type %>
   <%= f.select :subscription_type, ['Customer', 'Subscriber'], include_blank: true %>
@@ -24,6 +24,6 @@
   <%= f.label :bike_id %>
   <%= f.number_field :bike_id %>
 
-  <%= f.submit "Update Trip" %>
+  <%= f.submit "Create Trip" %>
 
 <% end %>

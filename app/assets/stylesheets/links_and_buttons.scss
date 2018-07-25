@@ -1,5 +1,29 @@
 @import "shared_values";
 
+.hidden {
+  display: none;
+}
+
+.link-text {
+  color: black;
+}
+
+.delete-container, .edit-container {
+  font-size: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.fa-trash-alt {
+  color: red;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  background-color: $secondary-color;
+}
+
 .reset-button {
   border: none;
   background-color: none;

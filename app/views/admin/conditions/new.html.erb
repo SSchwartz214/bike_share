@@ -1,0 +1,50 @@
+<div class="center-form">
+
+<h3>Create weather</h3>
+
+<div class="all-forms">
+  <%= form_for [:admin, @condition] do |f| %>
+      <%= f.label :date %>
+    <div class="form-group">
+      <%= f.date_field :date%>
+    </div>
+      <%= f.label "max temp(f)" %>
+    <div class="form-group">
+      <%= f.number_field :max_temperature_f %>
+    </div>
+      <%= f.label "min temp(f)" %>
+    <div class="form-group">
+      <%= f.number_field :min_temperature_f %>
+    </div>
+    <%= f.label "mean temp(f)" %>
+    <div class="form-group">
+      <%= f.number_field :mean_temperature_f %>
+    </div>
+      <%= f.label "mean humidity" %>
+    <div class="form-group">
+      <%= f.number_field :mean_humidity %>
+    </div>
+    <%= f.label "mean visibility(miles)" %>
+    <div class="form-group">
+      <%= f.number_field :mean_visibility_miles %>
+    </div>
+    <%= f.label "mean wind speed(mph)" %>
+    <div class="form-group">
+      <%= f.number_field :mean_wind_speed_mph %>
+    </div>
+    <%= f.label "precipitation(inches)" %>
+    <div class="form-group">
+      <%= f.number_field :precipitation_inches %>
+    </div>
+    <section class="main-button create-account">
+    <a>
+      <%= f.submit "Create the weather", class:"text reset-button" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </div>
+</div>
+<% end %>
+</div>

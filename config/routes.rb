@@ -2,11 +2,18 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :stations, only: [:index, :show]
+  resources :stations, only: [:index, :show, :destroy]
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create]
 
-  resources :conditions
+  namespace :admin do
+    resources :stations, only: [:edit, :update, :new, :create]
+    resources :dashboard, only: [:index]
+    resources :trips, only: [:edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+  end
+
+  resources :conditions, only: [:index, :show]
 
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'

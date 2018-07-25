@@ -1,0 +1,30 @@
+<div class="center-form">
+
+<h3>Update your profile</h3>
+
+<div class="all-forms">
+  <%= form_for @user do |f| %>
+      <%= f.label "first name" %>
+    <div class="form-group">
+      <%= f.text_field :first_name%>
+    </div>
+      <%= f.label "last name" %>
+    <div class="form-group">
+      <%= f.text_field :last_name %>
+    </div>
+      <%= f.label "User name" %>
+    <div class="form-group">
+      <%= f.text_field :username %>
+    </div>
+    <section class="main-button create-account">
+    <a>
+      <%= f.submit "Update profile", class:"text reset-button" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </div>
+</div>
+<% end %>
+</div>

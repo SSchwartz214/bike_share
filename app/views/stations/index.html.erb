@@ -32,12 +32,10 @@
           <p class="hidden">Delete</p>
         <% end %>
       <% end %>
-      <% if current_user %>
         <%= link_to station_path(station) do %>
           <i class="fas fa-info-circle"></i>
-          <p class="hidden">Edit</p>
+          <p class="hidden">Info</p>
         <% end %>
-      <% end %>
     </div>
       <div class="col-sm-4">
         <p><%= station.name %></p>

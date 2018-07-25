@@ -9,17 +9,20 @@
   <div class="col-sm-2">
     <p>Start station</p>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-1">
     <p>Start date</p>
   </div>
   <div class="col-sm-2">
     <p>End station</p>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-1">
     <p>End date</p>
   </div>
   <div class="col-sm-1">
-    <p>Subscription type</p>
+    <p>Bike ID</p>
+  </div>
+  <div class="col-sm-1">
+    <p>Subsc. type</p>
   </div>
   <div class="col-sm-1">
     <p>zip code</p>
@@ -28,14 +31,25 @@
 
 <div class="index-container trips-container">
 <% @trips.each do |trip| %>
+<section class="section-index-container">
 <div class="row station-row">
   <div class="col-sm-1">
 
-    <% if current_admin? %>
-      <%= link_to 'Edit Trip', edit_admin_trip_path(trip) %>
-      <%= link_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
+    <% if current_user&.admin? %>
+      <%= link_to edit_admin_trip_path(trip) do %>
+        <i class="far fa-edit"></i>
+        <p class="hidden">Edit Trip</p>
+      <% end %>
+      <%= link_to trip_path(trip), method:"delete" do %>
+        <i class="far fa-trash-alt"></i>
+        <p class="hidden">Delete Trip</p>
+      <% end %>
     <% end %>
-    <%= link_to "Details", trip_path(trip) %>
+      <%= link_to trip_path(trip) do %>
+        <i class="fas fa-info-circle"></i>
+        <p class="hidden">Info</p>
+      <% end %>
+
   </div>
   <div class="col-sm-1">
     <p><%= trip.duration/60 %></p>
@@ -43,14 +57,17 @@
   <div class="col-sm-2">
     <p><%= trip.start_station.name %></p>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-1">
     <p><%= trip.start_date.to_s.chomp(":00 UTC") %></p>
   </div>
   <div class="col-sm-2">
     <p><%= trip.end_station.name %></p>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-1">
     <p><%= trip.end_date.to_s.chomp(":00 UTC") %></p>
+  </div>
+  <div class="col-sm-1">
+    <p><%= trip.bike_id %></p>
   </div>
   <div class="col-sm-1">
     <p><%= trip.subscription_type %></p>
@@ -59,6 +76,7 @@
     <p><%= trip.zip_code %></p>
   </div>
 </div>
+</section>
 <% end %>
 </div>
 

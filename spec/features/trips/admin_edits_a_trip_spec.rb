@@ -22,8 +22,6 @@ describe 'user visits trip edit page' do
       fill_in :trip_zip_code, with: 12345
       fill_in :trip_bike_id, with: 2
 
-      save_and_open_page
-
       click_button "Update Trip"
 
       expect(current_path).to eq(admin_trip_path(trip))

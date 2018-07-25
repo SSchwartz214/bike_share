@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  resources :accessories, only: [:show]
+
   resources :conditions, only: [:index, :show]
 
   get '/dashboard', to: 'dashboard#index'

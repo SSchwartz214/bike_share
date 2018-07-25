@@ -10,9 +10,24 @@ describe "a visitor" do
       click_on "Add to Cart"
 
       expect(current_path).to eq(accessory_path(acc_1))
-      expect(page).to have_content("#{acc_1.name} added to cart")
-      expect(page).to have_content("1 item in cart")
+      expect(page).to have_content("1 #{acc_1.name} in your cart")
     end
+    it "can see total number of items in navbar" do
+      acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
+
+      visit accessory_path(acc_1)
+
+      expect(page).to_not have_content("Items in cart:")
+
+      click_on "Add to Cart"
+
+      expect(page).to have_content("Items in cart: 1")
+
+      click_on "Add to Cart"
+
+      expect(page).to have_content("Items in cart: 2")
+    end
+
     xit "sees a list of accessories added to cart" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
       acc_2 = Accessory.create!(name: "8ad98h", price: 1234, status: 0, image_url: "iads", description: "0ijas0j")

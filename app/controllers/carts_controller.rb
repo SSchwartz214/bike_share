@@ -6,11 +6,10 @@ class CartsController < ApplicationController
     @cart = Cart.new(session[:cart])
     @cart.add_accessory(accessory.id)
     session[:cart] = @cart.contents
-    quantity = @cart.contents[accessory.id].to_s
-
+    quantity = @cart.contents[accessory.id.to_s]
 
     if params[:path] == 'show'
-      flash[:notice] = "#{pluralize(quantity, "accessory")} added to cart"
+      flash[:notice] = "#{quantity} #{accessory.name} in your cart"
       redirect_to accessory_path(accessory)
     elsif params[:path] == 'index'
       redirect_to accessories_path

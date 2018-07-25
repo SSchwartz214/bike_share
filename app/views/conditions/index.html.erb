@@ -1,38 +1,54 @@
 <h1>Conditions</h1>
 
-<div class="row table-heading">
+<div class="row">
   <div class="col-sm-1">
 
 
+  </div>
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-2 mean-row">
+    <p><strong>Temp(f)</strong><p>
+  </div>
+  <div class="col-sm-4 mean-row">
+    <p><strong>Mean</strong><p>
+  </div>
+  <div class="col-sm-3">
+  </div>
+</div>
+
+<div class="row table-heading">
+  <div class="col-sm-1">
   </div>
   <div class="col-sm-2">
     <p>Date<p>
   </div>
-  <div class="col-sm-1">
-    <p>Max temp<p>
+  <div class="col-sm-1 table-border">
+    <p>max</p>
   </div>
   <div class="col-sm-1">
-    <p>Min temp<p>
-    </div>
-  <div class="col-sm-1">
-    <p>Mean temp<p>
+    <p>min</p>
+  </div>
+  <div class="col-sm-1 table-border">
+    <p>temp(f)<p>
   </div>
   <div class="col-sm-1">
-    <p>Mean humidity<p>
-  </div>
-  <div class="col-sm-2">
-    <p>Mean visibility(mi)<p>
-  </div>
-  <div class="col-sm-2">
-    <p>Mean wind speed(mph)<p>
+    <p>humidity<p>
   </div>
   <div class="col-sm-1">
+    <p>visibility(mi)<p>
+  </div>
+  <div class="col-sm-1">
+    <p>wind(mph)<p>
+  </div>
+  <div class="col-sm-1 table-border">
     <p>precipitation(in)<p>
   </div>
 </div>
 
 <div class="index-container trips-container">
   <% @conditions.each do |condition| %>
+  <section class="section-index-container">
   <div class="row station-row">
     <div class="col-sm-1">
         <% if current_user&.admin? %>
@@ -44,6 +60,12 @@
             <i class="far fa-trash-alt"></i>
             <p class="hidden">Delete</p>
           <% end %>
+      <% end %>
+      <% if current_user %>
+        <%= link_to condition_path(condition) do %>
+          <i class="fas fa-info-circle"></i>
+          <p class="hidden">Show</p>
+        <% end %>
       <% end %>
     </div>
     <div class="col-sm-2">
@@ -61,16 +83,17 @@
     <div class="col-sm-1">
       <p><%= condition.mean_humidity %></p>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       <p><%= condition.mean_visibility_miles %></p>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       <p><%= condition.mean_wind_speed_mph %></p>
     </div>
     <div class="col-sm-1">
       <p><%= condition.precipitation_inches %></p>
     </div>
   </div>
+  </section>
   <% end %>
 </div>
 

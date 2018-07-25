@@ -1,0 +1,14 @@
+@import "shared_values";
+
+.show-acc-container-img {
+  padding-top: 50px;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.show-acc-container img {
+  height: 100%;
+  border-radius: 10px;
+}

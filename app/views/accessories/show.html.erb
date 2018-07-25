@@ -1,0 +1,18 @@
+
+<div class="show-acc-container">
+  <div class="col-sm-5">
+    <div class="show-acc-container-img">
+      <%= image_tag (@accessory.image_url) %>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <h2><%= @accessory.name %></h2>
+    <h3>Price</h3>
+    <p><%= number_to_currency(@accessory.price) %>
+    <h3>Description</h3>
+    <p><%= @accessory.description %></p>
+    <br>
+    <h4> Add to Cart <i class="fas fa-cart-arrow-down"></i></h4>
+
+  </div>
+</div>

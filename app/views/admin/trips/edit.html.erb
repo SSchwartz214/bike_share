@@ -1,29 +1,56 @@
+<h3>Edit a trip</h3>
+
+<div class="all-forms">
 <%= form_for [:admin, @trip] do |f| %>
 
   <%= f.label :duration %>
-  <%= f.number_field :duration %>
+  <div class="form-group">
+    <%= f.number_field :duration %>
+  </div>
 
   <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
+  <div class="form-group">
+    <%= f.date_field :start_date %>
+  </div>
 
   <%= f.label :start_station %>
-  <%= f.collection_select :start_station_id, Station.order(:name), :id, :name %>
+  <div class="form-group">
+    <%= f.collection_select :start_station_id, Station.order(:name), :id, :name %>
+  </div>
 
   <%= f.label :end_date %>
-  <%= f.date_field :end_date %>
+  <div class="form-group">
+    <%= f.date_field :end_date %>
+  </div>
 
   <%= f.label :end_station %>
-  <%= f.collection_select :end_station_id, Station.order(:name), :id, :name %>
+  <div class="form-group">
+    <%= f.collection_select :end_station_id, Station.order(:name), :id, :name %>
+  </div>
 
   <%= f.label :subscription_type %>
-  <%= f.select :subscription_type, ['Customer', 'Subscriber'], include_blank: true %>
+  <div class="form-group">
+    <%= f.select :subscription_type, ['Customer', 'Subscriber'], include_blank: true %>
+  </div>
 
   <%= f.label :zip_code %>
-  <%= f.number_field :zip_code %>
+  <div class="form-group">
+    <%= f.number_field :zip_code %>
+  </div>
 
   <%= f.label :bike_id %>
-  <%= f.number_field :bike_id %>
+  <div class="form-group">
+    <%= f.number_field :bike_id %>
+  </div>
 
-  <%= f.submit "Update Trip" %>
-
+  <section class="main-button create-account">
+    <a>
+      <%= f.submit "Update Trip", class:"text reset-button" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </section>
 <% end %>
+</div>

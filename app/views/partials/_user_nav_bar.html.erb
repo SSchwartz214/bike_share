@@ -5,9 +5,13 @@
     <span class="navbar-toggler-icon navbar-"></span>
   </button>
   <% if current_user && !current_user.admin? %>
-    <p class="dark-text"> Logged in as <%= current_user.first_name %></p>
+    <%= link_to dashboard_path do %>
+      <p class="dark-text"> Logged in as <%= current_user.first_name %></p>
+    <% end %>
   <%elsif current_user.admin? %>
-    <p class="dark-text"> Logged in as admin: <%= current_user.first_name %></p>
+    <%= link_to admin_dashboard_index_path do %>
+      <p class="dark-text"> Logged in as admin: <%= current_user.first_name %></p>
+    <% end %>
   <% end %>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">

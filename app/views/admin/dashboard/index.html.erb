@@ -1,15 +1,31 @@
-<h2>Profile for <%= current_user.username %></h2>
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Profile for <%= current_user.username %>
 
-<% if current_user&.admin? %>
-  <div class="edit-container">
-    <%= link_to edit_user_path(current_user) do %>
-        <i class="far fa-edit link-text">
-        <p class="hidden">Edit</p></i>
+    <% if current_user&.admin? %>
+        <%= link_to edit_user_path(current_user) do %>
+            <i class="far fa-edit link-text admin-edit">
+            <p class="hidden">Edit</p></i>
+        <% end %>
+    <% end %>
+  </h2>
+
+    <h5><strong>First name:</strong></h5>
+    <p><%= current_user.first_name %></p>
+
+    <h5><strong>Last name:</strong></h5>
+    <p><%= current_user.last_name %></p>
+  </div>
+  <div class="col-sm-6">
+    <h2>Creation options</h2>
+    <%= link_to new_admin_condition_path do %>
+      <h4><i class="fas fa-sun dashboard-icon"></i>Condition</h4>
+    <% end %>
+    <%= link_to new_admin_trip_path do %>
+      <h4><i class="fas fa-map-marked-alt dashboard-icon"></i>Trip</h4>
+    <% end %>
+    <%= link_to new_admin_station_path do %>
+      <h4><i class="fas fa-building dashboard-icon"></i>Station</h4>
     <% end %>
   </div>
-<% end %>
-
-<p><strong>First name:</strong></p>
-<p><%= current_user.first_name %></p>
-<p><strong>Last name:</strong></p>
-<p><%= current_user.last_name %></p>
+</div>

@@ -1,0 +1,11 @@
+<% @accessories.each do |accessory| %>
+  <p>
+    <%= image_tag(accessory.image_url) %>
+    name: <%= accessory.name %>
+    price: <%= accessory.price %>
+    quantity: <%= @cart.contents[accessory.id.to_s] %>
+    subtotal: <%= @cart.subtotal(accessory) %>
+  </p>
+<% end %>
+
+total: <%= @cart.total(@accessories) %>

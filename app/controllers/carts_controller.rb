@@ -15,4 +15,8 @@ class CartsController < ApplicationController
       redirect_to accessories_path
     end
   end
+
+  def show
+    @accessories = Accessory.where(id: @cart.accessories)
+  end
 end

@@ -34,6 +34,10 @@ class CartsController < ApplicationController
 
     @cart.update_totals(new_totals)
 
-    redirect_to root_path
+    accessories = Accessory.where(id: @cart.accessories)
+
+    flash[:success] = "Successfully submitted your order totalling $#{@cart.total(accessories)}"
+
+    redirect_to dashboard_path
   end
 end

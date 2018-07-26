@@ -4,11 +4,11 @@
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon navbar-"></span>
   </button>
-  <% if current_user && !current_user.admin? %>
+  <% if !current_admin? %>
     <%= link_to dashboard_path do %>
       <p class="dark-text"> Logged in as <%= current_user.first_name %></p>
     <% end %>
-  <%elsif current_user.admin? %>
+  <%elsif current_admin? %>
     <%= link_to admin_dashboard_index_path do %>
       <p class="dark-text"> Logged in as admin: <%= current_user.first_name %></p>
     <% end %>
@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <%= link_to carts_path, class:"nav-link hvr-skew" do %>
+        <%= link_to cart_path, class:"nav-link hvr-skew" do %>
         <p><i class="fas fa-shopping-cart"></i><% if @cart.total_count > 0 %>Items in cart: <%= @cart.total_count %><% end %></p>
         <% end %>
       </li>

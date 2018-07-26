@@ -12,9 +12,9 @@
 
 <body onload="display_quantity()">
 <% @accessories.each do |accessory| %>
-  <p>
+  <p id=<%= "display_#{accessory.id}" %>>
 
-    <%= image_tag(accessory.image_url) %>
+    <%= image_tag(accessory.image_url, size: "100x100") %>
 
     <br/>
 
@@ -40,7 +40,9 @@
   <% @accessories.each do |accessory| %>
     <input type="hidden" id=<%= "accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
   <% end %>
-  <input type="submit" value="Checkout" />
+  <% if current_user %>
+    <input type="submit" value="Checkout" />
+  <% end %>
 </form>
 
 total: <nobr id="total"></nobr>

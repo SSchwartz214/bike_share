@@ -60,8 +60,8 @@ describe "a visitor" do
       expect(page).to have_content(acc_2.name)
     end
 
-    xit "can not check out" do
-      acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "90jasd", description: "1209390jioas")
+    it "can not check out" do
+      acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
       cart = Cart.new(Hash.new(0))
       allow(Cart).to receive(:new).and_return(cart)
@@ -70,6 +70,28 @@ describe "a visitor" do
       visit "/cart"
 
       expect(page).to_not have_content("Checkout")
+    end
+
+    it "can remove an item" do
+      acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
+
+      cart = Cart.new(Hash.new(0))
+      allow(Cart).to receive(:new).and_return(cart)
+      cart.add_accessory(acc_1.id)
+
+      visit "/cart"
+
+      expect(page).to have_content(acc_1.name)
+
+      within("#remove_#{acc_1.id}") do
+        click_on "Remove"
+      end
+
+      expect(current_path).to eq(cart_path)
+
+      save_and_open_page
+
+      expect(page).to_not have_content("name: #{acc_1.name}")
     end
   end
 end

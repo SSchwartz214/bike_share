@@ -9,10 +9,10 @@
   <%= f.text_field :description %>
 
   <%= f.label :price %>
-  <%= f.text_field :price %>
+  <%= f.number_field :price %>
 
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+  <%= f.label :status %>
+  <%= f.select :status, ['active', 'retired'] %>
 
   <%= f.label :image_url %>
   <%= f.text_field :image_url %>

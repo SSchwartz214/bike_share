@@ -12,11 +12,12 @@ describe 'as an admin' do
       fill_in :accessory_name, with: "pedals"
       fill_in :accessory_description, with: "Carbon fiber pedals will make you go fast"
       fill_in :accessory_price, with: 50
+      select("active", :from => :accessory_status)
       fill_in :accessory_image_url, with: "https://images-na.ssl-images-amazon.com/images/I/61ZtPYh9jEL._SX425_.jpg"
 
       click_on "Create Accessory"
 
-      expect(current_path).to eq(accessories_path(Accessory.last))
+      expect(current_path).to eq(accessory_path(Accessory.last))
       expect(page).to have_content("pedals")
     end
   end

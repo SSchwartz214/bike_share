@@ -1,0 +1,70 @@
+<h3>Admin Accessories Dashboard</h3>
+
+<div class="row table-heading">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-1">
+    <p>Image<p>
+  </div>
+  <div class="col-sm-2">
+    <p>Name</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Price</p>
+  </div>
+  <div class="col-sm-4">
+    <p>Description</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Status<p>
+  </div>
+</div>
+
+<div class="index-container trips-container">
+<% @accessories.each do |accessory| %>
+<section class="section-index-container">
+<div class="row accessory-dashboard">
+    <div class="col-sm-1">
+      <%= link_to edit_admin_accessory_path(accessory) do %>
+          <i class="far fa-edit link-text">
+          <p class="hidden">Edit</p></i>
+      <% end %>
+      <%= link_to admin_accessory_path(accessory), method:"delete" do %>
+        <i class="far fa-trash-alt"></i>
+        <p class="hidden">Delete</p>
+      <% end %>
+    </div>
+    <div class="col-sm-1">
+      <div class="thumbnail-container">
+        <img src="<%= accessory.image_url%>" class="thumbnail-pic">
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <p><%= accessory.name %></p>
+    </div>
+    <div class="col-sm-2">
+      <p><%= number_to_currency(accessory.price) %></p>
+    </div>
+    <div class="col-sm-4">
+      <p><%= accessory.description %></p>
+    </div>
+    <div class="col-sm-1">
+      <p><%= accessory.status %><p>
+    </div>
+    <div class="col-sm-1">
+      <% if accessory.status != "retired" %>
+        <%= link_to admin_accessory_path(accessory, status: "retired", path: "index"), method: :put do %>
+            <i class="fas fa-ban"></i>
+            <p class="hidden">Deactivate</p></i>
+        <% end %>
+      <% else %>
+        <%= link_to admin_accessory_path(accessory, status: "active", path: "index"), method: :put do %>
+            <i class="fas fa-check-circle"></i>
+            <p class="hidden">Activate</p></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+<% end %>
+</div>

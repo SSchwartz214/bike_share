@@ -47,8 +47,6 @@ describe "a registered user" do
       click_on "Update profile"
 
       expect(current_path).to eq(dashboard_path)
-
-      # TODO:this test is not working here, but this completely works in production. Investigate later.
     end
 
     it "can not update it's information if it is not logged in" do
@@ -56,6 +54,17 @@ describe "a registered user" do
       visit dashboard_path
 
       expect(page).to_not have_content("Edit")
+    end
+
+    it "can not update another users information" do
+      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas")
+      user_2 = User.create!(first_name: "iiuh", last_name: "ij9898s", username: "iji897gjo", password: "j98jdoas")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+      visit edit_user_path(user_2)
+
+      expect(current_path).to eq(edit_user_path(user_1))
     end
   end
 end

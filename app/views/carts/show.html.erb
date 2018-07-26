@@ -1,0 +1,48 @@
+<head>
+  <script>
+    var accessories = {};
+    <% @accessories.each do |accessory| %>
+      accessories[<%= accessory.id %>] = {};
+      accessories[<%= accessory.id %>].quantity = <%= @cart.contents[accessory.id.to_s] %>
+      accessories[<%= accessory.id %>].price = <%= accessory.price %>
+    <% end %>
+  </script>
+  <%= javascript_include_tag "cart" %>
+</head>
+
+<body onload="display_quantity()">
+<% @accessories.each do |accessory| %>
+  <p>
+
+    <%= image_tag(accessory.image_url) %>
+
+    <br/>
+
+    name: <%= accessory.name %>
+
+    <br/>
+
+    price: <%= accessory.price %>
+
+    <br/>
+
+    quantity:
+    <button onclick=<%= "decrement(#{accessory.id})" %>>-</button>
+    <nobr id=<%= "#{accessory.id}_quantity" %>></nobr>
+    <button onclick=<%= "increment(#{accessory.id})" %>>+</button>
+
+    <br/>
+    subtotal: <nobr id=<%= "#{accessory.id}_subtotal" %>></nobr>
+  </p>
+<% end %>
+
+<form id="submit_final_values" action="/cart" method="post">
+  <% @accessories.each do |accessory| %>
+    <input type="hidden" id=<%= "accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
+  <% end %>
+  <input type="submit" value="Checkout" />
+</form>
+
+total: <nobr id="total"></nobr>
+
+</body>

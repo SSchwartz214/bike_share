@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :carts, only: [:create]
+  get '/cart', to: 'carts#show'
+  post '/cart', to: 'carts#checkout'
   resources :stations, only: [:index, :show, :destroy]
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create, :edit, :update]

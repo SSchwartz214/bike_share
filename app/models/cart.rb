@@ -13,4 +13,24 @@ class Cart
     @contents[accessory_id.to_s] ||= 0
     @contents[accessory_id.to_s] += 1
   end
+
+  def update_totals(totals)
+    totals.keys.each do |key|
+      contents[key] = totals[key].to_i
+    end
+  end
+
+  def subtotal(accessory)
+    accessory.price * @contents[accessory.id.to_s]
+  end
+
+  def total(accessories)
+    accessories.inject(0) {|sum, accessory| sum += subtotal(accessory)}
+  end
+
+  def accessories
+    @contents.keys.map do |key|
+      key.to_i
+    end
+  end
 end

@@ -23,12 +23,4 @@ class ApplicationController < ActionController::Base
   def set_cart
     @cart = Cart.new(session[:cart])
   end
-
-  def assign_id(model)
-    if model.count > 0
-      model.maximum(:id).next
-    else
-      1
-    end
-  end
 end

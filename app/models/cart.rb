@@ -16,7 +16,9 @@ class Cart
 
   def update_totals(totals)
     totals.keys.each do |key|
-      contents[key] = totals[key].to_i
+      if key.to_i.to_s == key
+        contents[key] = totals[key].to_i
+      end
     end
   end
 
@@ -32,5 +34,9 @@ class Cart
     @contents.keys.map do |key|
       key.to_i
     end
+  end
+
+  def remove_accessory(id)
+    contents.delete(id)
   end
 end

@@ -9,6 +9,7 @@ function display_quantity()
     }
     document.getElementById(accessory + "_quantity").innerHTML = accessories[accessory].quantity;
     document.getElementById("accessory_" + accessory).value = accessories[accessory].quantity.toString();
+    document.getElementById("remove_accessory_" + accessory).value = accessories[accessory].quantity.toString();
     subtotal = accessories[accessory].quantity * accessories[accessory].price;
     total += subtotal;
     document.getElementById(accessory + "_subtotal").innerHTML = subtotal;

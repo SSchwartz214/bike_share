@@ -10,11 +10,11 @@
   <%= javascript_include_tag "cart" %>
 </head>
 
-<body onload="display_quantity()">
+<body onload="display_quantity();">
 <% @accessories.each do |accessory| %>
-  <p>
+  <p id=<%= "display_#{accessory.id}" %>>
 
-    <%= image_tag(accessory.image_url) %>
+    <%= image_tag(accessory.image_url, size: "100x100") %>
 
     <br/>
 
@@ -27,12 +27,20 @@
     <br/>
 
     quantity:
-    <button onclick=<%= "decrement(#{accessory.id})" %>>-</button>
+    <button onclick=<%= "decrement(#{accessory.id});" %>>-</button>
     <nobr id=<%= "#{accessory.id}_quantity" %>></nobr>
-    <button onclick=<%= "increment(#{accessory.id})" %>>+</button>
+    <button onclick=<%= "increment(#{accessory.id});" %>>+</button>
 
     <br/>
     subtotal: <nobr id=<%= "#{accessory.id}_subtotal" %>></nobr>
+
+    <form id=<%= "remove_#{accessory.id}" %> action="/cart/remove_item", method="post">
+      <% @accessories.each do |sub_accessory| %>
+        <input type="hidden" id=<%= "remove_accessory_#{sub_accessory.id}" %> name=<%= "accessory_#{sub_accessory.id}" %> value="" />
+      <% end %>
+      <input type="hidden", name="accessory_id", value=<%= accessory.id %> />
+      <input type="submit" value="Remove"/>
+    </form>
   </p>
 <% end %>
 
@@ -40,7 +48,9 @@
   <% @accessories.each do |accessory| %>
     <input type="hidden" id=<%= "accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
   <% end %>
-  <input type="submit" value="Checkout" />
+  <% if current_user %>
+    <input type="submit" value="Checkout" />
+  <% end %>
 </form>
 
 total: <nobr id="total"></nobr>

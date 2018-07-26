@@ -89,8 +89,6 @@ describe "a visitor" do
 
       expect(current_path).to eq(cart_path)
 
-      save_and_open_page
-
       expect(page).to_not have_content("name: #{acc_1.name}")
     end
   end

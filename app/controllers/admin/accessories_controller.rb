@@ -18,6 +18,14 @@ class Admin::AccessoriesController < ApplicationController
     end
   end
 
+  def destroy
+    acc_name = @accessory.name
+    @accessory.destroy
+
+    flash[:notice] = "#{acc_name} deleted!"
+    redirect_to admin_bike_shop_path
+  end
+
   private
 
   def set_accessory

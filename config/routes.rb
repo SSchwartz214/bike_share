@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    get "bike-shop", to: "accessories#index"
+    resources :accessories, only: [:edit, :update, :destroy]
   end
 
   resources :accessories, only: [:index, :show]

@@ -47,8 +47,6 @@ describe "a registered user" do
       click_on "Update profile"
 
       expect(current_path).to eq(dashboard_path)
-
-      # TODO:this test is not working here, but this completely works in production. Investigate later.
     end
 
     it "can not update it's information if it is not logged in" do

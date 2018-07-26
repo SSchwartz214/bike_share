@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :accessories, only: [:show]
-
+  resources :accessories, only: [:index, :show]
   resources :conditions, only: [:index, :show]
 
+  get '/bike-store', to: 'accessories#index'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

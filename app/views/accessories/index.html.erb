@@ -10,7 +10,7 @@
               <%= link_to image_tag(accessory.image_url, :class => "card-img-top img-fluid"), accessory_path(accessory) %>
             </div>
             <h3 class="card-title">
-              <%= link_to accessory.name, accessory_path(accessory) %></h3>
+              <%= link_to accessory.name, accessory_path(accessory), class: "btn btn-outline-secondary" %></h3>
             <p class="card-text">Price: $<%= accessory.price %></p>
             <p class="card-text">Status: <%= accessory.status %></p>
             <% if accessory.status == "active" %>

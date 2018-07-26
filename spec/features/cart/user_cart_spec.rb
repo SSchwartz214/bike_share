@@ -39,4 +39,18 @@ describe 'a user visits their cart' do
 
     expect(page).to have_content(cart.total([accessory, accessory_2]))
   end
+
+  it 'has a checkout button' do
+    accessory = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
+    accessory_2 = Accessory.create!(name: "efiji", price: 222, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
+    cart = Cart.new(Hash.new(0))
+    allow(Cart).to receive(:new).and_return(cart)
+    cart.add_accessory(accessory.id)
+    cart.add_accessory(accessory.id)
+    cart.add_accessory(accessory_2.id)
+
+    visit cart_path
+
+    expect(page).to have_link('Checkout')
+  end
 end

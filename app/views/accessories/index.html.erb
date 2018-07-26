@@ -6,9 +6,11 @@
       <div class="row">
         <% @accessories.each do |accessory| %>
           <div class="col-sm-4">
-            <%= link_to image_tag(accessory.image_url, :class => "card-img-top img-fluid"), accessory_path(accessory) %>
+            <div class= "show-acc-container-img">
+              <%= link_to image_tag(accessory.image_url, :class => "card-img-top img-fluid"), accessory_path(accessory) %>
+            </div>
             <h3 class="card-title">
-              <%= accessory.name %></h3>
+              <%= link_to accessory.name, accessory_path(accessory) %></h3>
             <p class="card-text">Price: $<%= accessory.price %></p>
             <p class="card-text">Status: <%= accessory.status %></p>
             <% if accessory.status == "active" %>

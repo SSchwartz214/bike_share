@@ -12,6 +12,7 @@ class CartsController < ApplicationController
       flash[:notice] = "#{quantity} #{accessory.name} in your cart"
       redirect_to accessory_path(accessory)
     elsif params[:path] == 'index'
+      flash[:notice] = "#{quantity} #{accessory.name} in your cart"
       redirect_to accessories_path
     end
   end

@@ -15,14 +15,14 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :accessories
     get "bike-shop", to: "accessories#index"
-    resources :accessories, only: [:edit, :update, :destroy]
   end
 
   resources :accessories, only: [:index, :show]
   resources :conditions, only: [:index, :show]
 
-  get '/bike-store', to: 'accessories#index'
+  get '/bike-shop', to: 'accessories#index'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -13,10 +13,26 @@ class CartsController < ApplicationController
       redirect_to accessory_path(accessory)
     elsif params[:path] == 'index'
       redirect_to accessories_path
+    elsif params[:path] == 'checkout'
+      redirect_to root_path
     end
   end
 
   def show
     @accessories = Accessory.where(id: @cart.accessories)
+  end
+
+  def checkout
+    new_totals = {}
+    params.keys.each do |key|
+      if key.to_s.include?("accessory_")
+        id = key.to_s[-1]
+        new_totals[id] = params[key]
+      end
+    end
+
+    @cart.update_totals(new_totals)
+
+    redirect_to root_path
   end
 end

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :current_admin?
   before_action :set_cart
+  skip_before_action :verify_authenticity_token  
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])

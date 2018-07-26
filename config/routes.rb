@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :accessories, only: [:index, :show]
   resources :conditions, only: [:index, :show]
 
-  get '/bike-store', to: 'accessories#index'
+  get '/bike-shop', to: 'accessories#index'
   get '/dashboard', to: 'dashboard#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

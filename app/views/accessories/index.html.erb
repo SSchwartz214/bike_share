@@ -10,9 +10,10 @@
               <%= link_to image_tag(accessory.image_url, :class => "card-img-top img-fluid"), accessory_path(accessory) %>
             </div>
             <h3 class="card-title">
-              <%= link_to accessory.name, accessory_path(accessory), class: "btn btn-outline-secondary" %></h3>
+              <%= accessory.name %></h3>
             <p class="card-text">Price: $<%= accessory.price %></p>
             <p class="card-text">Status: <%= accessory.status %></p>
+            <%= link_to "View Details", accessory_path(accessory) %>
             <% if accessory.status == "active" %>
               <%= link_to carts_path(accessory_id: accessory.id, path: 'index'), method: :post do %>
               <h4>Add to Cart <i class="fas fa-cart-arrow-down"></i><h4>

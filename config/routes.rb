@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resource :accessories, only: [:new, :create]
   end
 
   resources :accessories, only: [:index, :show]

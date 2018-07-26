@@ -18,6 +18,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.id.to_s != params[:id]
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def update

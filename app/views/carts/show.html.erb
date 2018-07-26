@@ -10,7 +10,7 @@
   <%= javascript_include_tag "cart" %>
 </head>
 
-<button onclick="display_quantity()" id="test">Click</button>
+<body onload="display_quantity()">
 <% @accessories.each do |accessory| %>
   <p>
 
@@ -44,5 +44,7 @@
 </form>
 
 total: <nobr id="total"></nobr>
+
+</body>
 
 <%= link_to "Checkout", cart_path(path: "checkout"), method: :post %>

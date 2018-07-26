@@ -9,23 +9,28 @@ class Condition < ApplicationRecord
   validates_presence_of :precipitation_inches
 
   def self.highest_rides(weather_params)
-    joins("JOIN trips ON conditions.date = trips.start_date")
+    rides = joins("JOIN trips ON conditions.date = trips.start_date")
       .select("conditions.date, count(trips.id) as trip_total")
       .where(max_temperature_f: weather_params)
       .group("conditions.date")
-      .order("trip_total").first
-      # returns the day with the lowest trips
+      .order("trip_total")
+    if rides.first.nil?
+      0
+    else
+      rides.first.trip_total
+    end
   end
 
   def self.trip_weather_values(weather_params)
     weather_params.inject({}) do |hash, (key, value)|
-      hash[key] = Condition.highest_rides(weather_params[value]).date
+      hash[key] = Condition.highest_rides(value)
       hash
     end
   end
 
   def self.heat_map
-    {"80..89f" => 80..89, "90..99f" => 90..99}
+    {"80..89f" => 80..89,
+      "90..99f" => 90..99}
   end
 end
 

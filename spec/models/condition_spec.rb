@@ -26,7 +26,7 @@ describe Condition, type: :model do
 
       trip_2 = Trip.create!(duration: 200, start_date: DateTime.strptime("8/29/2013", '%m/%d/%Y'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_1, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 
-      trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("8/1/2013 14:19", '%m/%d/%Y'), start_station: station_1, end_date: DateTime.strptime("8/30/2013 15:19", '%m/%d/%Y %H:%M'), end_station: station_1, subscription_type: "visitor", zip_code: 12446, bike_id: 3)
+      # trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("8/1/2013 14:19", '%m/%d/%Y'), start_station: station_1, end_date: DateTime.strptime("8/30/2013 15:19", '%m/%d/%Y %H:%M'), end_station: station_1, subscription_type: "visitor", zip_code: 12446, bike_id: 3)
 
       trip_4 = Trip.create!(duration: 200, start_date: DateTime.strptime("8/29/2013", '%m/%d/%Y'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_1, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 

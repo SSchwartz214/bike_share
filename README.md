@@ -14,8 +14,8 @@ This application also includes a sample store with a simple checkout mechanism. 
 
 * To install gems:
 ```
-$ bundle update
 $ bundle install
+$ bundle update
 ```
 
 * To create and seed database:

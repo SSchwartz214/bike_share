@@ -38,12 +38,4 @@ class Trip < ApplicationRecord
       hash
     end
   end
-
-  # def self.start_station_names
-  #   joins(:start_station).pluck(:name).uniq.sort
-  # end
-  #
-  # def self.end_station_names
-  #   joins(:end_station).pluck(:name).uniq.sort
-  # end
 end

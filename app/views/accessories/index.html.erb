@@ -1,0 +1,26 @@
+<h1>Accessories</h1>
+
+<div class="container text-muted">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <% @accessories.each do |accessory| %>
+          <div class="col-sm-4">
+            <div class= "show-acc-container-img">
+              <%= link_to image_tag(accessory.image_url, :class => "card-img-top img-fluid"), accessory_path(accessory) %>
+            </div>
+            <h3 class="card-title">
+              <%= accessory.name %></h3>
+            <p class="card-text">Price: $<%= accessory.price %></p>
+            <p class="card-text">Status: <%= accessory.status %></p>
+            <%= link_to "View Details", accessory_path(accessory) %>
+            <% if accessory.status == "active" %>
+              <%= link_to carts_path(accessory_id: accessory.id, path: 'index'), method: :post do %>
+              <h4>Add to Cart <i class="fas fa-cart-arrow-down"></i><h4>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>

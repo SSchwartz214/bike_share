@@ -16,7 +16,7 @@ This application also includes a sample store with a simple checkout mechanism. 
 
 * Clone the repository:
 ```
-git clone
+git clone git@github.com:letsdothis64/bike_share.git
 ```
 
 * To install gems:

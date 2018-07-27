@@ -6,11 +6,18 @@
 
 Bikeshare analyzes publicly available csv data on the Bikeshare program in San Francisco. This application seeks to provide important information on the use of bike share by analyzing trips during weather conditions, trips to and from certain stations, and more. 
 
-This application also includes a sample store with a simple checkout mechanism. You can check this out by clicking on Bike shop in the navbar! 
+This application also includes a sample store with a simple checkout mechanism. You can check this out by clicking on Bike shop in the navbar!
+
+
 
 #### Rails version: 5.1.6
 
 ### Configuration
+
+* Clone the repository:
+```
+git clone
+```
 
 * To install gems:
 ```

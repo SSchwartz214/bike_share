@@ -10,7 +10,7 @@ This application also includes a sample store with a simple checkout mechanism. 
 
 #### Rails version: 5.1.6
 
-#### Configuration
+### Configuration
 
 * To install gems:
 ```
@@ -37,3 +37,12 @@ https://polar-gorge-61101.herokuapp.com/
 
 * Adding the ability for transactions with credit cards.
 * Incorporating bike share data from other cities as a comparison.
+
+#### Questions or comments?
+
+Please contact us at:
+
+* Keegan: https://github.com/KeeganCorrigan
+* Seth: https://github.com/SSchwartz214
+* Connor: https://github.com/letsdothis64
+

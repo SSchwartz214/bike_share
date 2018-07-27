@@ -1,19 +1,36 @@
-<h1>Create a New Accessory</h1>
+<h1>Create an accessory</h1>
 
+<div class="all-forms">
 <%= form_for [:admin, @accessory] do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.text_field :name %>
+  </div>
 
   <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.text_field :description %>
+  </div>
 
   <%= f.label :price %>
-  <%= f.number_field :price %>
+  <div class="form-group">
+    <%= f.number_field :price %>
+  </div>
 
   <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
+  <div class="form-group">
+    <%= f.text_field :image_url %>
+  </div>
 
-  <%= f.submit "Create Accessory" %>
-
+  <section class="main-button create-account">
+    <a>
+      <%= f.submit "Create Accessory" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </section>
 <% end %>
+</div>

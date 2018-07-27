@@ -24,6 +24,9 @@ git clone git@github.com:letsdothis64/bike_share.git
 $ bundle install
 $ bundle update
 ```
+##### Special gem notes:
+
+Bootstrap, jquery, capybara, rspec, chartkick
 
 * To create and seed database:
 ```

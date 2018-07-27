@@ -8,11 +8,30 @@
   border-radius: 10px;
 }
 
-.show-acc-container img {
+.show-acc-container-img img {
   height: 100%;
   border-radius: 10px;
 }
 
 .black-text {
   color: black;
+}
+
+.thumbnail-container {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.thumbnail-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.accessory-dashboard {
+  display: flex;
+  align-items: center;
 }

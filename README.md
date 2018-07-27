@@ -10,8 +10,6 @@ This application also includes a sample store with a simple checkout mechanism. 
 
 #### Rails version: 5.1.6
 
-#### Bundle update and bundle install to run
-
 #### Configuration
 
 * To install gems:

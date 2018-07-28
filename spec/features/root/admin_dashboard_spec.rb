@@ -123,5 +123,36 @@ describe "an admin" do
       expect(page).to have_content("cancelled: 1")
       expect(page).to have_content("ordered: 1")
     end
+    it 'shows a link for each order' do
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+
+      order_1 = user.orders.create!(status: "ordered")
+      order_2 = user.orders.create!(status: "paid")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_dashboard_index_path
+
+      within "#display_#{order_1.id}" do
+        click_on "Info"
+      end
+
+      expect(current_path).to eq(order_path(order_1))
+      expect(page).to have_content(order_1.status)
+    end
+
+    it "transitions between statuses" do
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+
+      order_1 = user.orders.create!(status: "ordered")
+      order_2 = user.orders.create!(status: "paid")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit ad
+
+    end
   end
 end

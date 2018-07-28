@@ -95,15 +95,62 @@ describe Trip, type: :model do
 
     expect(expected["2013-01-01"]).to eq(2)
     end
-    # I see the Most ridden bike with total number of rides for that bike,
-    it '.most_ridden_bike' do
+
+    it '.trips_by_bike' do
       station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
 
       trip_1 = Trip.create!(duration: 123, start_date: DateTime.strptime("1/29/2013 14:13", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "subscribed", zip_code: 12345, bike_id: 1)
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("2/27/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("2/27/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "visitor", zip_code: 12444, bike_id: 1)
       trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("2/20/2014 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("3/30/2014 15:19", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "visitor", zip_code: 12446, bike_id: 2)
 
-      expect(Trip.most_ridden_bike.first).to eq(2)
+      expected = {1 => 2,
+                  2 => 1
+                }
+
+      expect(Trip.trips_by_bike).to eq(expected)
+    end
+    it '.subscription_by_user' do
+      station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+
+      trip_1 = Trip.create!(duration: 123, start_date: DateTime.strptime("1/29/2013 14:13", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Subscriber", zip_code: 12345, bike_id: 1)
+      trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("2/27/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("2/27/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12444, bike_id: 1)
+      trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("2/20/2014 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("3/30/2014 15:19", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12446, bike_id: 2)
+
+      expected = {"Subscriber" => 1,
+                  "Customer" => 2
+                  }
+
+    expect(Trip.subscription_by_user).to eq(expected)
+    end
+    it '.trips_by_date' do
+      #TODO fix datetime formatting
+      station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+
+      trip_1 = Trip.create!(duration: 123, start_date: Date.strptime("1/29/2013", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Subscriber", zip_code: 12345, bike_id: 1)
+      trip_2 = Trip.create!(duration: 198, start_date: Date.strptime("1/29/2013", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("2/27/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12444, bike_id: 1)
+      trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("2/20/2014", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("3/30/2014 15:19", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12446, bike_id: 2)
+
+      expected = {trip_1.start_date => 2,
+                  trip_3.start_date => 1
+                  }
+
+      expect(Trip.trips_by_date).to eq(expected)
+    end
+    # I see the Weather on the day with the highest rides.
+    it '.trip_weather' do
+
+      station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+      condition_1 = Condition.create!(date: Date.strptime("1/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+      condition_2 = Condition.create!(date: Date.strptime("2/20/2014", '%m/%d/%Y'), max_temperature_f: 12345, mean_temperature_f: 5115, min_temperature_f: 1235, mean_humidity: 755, mean_visibility_miles: 105, mean_wind_speed_mph: 275, precipitation_inches: 115)
+      trip_1 = Trip.create!(duration: 123, start_date: Date.strptime("1/29/2013", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Subscriber", zip_code: 12345, bike_id: 1)
+      trip_2 = Trip.create!(duration: 198, start_date: Date.strptime("1/29/2013", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("2/27/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12444, bike_id: 1)
+      trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("2/20/2014", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("3/30/2014 15:19", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Customer", zip_code: 12446, bike_id: 2)
+
+      expected = {trip_1.start_date => condition_1,
+                  trip_3.start_date => condition_2
+                  }
+
+      expect(Trip.trip_weather).to eq(expected)
     end
   end
 end

@@ -11,14 +11,7 @@ describe Trip, type: :model do
     it {should validate_presence_of(:subscription_type)}
     it {should validate_presence_of(:zip_code)}
   end
-# As a registered user,
-# When I visit '/trips-dashboard',
-# I see Month by Month breakdown of number of rides with subtotals for each year,
-# I see the Most ridden bike with total number of rides for that bike,
-# I see the Least ridden bike with total number of rides for that bike,
-# I see the User subscription type breakout with both count and percentage,
-# I see the Single date with the highest number of trips with a count of those trips,
-# I see the Single date with the lowest number of trips with a count of those trips.
+
   describe 'Class methods' do
     it ".avg_duration" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
@@ -34,6 +27,7 @@ describe Trip, type: :model do
 
       expect(Trip.avg_duration).to eq(200)
     end
+
     it ".longest_ride" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -48,6 +42,7 @@ describe Trip, type: :model do
 
       expect(Trip.longest_ride).to eq(trip_3.duration)
     end
+
     it ".shortest_ride" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -62,6 +57,7 @@ describe Trip, type: :model do
 
       expect(Trip.shortest_ride).to eq(trip_1.duration)
     end
+
     it ".month_by_month" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -79,6 +75,7 @@ describe Trip, type: :model do
       expect(expected["2013-01-01"]).to eq(1)
       expect(expected["2013-02-01"]).to eq(2)
     end
+
     it ".by_year" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -109,6 +106,7 @@ describe Trip, type: :model do
 
       expect(Trip.trips_by_bike).to eq(expected)
     end
+
     it '.subscription_by_user' do
       station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
 
@@ -122,8 +120,8 @@ describe Trip, type: :model do
 
     expect(Trip.subscription_by_user).to eq(expected)
     end
+
     it '.trips_by_date' do
-      #TODO fix datetime formatting
       station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
 
       trip_1 = Trip.create!(duration: 123, start_date: Date.strptime("1/29/2013", "%m/%d/%Y"), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "Subscriber", zip_code: 12345, bike_id: 1)
@@ -136,9 +134,8 @@ describe Trip, type: :model do
 
       expect(Trip.trips_by_date).to eq(expected)
     end
-    # I see the Weather on the day with the highest rides.
-    it '.trip_weather' do
 
+    it '.trip_weather' do
       station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       condition_1 = Condition.create!(date: Date.strptime("1/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
       condition_2 = Condition.create!(date: Date.strptime("2/20/2014", '%m/%d/%Y'), max_temperature_f: 12345, mean_temperature_f: 5115, min_temperature_f: 1235, mean_humidity: 755, mean_visibility_miles: 105, mean_wind_speed_mph: 275, precipitation_inches: 115)

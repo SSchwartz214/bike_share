@@ -71,3 +71,8 @@
   </div>
 </div>
 <% end %>
+
+<h3>Orders by Status</h3>
+<% @order_by_status.each do |status, count| %>
+  <p> <%= status %>: <%= count %> </p>
+<% end %>

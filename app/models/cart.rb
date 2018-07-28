@@ -39,4 +39,8 @@ class Cart
   def remove_accessory(id)
     contents.delete(id)
   end
+
+  def clear
+    contents.clear
+  end
 end

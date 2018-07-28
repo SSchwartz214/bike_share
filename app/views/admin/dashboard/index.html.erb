@@ -55,6 +55,11 @@
   </div>
 </div>
 
+
+<%= link_to "Ordered", admin_dashboard_index_path(status: "ordered") %>
+<%= link_to "Paid", admin_dashboard_index_path(status: "paid") %>
+<%= link_to "Cancelled", admin_dashboard_index_path(status: "cancelled") %>
+<%= link_to "Completed", admin_dashboard_index_path(status: "completed") %>
 <% @orders.each do |order| %>
 <section id=<%= "display_#{order.id}" %>>
   <div class="row">

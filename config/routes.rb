@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
   post '/cart/remove_item', to: 'carts#remove_item'
+  post '/checkout', to: 'carts#checkout'
+  get '/new_order', to: 'orders#create'
   resources :stations, only: [:index, :show, :destroy]
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create, :edit, :update]

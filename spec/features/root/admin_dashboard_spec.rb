@@ -137,7 +137,7 @@ describe "an admin" do
       within "#display_#{order_1.id}" do
         click_on "Info"
       end
-      save_and_open_page
+  
       expect(current_path).to eq(order_path(order_1))
       expect(page).to have_content(order_1.status)
     end

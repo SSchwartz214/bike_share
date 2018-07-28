@@ -1,0 +1,12 @@
+<h2>Ordered by <%= @order.user.full_name %> </h2>
+<h4> <%= @order.user.address %> </h4>
+
+<% @order.order_accessories.each do |order_accessory| %>
+  <h3><%= link_to order_accessory.accessory.name, accessory_path(order_accessory.accessory) %>:</h3>
+  <p>Quantity: <%= order_accessory.quantity %></p>
+  <p>Subtotal: <%= order_accessory.subtotal %></p>
+<% end %>
+
+<p>Total: <%= @order.total %></p>
+<p>Status: <%= @order.status %></p>
+<p>Ordered: <%= @order.created_at %></p>

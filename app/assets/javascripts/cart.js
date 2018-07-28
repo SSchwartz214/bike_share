@@ -26,7 +26,10 @@ function increment(accessory)
 
 function decrement(accessory)
 {
-  accessories[accessory].quantity--;
+  if(accessories[accessory].quantity > 0)
+  {
+    accessories[accessory].quantity--;
+  }
   display_quantity();
 }
 

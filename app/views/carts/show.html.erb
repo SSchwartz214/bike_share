@@ -6,7 +6,6 @@
       accessories[<%= accessory.id %>].quantity = <%= @cart.contents[accessory.id.to_s] %>
       accessories[<%= accessory.id %>].price = <%= accessory.price %>
     <% end %>
-    window.addEventListener('unload', update);
   </script>
   <%= javascript_include_tag "cart" %>
 </head>
@@ -40,7 +39,7 @@
   </p>
 <% end %>
 
-<% if current_user %>
+<% if current_user && @cart.total(@accessories) > 0 %>
   <%= link_to "Checkout", orders_path, method: :post %>
 <% end %>
 

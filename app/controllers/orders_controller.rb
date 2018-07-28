@@ -12,6 +12,10 @@ class OrdersController < ApplicationController
     total = @cart.total(accessories)
     @order = current_user.orders.create
 
+    accessories.each do |accessory|
+      @order.order_accessories.create(quantity: @cart.contents[accessory.id.to_s], accessory: accessory)
+    end
+
     @cart.clear
 
     flash[:success] = "Successfully submitted your order totalling $#{total}"

@@ -35,6 +35,10 @@ class CartsController < ApplicationController
     @cart.update_totals(new_totals)
   end
 
+  def checkout
+    redirect_to '/new_order'
+  end
+
   def remove_item
     id = params["accessory_id"]
     name = Accessory.find(id.to_i).name

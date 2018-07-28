@@ -31,3 +31,65 @@
     <% end %>
   </div>
 </div>
+
+<h2>All Orders</h2>
+
+<div class="row">
+  <div class="col-sm-1">
+
+  </div>
+  <div class="col-sm-1">
+    <p>ID</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Name</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Created at</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Status</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Change</p>
+  </div>
+</div>
+
+<% @orders.each do |order| %>
+<section id=<%= "display_#{order.id}" %>>
+  <div class="row">
+    <div class="col-sm-1">
+      <%= link_to order_path(order) do %>
+        <i class="fas fa-info-circle"></i>
+        <p class="hidden">Info</p>
+      <% end %>
+    </div>
+    <div class="col-sm-1">
+      <p><%= order.id %></p>
+    </div>
+    <div class="col-sm-2">
+      <p><%= order.user.full_name %></p>
+    </div>
+    <div class="col-sm-2">
+      <p><%= order.created_at %></p>
+    </div>
+    <div class="col-sm-2">
+      <p><%= order.status %></p>
+    </div>
+    <div class="col-sm-2">
+      <% if order.status == "ordered" %>
+        <%= link_to "mark as paid", order_path(order, new_status: "paid"), method: :put %>
+        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
+      <% elsif order.status == "paid" %>
+        <%= link_to "mark as completed", order_path(order, new_status: "completed"), method: :put %>
+        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
+      <% end %>
+    </div>
+  </div>
+</section>
+<% end %>
+
+<h3>Orders by Status</h3>
+<% @order_by_status.each do |status, count| %>
+  <p> <%= status %>: <%= count %> </p>
+<% end %>

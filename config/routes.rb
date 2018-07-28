@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
+  post '/cart', to: 'carts#update'
   post '/cart/remove_item', to: 'carts#remove_item'
   post '/checkout', to: 'carts#checkout'
   get '/new_order', to: 'orders#create'

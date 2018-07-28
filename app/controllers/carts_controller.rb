@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
-  before_action :update, only: [:checkout, :remove_item]
+  before_action :update, only: [:remove_item]
 
   def create
     accessory = Accessory.find(params[:accessory_id])
@@ -33,10 +33,6 @@ class CartsController < ApplicationController
       end
     end
     @cart.update_totals(new_totals)
-  end
-
-  def checkout
-    redirect_to '/new_order'
   end
 
   def remove_item

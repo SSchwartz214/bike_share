@@ -28,5 +28,6 @@ describe 'a user visits their cart' do
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content("Successfully submitted your order totalling $#{cart.total([accessory])}")
+    expect(Order.last.user).to eq(user_1)
   end
 end

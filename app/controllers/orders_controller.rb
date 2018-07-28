@@ -1,10 +1,22 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     unless current_user.id == @order.user.id || current_admin?
       render file: '/public/404'
     end
+  end
+
+  def create
+    accessories = Accessory.where(id: @cart.accessories)
+
+    total = @cart.total(accessories)
+    @order = current_user.orders.create
+
+    @cart.clear
+
+    flash[:success] = "Successfully submitted your order totalling $#{total}"
+
+    redirect_to dashboard_path
   end
 
   def update

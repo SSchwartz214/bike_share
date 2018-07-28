@@ -42,13 +42,4 @@ class CartsController < ApplicationController
     flash[:deleted] = "You successfully removed #{name} from your cart"
     redirect_to cart_path
   end
-
-  def checkout
-
-    accessories = Accessory.where(id: @cart.accessories)
-
-    flash[:success] = "Successfully submitted your order totalling $#{@cart.total(accessories)}"
-
-    redirect_to dashboard_path
-  end
 end

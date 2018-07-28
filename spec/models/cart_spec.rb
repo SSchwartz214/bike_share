@@ -15,5 +15,10 @@ describe Cart do
       expected = {"1" => 3, "2" => 4}
       expect(@cart.contents).to eq(expected)
     end
+
+    it '#clear' do
+      @cart.clear
+      expect(@cart.contents.length).to eq(0)
+    end
   end
 end

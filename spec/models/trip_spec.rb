@@ -95,5 +95,15 @@ describe Trip, type: :model do
 
     expect(expected["2013-01-01"]).to eq(2)
     end
+    # I see the Most ridden bike with total number of rides for that bike,
+    it '.most_ridden_bike' do
+      station = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+
+      trip_1 = Trip.create!(duration: 123, start_date: DateTime.strptime("1/29/2013 14:13", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("1/29/2013 14:14", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "subscribed", zip_code: 12345, bike_id: 1)
+      trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("2/27/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("2/27/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "visitor", zip_code: 12444, bike_id: 1)
+      trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("2/20/2014 14:19", '%m/%d/%Y %H:%M'), start_station: station, end_date: DateTime.strptime("3/30/2014 15:19", '%m/%d/%Y %H:%M'), end_station: station, subscription_type: "visitor", zip_code: 12446, bike_id: 2)
+
+      expect(Trip.most_ridden_bike.first).to eq(2)
+    end
   end
 end

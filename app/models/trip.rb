@@ -38,4 +38,10 @@ class Trip < ApplicationRecord
       hash
     end
   end
+
+  def self.most_ridden_bike
+    group(:bike_id)
+    require "pry"; binding.pry
+  end
+
 end

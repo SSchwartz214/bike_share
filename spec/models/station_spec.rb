@@ -109,7 +109,7 @@ describe Station, type: :model do
       expect(station_2.total_ride_ends).to eq(2)
     end
 
-    xit 'can return the most frequent destination station' do
+    it 'can return the most frequent destination station' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
       station_3 = Station.create!(name: "ajse3d0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")

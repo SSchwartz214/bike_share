@@ -146,13 +146,42 @@ describe "an admin" do
       admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
       user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
 
-      order_1 = user.orders.create!(status: "ordered")
-      order_2 = user.orders.create!(status: "paid")
+      order_1 = user.orders.create!
+      order_2 = user.orders.create!
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit ad
+      visit admin_dashboard_index_path
 
+      within "#display_#{order_1.id}" do
+        click_on "cancel"
+      end
+
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      within "#display_#{order_1.id}" do
+        expect(page).to have_content("cancelled")
+      end
+
+      within "#display_#{order_2.id}" do
+        click_on "mark as paid"
+      end
+
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      within "#display_#{order_2.id}" do
+        expect(page).to have_content("paid")
+      end
+
+      within "#display_#{order_2.id}" do
+        click_on "mark as completed"
+      end
+
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      within "#display_#{order_2.id}" do
+        expect(page).to have_content("completed")
+      end
     end
   end
 end

@@ -77,8 +77,13 @@
       <p><%= order.status %></p>
     </div>
     <div class="col-sm-2">
-      
-
+      <% if order.status == "ordered" %>
+        <%= link_to "mark as paid", order_path(order, new_status: "paid"), method: :put %>
+        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
+      <% elsif order.status == "paid" %>
+        <%= link_to "mark as completed", order_path(order, new_status: "completed"), method: :put %>
+        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
+      <% end %>
     </div>
   </div>
 </section>

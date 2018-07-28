@@ -31,3 +31,43 @@
     <% end %>
   </div>
 </div>
+
+<h2>All Orders</h2>
+
+<div class="row">
+  <div class="col-sm-1">
+    ID
+  </div>
+  <div class="col-sm-2">
+    Name
+  </div>
+  <div class="col-sm-2">
+    Created at
+  </div>
+  <div class="col-sm-2">
+    Status
+  </div>
+  <div class="col-sm-2">
+
+  </div>
+</div>
+
+<% @orders.each do |order| %>
+<div class="row">
+  <div class="col-sm-1">
+    <%= order.id %>
+  </div>
+  <div class="col-sm-2">
+    <%= order.user.full_name %>
+  </div>
+  <div class="col-sm-2">
+    <%= order.created_at %>
+  </div>
+  <div class="col-sm-2">
+    <%= order.status %>
+  </div>
+  <div class="col-sm-2">
+
+  </div>
+</div>
+<% end %>

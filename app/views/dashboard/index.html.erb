@@ -13,3 +13,9 @@
 <p><%= current_user.first_name %></p>
 <p><strong>Last name:</strong></p>
 <p><%= current_user.last_name %></p>
+
+<% @orders.each do |order| %>
+
+<p>Order ID: <%=link_to order.id, order_path(order) %></p>
+
+<% end %>

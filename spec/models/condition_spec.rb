@@ -35,12 +35,13 @@ describe Condition, type: :model do
 
       trip_6 = Trip.create!(duration: 200, start_date: DateTime.strptime("8/29/2013", '%m/%d/%Y'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_1, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 
+      max_temp = "max_temperature_f"
 
-      weather_params = {"80..89f" => 80..89, "90..99f" => 90..99}
+      weather_params = {"80..89f" => [80, 89], "90..99f" => [90, 99]}
 
       expected = {"80..89f" => [1, 1], "90..99f" => [4, 1]}
 
-      expect(Condition.trip_temp_values(weather_params)).to eq(expected)
+      expect(Condition.trip_temp_values(max_temp, weather_params)).to eq(expected)
     end
   end
 end

@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get '/stations-dashboard', to: 'stations#dashboard'
+  get '/trips-dashboard', to: 'trips#dashboard'
+
 end

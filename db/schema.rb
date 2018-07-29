@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180722205944) do
+ActiveRecord::Schema.define(version: 20180729170751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(version: 20180722205944) do
     t.bigint "accessory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["accessory_id"], name: "index_order_accessories_on_accessory_id"
     t.index ["order_id"], name: "index_order_accessories_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "ordered"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -73,9 +74,9 @@ ActiveRecord::Schema.define(version: 20180722205944) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.datetime "start_date"
+    t.date "start_date"
     t.integer "start_station_id"
-    t.datetime "end_date"
+    t.date "end_date"
     t.integer "end_station_id"
     t.integer "bike_id"
     t.string "subscription_type"
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180722205944) do
     t.string "username"
     t.string "password_digest"
     t.integer "role", default: 0
+    t.string "address"
   end
 
   add_foreign_key "order_accessories", "accessories"

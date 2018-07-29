@@ -62,6 +62,24 @@ class Station < ApplicationRecord
     .order('total')
   end
 
+  def date_with_most_trips
+    start_trips.select('trips.start_date, count(trips.start_station_id) AS total')
+    .group('trips.start_date')
+    .order('total')
+  end
+
+  def zip_code_with_most_trips
+    start_trips.select('trips.zip_code, count(trips.start_station_id) AS total')
+    .group('trips.zip_code')
+    .order('total')
+  end
+
+  def bike_with_most_trips
+    start_trips.select('trips.bike_id, count(trips.start_station_id) AS total')
+    .group('trips.bike_id')
+    .order('total')
+  end
+
   def self.most_starting_rides
     joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
   end

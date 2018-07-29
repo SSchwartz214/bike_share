@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:show, :update, :create]
-
+  
   namespace :admin do
     resources :stations, only: [:edit, :update, :new, :create, :destroy]
     resources :dashboard, only: [:index]

@@ -14,7 +14,7 @@ describe 'a user visits their cart' do
   end
 
   it 'checks them out' do
-    user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas")
+    user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     accessory = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
     cart = Cart.new(Hash.new(0))

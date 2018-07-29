@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'a user visits the user dashboard' do
   it 'shows a list of orders' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -14,7 +14,7 @@ describe 'a user visits the user dashboard' do
   end
 
   it 'takes me to the order show page' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

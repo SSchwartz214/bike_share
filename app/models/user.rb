@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, presence: true
   validates_presence_of :password, require: true, allow_nil: true
   validates_presence_of :role
+  validates_presence_of :address, :city, :state, :zip_code
 
   enum role: ['default', 'admin']
 
@@ -12,6 +13,6 @@ class User < ApplicationRecord
   has_many :orders
 
   def full_name
-    first_name + " " + last_name 
+    first_name + " " + last_name
   end
 end

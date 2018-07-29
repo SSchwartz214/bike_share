@@ -4,7 +4,7 @@ require 'rails_helper'
 describe 'as an admin' do
   describe "visits admin accessory new" do
     it "can create a new accessory" do
-      admin = User.create!(first_name: "Seth", last_name: "S", username: "SS", password: "ss", role: 1)
+      admin = User.create!(first_name: "Seth", last_name: "S", username: "SS", password: "ss", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345, role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

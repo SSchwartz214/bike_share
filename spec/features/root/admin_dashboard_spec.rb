@@ -3,7 +3,7 @@ require "rails_helper"
 describe "an admin" do
   describe "on the dashboard" do
     it "clicks on a link for viewing accessories" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -17,7 +17,7 @@ describe "an admin" do
 
   describe "accessories dashboard" do
     it "can see all accessory information" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -32,7 +32,7 @@ describe "an admin" do
     end
 
     it "can see activate for retired item" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -43,7 +43,7 @@ describe "an admin" do
     end
 
     it "can change status if activate is clicked on" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -60,7 +60,7 @@ describe "an admin" do
     end
 
     it "can change delete item" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -77,8 +77,8 @@ describe "an admin" do
     end
 
     it 'displays a list of all orders with attributes and links' do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
-      user = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "user", password: "j98jdoas", role: 0)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      user = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "user", password: "j98jdoas", role: 0, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       order = user.orders.create
       order_2 = user.orders.create
       accessory = Accessory.create(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
@@ -99,8 +99,8 @@ describe "an admin" do
       expect(page).to have_content(order_2.status)
     end
     it "shows status grouped by type" do
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order_1 = user.orders.create!(status: "ordered")
       order_2 = user.orders.create!(status: "paid")
@@ -124,8 +124,8 @@ describe "an admin" do
       expect(page).to have_content("ordered: 1")
     end
     it 'shows a link for each order' do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order_1 = user.orders.create!(status: "ordered")
       order_2 = user.orders.create!(status: "paid")
@@ -143,8 +143,8 @@ describe "an admin" do
     end
 
     it "transitions between statuses" do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order_1 = user.orders.create!
       order_2 = user.orders.create!
@@ -185,8 +185,8 @@ describe "an admin" do
     end
 
     it 'can filter by status' do
-      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order_1 = user.orders.create!(status: "ordered")
       order_2 = user.orders.create!(status: "paid")

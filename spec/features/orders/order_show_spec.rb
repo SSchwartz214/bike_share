@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'a user visits the order show page' do
   it 'shows the subtotal and quantity for each accessory' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -19,7 +19,7 @@ describe 'a user visits the order show page' do
   end
 
   it 'shows the total, status, and when it was submitted' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -38,8 +38,8 @@ describe 'a user visits the order show page' do
   end
 
   it 'wont show another user show' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
-    user_2 = User.create!(first_name: "wef", last_name: "ewf", username: "ojfebwojb", password: "wf")
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+    user_2 = User.create!(first_name: "wef", last_name: "ewf", username: "ojfebwojb", password: "wf", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     order = user_2.orders.create()
     accessory = Accessory.create(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")

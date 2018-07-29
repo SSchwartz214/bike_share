@@ -10,7 +10,7 @@
   <%= javascript_include_tag "cart" %>
 </head>
 
-<body onload="display_quantity();">
+<body onload="display_quantity();" onclick="update();">
 <% @accessories.each do |accessory| %>
   <p id=<%= "display_#{accessory.id}" %>>
 
@@ -33,26 +33,22 @@
 
     <br/>
     subtotal: <nobr id=<%= "#{accessory.id}_subtotal" %>></nobr>
-
-    <form id=<%= "remove_#{accessory.id}" %> action="/cart/remove_item", method="post">
-      <% @accessories.each do |sub_accessory| %>
-        <input type="hidden" id=<%= "remove_accessory_#{sub_accessory.id}" %> name=<%= "accessory_#{sub_accessory.id}" %> value="" />
-      <% end %>
-      <input type="hidden", name="accessory_id", value=<%= accessory.id %> />
-      <input type="submit" value="Remove"/>
-    </form>
+    <nobr id=<%= "remove_#{accessory.id}" %> >
+      <%= link_to "Remove", cart_remove_item_path(accessory_id: "#{accessory.id}"), method: :post %>
+    </nobr>
   </p>
 <% end %>
 
-<form id="submit_final_values" action="/checkout" method="post">
-  <% @accessories.each do |accessory| %>
-    <input type="hidden" id=<%= "accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
-  <% end %>
-  <% if current_user %>
-    <input type="submit" value="Checkout" />
-  <% end %>
-</form>
+<% if current_user && @cart.total(@accessories) > 0 %>
+  <%= link_to "Checkout", orders_path, method: :post %>
+<% end %>
 
 total: <nobr id="total"></nobr>
+
+<form id="exit_values" action="/cart" method="post">
+  <% @accessories.each do |accessory| %>
+    <input type="hidden" id=<%= "update_accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
+  <% end %>
+</form>
 
 </body>

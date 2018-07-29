@@ -23,4 +23,14 @@
 <p><strong>Dock count:</strong><p>
 <p><%= @station.dock_count %></p>
 <p><strong>Installation date:</strong><p>
-<p><%= @station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
+<p><%= @station.installation_date.to_s %></p>
+
+<% unless @station.start_trips.empty? %>
+  <p>Total rides: <%= @total_ride_starts %> </p>
+  <p>Number of rides ended at this station: <%= @total_ride_ends %> </p>
+  <p> <%= @most_frequent_destination %> </p>
+  <p> <%= @most_frequent_start %> </p>
+  <p> <%= @date_with_most_trips %> </p>
+  <p> <%= @zip_code_with_most_trips %> </p>
+  <p>Bike with most trips: <%= @bike_with_most_trips %> </p>
+<% end %>

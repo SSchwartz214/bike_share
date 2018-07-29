@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'an admin visits the admin order show page' do
   it 'shows orders attributes' do
-    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", address: "23 ab street", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+    user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
     admin = User.create!(first_name: "keegan", last_name: "c", username: "admin", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)

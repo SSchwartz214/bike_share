@@ -1,5 +1,29 @@
 @import "shared_values";
 
+.dashboard-active {
+  border-bottom: 3px solid $warning-color;
+}
+
+.dashboard-filter-options {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  align-items: baseline;
+}
+
+.dashboard-filter-options a {
+  color: black;
+}
+
+.dashboard-filter-options a:active {
+}
+
+
+
+.dashboard-heading {
+  border-bottom: 3px solid $primary-color;
+}
+
 .admin-edit {
   padding-left: 10px;
 }

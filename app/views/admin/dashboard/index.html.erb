@@ -32,9 +32,18 @@
   </div>
 </div>
 
-<h2>All Orders</h2>
 
-<div class="row">
+<h3 class="dashboard-heading">All user orders:</h3>
+
+<section class="dashboard-filter-options">
+  <p>Sort by:</p>
+  <%= link_to "Ordered", admin_dashboard_index_path(status: "ordered"), class:"hvr-skew" %>
+  <%= link_to "Paid", admin_dashboard_index_path(status: "paid"), class:"hvr-skew" %>
+  <%= link_to "Cancelled", admin_dashboard_index_path(status: "cancelled"), class:"hvr-skew" %>
+  <%= link_to "Completed", admin_dashboard_index_path(status: "completed"), class:"hvr-skew" %>
+</section>
+
+<div class="row table-heading">
   <div class="col-sm-1">
 
   </div>
@@ -56,10 +65,6 @@
 </div>
 
 
-<%= link_to "Ordered", admin_dashboard_index_path(status: "ordered") %>
-<%= link_to "Paid", admin_dashboard_index_path(status: "paid") %>
-<%= link_to "Cancelled", admin_dashboard_index_path(status: "cancelled") %>
-<%= link_to "Completed", admin_dashboard_index_path(status: "completed") %>
 <% @orders.each do |order| %>
 <section id=<%= "display_#{order.id}" %>>
   <div class="row">

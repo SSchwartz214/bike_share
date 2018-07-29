@@ -4,6 +4,11 @@
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon navbar-"></span>
   </button>
+  <p class="nav-link"> | </p>
+  <a class="navbar-brand hvr-skew" href="/bike-shop"><i class="fas fa-store-alt" id="change-bike-color"></i>SHOP</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon navbar-"></span>
+  </button>
   <% if !current_admin? %>
     <%= link_to dashboard_path do %>
       <p class="dark-text"> Logged in as <%= current_user.first_name %></p>
@@ -16,7 +21,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <%= link_to cart_path, class:"nav-link hvr-skew", method: :get do %>
+        <%= link_to cart_path, class:"nav-link hvr-skew link", method: :get do %>
         <p><i class="fas fa-shopping-cart"></i><% if @cart.total_count > 0 %>Items in cart: <%= @cart.total_count %><% end %></p>
         <% end %>
       </li>
@@ -25,24 +30,26 @@
          Dashboards
        </a>
        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-         <%= link_to "Stations", stations_dashboard_path %>
+         <%= link_to "Stations", stations_dashboard_path, class: "link" %>
          <div class="dropdown-divider"></div>
-         <%= link_to "Trips", stations_dashboard_path %>
+         <%= link_to "Trips", trips_dashboard_path, class: "link" %>
          <div class="dropdown-divider"></div>
-         <%= link_to "Conditions", stations_dashboard_path %>
+         <%= link_to "Conditions", stations_dashboard_path, class: "link" %>
        </div>
      </li>
       <li class="nav-item active">
-        <%= link_to "Stations", stations_path, class:"nav-link hvr-skew" %>
+        <section id="jfc">
+        <%= link_to "Stations", stations_path, class:"nav-link hvr-skew link" %>
+        </section>
       </li>
       <li class="nav-item active">
-        <%= link_to "Trips", trips_path, class:"nav-link hvr-skew" %>
+        <%= link_to "Trips", trips_path, class:"nav-link hvr-skew link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Conditions", conditions_path, class:"nav-link hvr-skew" %>
+        <%= link_to "Conditions", conditions_path, class:"nav-link hvr-skew link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Logout", logout_path, class:"nav-link hvr-skew" %>
+        <%= link_to "Logout", logout_path, class:"nav-link hvr-skew link" %>
       </li>
     </ul>
   </div>

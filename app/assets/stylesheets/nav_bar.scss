@@ -1,5 +1,10 @@
 @import "shared_values";
 
+#change-bike-color {
+  color: $secondary-color;
+  padding-right: 7px;
+}
+
 .dropdown-menu {
   background-color: $primary-color;
   color: white;

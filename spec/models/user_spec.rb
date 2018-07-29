@@ -26,4 +26,12 @@ describe User, type: :model do
       expect(user.default?).to be_truthy
     end
   end
+  describe 'instance methods' do
+    it "#full_name" do
+      user = User.create(first_name: "best", last_name: "ever", username: 'Keegan', password: 'test123', role: 0)
+
+      expect(user.full_name).to eq("best ever")
+    end
+  end
+
 end

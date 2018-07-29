@@ -38,4 +38,46 @@ class Trip < ApplicationRecord
       hash
     end
   end
+
+  def self.trips_by_bike
+    bike = select('trips.bike_id, count(trips.bike_id) AS trip_count')
+    .group(:bike_id)
+    .order('trip_count DESC')
+
+    bike_hash = {}
+    bike_hash[bike.first.bike_id] = bike.first.trip_count
+    bike_hash[bike.last.bike_id] = bike.last.trip_count
+    bike_hash
+  end
+
+  def self.subscription_by_user
+    group(:subscription_type)
+    .count
+  end
+
+  def self.trips_by_date
+    date = select('trips.start_date, count(trips.id) AS trip_count')
+    .group(:start_date)
+    .order('trip_count DESC')
+
+    date_hash = {}
+    date_hash[date.first.start_date] = date.first.trip_count
+    date_hash[date.last.start_date] = date.last.trip_count
+    date_hash
+  end
+
+  def self.trip_weather
+    weather = Condition.joins('JOIN trips ON conditions.date = trips.start_date')
+    .select('conditions.*, count(trips.id) AS trip_total')
+    .group('conditions.id')
+    .order('trip_total')
+    
+    weather_hash = {}
+    weather_hash[weather.first.date] = weather.first
+    weather_hash[weather.last.date] = weather.last
+
+
+    weather_hash
+  end
+
 end

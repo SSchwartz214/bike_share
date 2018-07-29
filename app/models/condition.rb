@@ -8,7 +8,7 @@ class Condition < ApplicationRecord
   validates_presence_of :mean_wind_speed_mph
   validates_presence_of :precipitation_inches
 
-  def self.temp_during_trip(column, weather_params)
+  def self.weather_during_trip(column, weather_params)
     rides = joins("JOIN trips ON conditions.date = trips.start_date")
       .select("conditions.date, count(trips.id) as trip_total")
       .where("#{column} BETWEEN ? AND ?", weather_params[0], weather_params[1])
@@ -21,9 +21,9 @@ class Condition < ApplicationRecord
     end
   end
 
-  def self.trip_temp_values(column, weather_params)
-    weather_params.inject({}) do |hash, (key, value)|
-      hash[key] = Condition.temp_during_trip(column, value)
+  def self.trip_weather_values(column, weather_params)
+    weather_params.inject({}) do |hash, (increments, value)|
+      hash[increments] = Condition.weather_during_trip(column, value)
       hash
     end
   end
@@ -39,7 +39,7 @@ class Condition < ApplicationRecord
 
   def self.prec_map
     { "0.0 - .49in" => [0.0, 0.49],
-      ".50 - .99in" => 0.50, 0.99],
+      ".50 - .99in" => [0.50, 0.99],
       "1 - 1.49in" => [1, 1.49],
       "1.5 - 1.99in" => [1.5, 1.99],
       "2 - 2.49in" => [2, 2.49],

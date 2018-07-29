@@ -92,8 +92,3 @@ class Station < ApplicationRecord
     joins(:end_trips).group("stations.id").order('COUNT(stations.id) DESC').first
   end
 end
-
-x.start_trips.select("trips.end_stations_id, count(trips.end_station_id) as total").group("trips.end_station_id").ord
-er("total")
-
-x.start_trips.select("end_station_id.name, count(id) as total").group("end_station_id").order("total")

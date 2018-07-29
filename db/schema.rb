@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180729194303) do
+ActiveRecord::Schema.define(version: 20180729202204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180729194303) do
     t.integer "mean_humidity"
     t.integer "mean_visibility_miles"
     t.integer "mean_wind_speed_mph"
-    t.integer "precipitation_inches"
+    t.float "precipitation_inches"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -90,6 +90,9 @@ ActiveRecord::Schema.define(version: 20180729194303) do
     t.string "password_digest"
     t.integer "role", default: 0
     t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
   end
 
   add_foreign_key "order_accessories", "accessories"

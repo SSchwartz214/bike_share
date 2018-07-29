@@ -3,7 +3,7 @@ require "rails_helper"
 describe "a registered user" do
   describe "visits /" do
     it "can click on login and fill out form" do
-      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas")
+      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       visit root_path
 
@@ -26,7 +26,7 @@ describe "a registered user" do
     end
 
     it "can edit it's information" do
-      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas")
+      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -57,8 +57,8 @@ describe "a registered user" do
     end
 
     it "can not update another users information" do
-      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas")
-      user_2 = User.create!(first_name: "iiuh", last_name: "ij9898s", username: "iji897gjo", password: "j98jdoas")
+      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+      user_2 = User.create!(first_name: "iiuh", last_name: "ij9898s", username: "iji897gjo", password: "j98jdoas", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 

@@ -47,8 +47,10 @@ describe 'an admin can edit the station' do
     station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
     visit edit_admin_station_path(station_1)
     fill_in :station_name, with: "Gazorpazorp"
+
     click_on "Update Station"
-    expect(current_path).to eq(station_path(station_1))
+    
+    expect(current_path).to eq("/Gazorpazorp")
     expect(page).to have_content("Gazorpazorp")
   end
 end

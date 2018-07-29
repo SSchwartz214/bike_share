@@ -6,7 +6,7 @@ describe "an admin" do
     it "clicks on delete" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345, role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -23,7 +23,7 @@ describe "an admin" do
     it "can not see delete or edit buttons if it is not an admin" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      default = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+      default = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(default)
 
@@ -36,7 +36,7 @@ describe "an admin" do
     it "fills out form to change condition" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -78,7 +78,7 @@ describe "an admin" do
     it "can click on delete and remove condition" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -92,7 +92,7 @@ describe "an admin" do
     end
 
     it "can create a new condition" do
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -134,7 +134,7 @@ describe "an admin" do
     it "an admin can delete the condition from index page" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -154,7 +154,7 @@ describe "an admin" do
     it "an admin can edit the condition from index page" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1)
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -170,7 +170,7 @@ describe "an admin" do
     it "can not see edit or delete buttons if it is not an admin" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 
-      default = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+      default = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(default)
 

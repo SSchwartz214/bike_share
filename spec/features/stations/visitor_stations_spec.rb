@@ -26,7 +26,7 @@ describe "a visitor" do
 
       station_1 = Station.create!(name: name, dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
 
-      visit "/stations/#{station_1.name}"
+      visit "/#{station_1.name}"
 
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)

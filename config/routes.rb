@@ -8,17 +8,18 @@ Rails.application.routes.draw do
   post '/cart/remove_item', to: 'carts#remove_item'
   post '/checkout', to: 'carts#checkout'
   get '/new_order', to: 'orders#create'
-  resources :stations, only: [:index, :show, :destroy]
+  resources :stations, only: [:index]
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:show, :update, :create]
-
+  
   namespace :admin do
-    resources :stations, only: [:edit, :update, :new, :create]
+    resources :stations, only: [:edit, :update, :new, :create, :destroy]
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
-    resources :accessories
+    resources :accessories, except: [:new]
+    get '/bike-shop/new', to: "accessories#new"
     resources :orders, only: [:show]
     get "bike-shop", to: "accessories#index"
   end
@@ -33,5 +34,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/trips-dashboard', to: 'trips#dashboard'
-
+  get '/:id', to: 'stations#show', as: :station
 end

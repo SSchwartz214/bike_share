@@ -3,7 +3,7 @@ require "rails_helper"
 describe "an admin user" do
   describe "visits /" do
     it "can click on login and fill out form" do
-      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1)
+      user_1 = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       visit root_path
 

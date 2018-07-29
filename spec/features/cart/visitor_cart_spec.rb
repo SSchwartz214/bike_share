@@ -69,7 +69,9 @@ describe "a visitor" do
 
       visit "/cart"
 
-      expect(page).to_not have_content("Checkout")
+      click_on "Checkout"
+
+      expect(current_path).to eq(login_path)
     end
 
     it "can remove an item" do

@@ -118,7 +118,7 @@ describe Station, type: :model do
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_2, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
       trip_3 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_3, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 
-      expect(station_1.most_frequent_destination).to eq(station_2)
+      expect(station_1.most_frequent_destination).to eq(station_2.name)
     end
     it 'can return the most frequent starting station' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
@@ -128,7 +128,7 @@ describe Station, type: :model do
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_2, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
       trip_3 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_3, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_2, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
 
-      expect(station_2.most_frequent_start).to eq(station_1)
+      expect(station_2.most_frequent_start).to eq(station_1.name)
     end
     # I see the Date with the highest number of trips started at this station,
     it '.date_with_most_trips' do

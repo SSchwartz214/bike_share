@@ -39,6 +39,7 @@ require 'time'
 # end
 
 Accessory.destroy_all
+User.destroy_all
 
 def to_date_time(date_string)
   unless date_string.nil?
@@ -73,9 +74,9 @@ def seed_data(path, data_type)
   end
 end
 
-seed_data('./data/station.csv', Station)
-seed_data('./data/trip.csv', Trip)
-seed_data('./data/weather.csv', Condition)
+# seed_data('./data/station.csv', Station)
+# seed_data('./data/trip.csv', Trip)
+# seed_data('./data/weather.csv', Condition)
 seed_data('./data/accessory.csv', Accessory)
 
 

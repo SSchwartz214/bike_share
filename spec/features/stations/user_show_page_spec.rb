@@ -13,12 +13,12 @@ describe 'as a registered user' do
 
       visit station_path(station_1)
 
-      expect(page).to have_content("Total rides: #{station_1.total_ride_starts}")
+      expect(page).to have_content("Number of rides started at this station: #{station_1.total_ride_starts}")
       expect(page).to have_content("Number of rides ended at this station: #{station_1.total_ride_ends}")
-      expect(page).to have_content(station_1.most_frequent_destination)
-      expect(page).to have_content(station_1.most_frequent_start)
-      expect(page).to have_content(station_1.date_with_most_trips)
-      expect(page).to have_content(station_1.zip_code_with_most_trips)
+      expect(page).to have_content("Most frequent destination station: #{station_1.most_frequent_destination}")
+      expect(page).to have_content("Most frequent origination station: #{station_1.most_frequent_start}")
+      expect(page).to have_content("Date with the highest number of trips: #{station_1.date_with_most_trips}")
+      expect(page).to have_content("Most frequent zip code for users starting trips at this station: #{station_1.zip_code_with_most_trips}")
       expect(page).to have_content("Bike with most trips: #{station_1.bike_with_most_trips}")
     end
   end

@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 describe 'as an admin' do

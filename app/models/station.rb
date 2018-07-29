@@ -51,13 +51,37 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_destination
-    start_trips.select('trips.end_station_id, count (trips.end_station_id) AS total')
+    end_station = start_trips.select('trips.end_station_id, count (trips.end_station_id) AS total')
     .group('trips.end_station_id')
-    .order('total')
+    .order('total DESC').first.end_station_id
+
+    Station.find(end_station).name
   end
 
   def most_frequent_start
-    Station.find(end_trips.group(:start_station_id).order(count_id: :desc).limit(1).count(:id).keys.first)
+  start_station = end_trips.select('trips.start_station_id, count (trips.start_station_id) AS total')
+    .group('trips.start_station_id')
+    .order('total DESC').first.start_station_id
+
+    Station.find(start_station).name
+  end
+
+  def date_with_most_trips
+    start_trips.select('trips.start_date, count(trips.start_station_id) AS total')
+    .group('trips.start_date')
+    .order('total').first.start_date
+  end
+
+  def zip_code_with_most_trips
+    start_trips.select('trips.zip_code, count(trips.start_station_id) AS total')
+    .group('trips.zip_code')
+    .order('total').first.zip_code
+  end
+
+  def bike_with_most_trips
+    start_trips.select('trips.bike_id, count(trips.start_station_id) AS total')
+    .group('trips.bike_id')
+    .order('total').first.bike_id
   end
 
   def self.most_starting_rides

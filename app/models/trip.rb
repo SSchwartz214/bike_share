@@ -71,10 +71,12 @@ class Trip < ApplicationRecord
     .select('conditions.*, count(trips.id) AS trip_total')
     .group('conditions.id')
     .order('trip_total')
-
+    
     weather_hash = {}
     weather_hash[weather.first.date] = weather.first
     weather_hash[weather.last.date] = weather.last
+
+
     weather_hash
   end
 

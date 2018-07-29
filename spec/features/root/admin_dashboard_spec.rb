@@ -138,7 +138,7 @@ describe "an admin" do
         click_on "Info"
       end
 
-      expect(current_path).to eq(order_path(order_1))
+      expect(current_path).to eq(admin_order_path(order_1))
       expect(page).to have_content(order_1.status)
     end
 

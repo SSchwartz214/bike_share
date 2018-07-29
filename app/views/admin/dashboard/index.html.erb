@@ -76,7 +76,7 @@
   <section id=<%= "display_#{order.id}" %> class="section-index-container">
     <div class="row station-row">
       <div class="col-sm-1 icon-column">
-        <%= link_to order_path(order) do %>
+        <%= link_to admin_order_path(order) do %>
           <i class="fas fa-info-circle"></i>
           <p class="hidden">Info</p>
         <% end %>

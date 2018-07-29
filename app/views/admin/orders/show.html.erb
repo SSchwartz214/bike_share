@@ -1,12 +1,54 @@
-<h2>Ordered by <%= @order.user.full_name %> </h2>
-<h4> <%= @order.user.address %> </h4>
+<h2>Order <%= @order.id %></h2>
 
-<% @order.order_accessories.each do |order_accessory| %>
-  <h3><%= link_to order_accessory.accessory.name, accessory_path(order_accessory.accessory) %>:</h3>
-  <p>Quantity: <%= order_accessory.quantity %></p>
-  <p>Subtotal: <%= order_accessory.subtotal %></p>
+<div class="row">
+  <div class="col-sm-3">
+    <h4>Name: <%= @order.user.full_name %> </h4>
+    <h4>Address: <%= @order.user.address %> </h4>
+  </div>
+  <div class="col-sm-4">
+    <h4>Status: <%= @order.status %></h4>
+    <h4>Ordered: <%= @order.created_at %></h4>
+  </div>
+</div>
+
+<h3 class="dashboard-heading"> Accessories </h3>
+
+<div class="row table-heading">
+    <div class="col-sm-3">
+      <p>Name</p>
+    </div>
+    <div class="col-sm-2">
+      <p>Quantity</p>
+    </div>
+    <div class="col-sm-2">
+      <p>Subtotal</p>
+    </div>
+  </div>
+</div>
+<div class="index-container trips-container">
+  <% @order.order_accessories.each do |order_accessory| %>
+    <section class="section-index-container">
+      <div class="row station-row">
+        <div class="col-sm-3">
+          <p><%= link_to order_accessory.accessory.name, accessory_path(order_accessory.accessory) %></p>
+        </div>
+        <div class="col-sm-2">
+          <p>Quantity: <%= order_accessory.quantity %></p>
+        </div>
+        <div class="col-sm-2">
+          <p>Subtotal: <%= number_to_currency(order_accessory.subtotal) %></p>
+        </div>
+      </div>
+    </div>
+  </section>
 <% end %>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-5">
 
-<p>Total: <%= @order.total %></p>
-<p>Status: <%= @order.status %></p>
-<p>Ordered: <%= @order.created_at %></p>
+  </div>
+  <div class="col-sm-2">
+    <h4>Total: <%= number_to_currency(@order.total)%></h4>
+  </div>
+</div>

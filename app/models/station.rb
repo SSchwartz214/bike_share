@@ -85,10 +85,10 @@ class Station < ApplicationRecord
   end
 
   def self.most_starting_rides
-    joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first
+    joins(:start_trips).group("stations.id").order('COUNT(stations.id) DESC').first.name
   end
 
   def self.most_ending_rides
-    joins(:end_trips).group("stations.id").order('COUNT(stations.id) DESC').first
+    joins(:end_trips).group("stations.id").order('COUNT(stations.id) DESC').first.name
   end
 end

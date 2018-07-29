@@ -12,6 +12,13 @@
   <div class="col-sm-2">
     <p>shortest ride</p>
   </div>
+  <div class="col-sm-3">
+    <p>Most popular starting station</p>
+  </div>
+  <div class="col-sm-3">
+    <p>Most popular ending station</p>
+  </div>
+
 </div>
 
 <div class="row">
@@ -23,6 +30,12 @@
   </div>
   <div class="col-sm-2">
     <p><%= distance_of_time_in_words(@shortest_ride) %></p>
+  </div>
+  <div class="col-sm-3">
+    <p><%= @popular_starting_station %></p>
+  </div>
+  <div class="col-sm-3">
+    <p><%= @popular_ending_station %></p>
   </div>
 </div>
 

@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
-    resources :accessories
+    resources :accessories, except: [:new]
+    get '/bike-shop/new', to: "accessories#new"
     resources :orders, only: [:show]
     get "bike-shop", to: "accessories#index"
   end

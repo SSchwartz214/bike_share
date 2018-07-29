@@ -1,5 +1,22 @@
 @import "shared_values";
 
+.reset-button-style {
+  background: $primary-color;
+  color: white;
+  border: none;
+}
+
+.cancel-button-style {
+  background: red;
+  border: none;
+}
+
+.cancel-button-style:hover {
+  box-shadow: 1px;
+  background: crimson;
+  color: white;
+}
+
 .fa-edit {
   color: black;
 }

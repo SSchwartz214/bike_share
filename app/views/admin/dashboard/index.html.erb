@@ -16,7 +16,6 @@
     <h5><strong>Last name:</strong></h5>
     <p><%= current_user.last_name %></p>
 
-    <%= link_to "View Accessories", admin_bike_shop_path %>
   </div>
   <div class="col-sm-6">
     <h2>Creation options</h2>
@@ -29,6 +28,9 @@
     <%= link_to new_admin_station_path do %>
       <h4><i class="fas fa-building dashboard-icon"></i>Station</h4>
     <% end %>
+    <%= link_to new_admin_accessory_path do %>
+      <h4><i class="fas fa-box-open dashboard-icon"></i>Accessory</h4><%= link_to "View Accessories", admin_bike_shop_path %>
+    <% end %>
   </div>
 </div>
 
@@ -36,10 +38,15 @@
 <h3 class="dashboard-heading">All user orders:</h3>
 
 <section class="dashboard-filter-options">
-  <p>Sort by:</p>
+  <p><i class="fas fa-filter"></i></p>
+  <%= link_to "All", admin_dashboard_index_path, class:"hvr-skew" %>
+  <p class="divider"> | </p>
   <%= link_to "Ordered", admin_dashboard_index_path(status: "ordered"), class:"hvr-skew" %>
+  <p class="divider"> | </p>
   <%= link_to "Paid", admin_dashboard_index_path(status: "paid"), class:"hvr-skew" %>
+  <p class="divider"> | </p>
   <%= link_to "Cancelled", admin_dashboard_index_path(status: "cancelled"), class:"hvr-skew" %>
+  <p class="divider"> | </p>
   <%= link_to "Completed", admin_dashboard_index_path(status: "completed"), class:"hvr-skew" %>
 </section>
 
@@ -60,44 +67,45 @@
     <p>Status</p>
   </div>
   <div class="col-sm-2">
-    <p>Change</p>
+    <p>Change status</p>
   </div>
 </div>
 
-
-<% @orders.each do |order| %>
-<section id=<%= "display_#{order.id}" %>>
-  <div class="row">
-    <div class="col-sm-1">
-      <%= link_to order_path(order) do %>
-        <i class="fas fa-info-circle"></i>
-        <p class="hidden">Info</p>
-      <% end %>
+<div class="index-container trips-container">
+  <% @orders.each do |order| %>
+  <section id=<%= "display_#{order.id}" %> class="section-index-container">
+    <div class="row station-row">
+      <div class="col-sm-1 icon-column">
+        <%= link_to order_path(order) do %>
+          <i class="fas fa-info-circle"></i>
+          <p class="hidden">Info</p>
+        <% end %>
+      </div>
+      <div class="col-sm-1">
+        <p><%= order.id %></p>
+      </div>
+      <div class="col-sm-2">
+        <p><%= order.user.full_name %></p>
+      </div>
+      <div class="col-sm-2">
+        <p><%= order.created_at %></p>
+      </div>
+      <div class="col-sm-2">
+        <p><%= order.status %></p>
+      </div>
+      <div class="col-sm-4">
+        <% if order.status == "ordered" %>
+          <%= link_to "mark as paid", order_path(order, new_status: "paid"), method: :put, class:"btn btn-primary reset-button-style" %>
+          <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put, class:"btn btn-primary cancel-button-style" %>
+        <% elsif order.status == "paid" %>
+          <%= link_to "mark as completed", order_path(order, new_status: "completed"), method: :put, class:"btn btn-primary reset-button-style" %>
+          <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put, class:"btn btn-primary cancel-button-style" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-1">
-      <p><%= order.id %></p>
-    </div>
-    <div class="col-sm-2">
-      <p><%= order.user.full_name %></p>
-    </div>
-    <div class="col-sm-2">
-      <p><%= order.created_at %></p>
-    </div>
-    <div class="col-sm-2">
-      <p><%= order.status %></p>
-    </div>
-    <div class="col-sm-2">
-      <% if order.status == "ordered" %>
-        <%= link_to "mark as paid", order_path(order, new_status: "paid"), method: :put %>
-        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
-      <% elsif order.status == "paid" %>
-        <%= link_to "mark as completed", order_path(order, new_status: "completed"), method: :put %>
-        <%= link_to "cancel", order_path(order, new_status: "cancelled"), method: :put %>
-      <% end %>
-    </div>
-  </div>
-</section>
+  </section>
 <% end %>
+</div>
 
 <h3>Orders by Status</h3>
 <% @order_by_status.each do |status, count| %>

@@ -6,7 +6,15 @@ class StationsController < ApplicationController
   end
 
   def show
-
+    unless @station.start_trips.empty?
+      @total_ride_starts = @station.total_ride_starts
+      @total_ride_ends = @station.total_ride_ends
+      @most_frequent_destination = @station.most_frequent_destination
+      @most_frequent_start = @station.most_frequent_start
+      @date_with_most_trips = @station.date_with_most_trips
+      @zip_code_with_most_trips = @station.zip_code_with_most_trips
+      @bike_with_most_trips = @station.bike_with_most_trips
+    end
   end
 
   def dashboard

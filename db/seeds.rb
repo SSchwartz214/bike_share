@@ -73,7 +73,18 @@ def seed_data(path, data_type)
   end
 end
 
-# seed_data('./data/station.csv', Station)
-# seed_data('./data/trip.csv', Trip)
-# seed_data('./data/weather.csv', Condition)
+seed_data('./data/station.csv', Station)
+seed_data('./data/trip.csv', Trip)
+seed_data('./data/weather.csv', Condition)
 seed_data('./data/accessory.csv', Accessory)
+
+
+user_1 = User.create!(id:1000, first_name: "Bill", last_name: "Brasky", username: "billy", password:"billy", address:"10 S. Boondoggle St.")
+
+user_2 = User.create!(id:1001, first_name: "Debbie", last_name: "Downer", username: "Debbie", password:"Debbie", address:"20 W. Deception Way")
+
+user_3 = User.create!(id:1002, first_name: "Astronaut", last_name: "Jones", username: "jones", password:"jones", address:"2 duplicity ave.")
+
+user_4 = User.create!(id:1003, first_name: "defaulty", last_name: "mcdefault", username: "default", password:"default", address:"28 default default")
+
+User.create!(id:1004, first_name: "admin", last_name: "admin", username: "admin", password:"admin", address: "15 admin way", role: 1)

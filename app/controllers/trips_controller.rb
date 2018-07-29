@@ -15,6 +15,8 @@ class TripsController < ApplicationController
     @subscription_status = Trip.subscription_by_user
     @trips_by_date = Trip.trips_by_date
     @trips_weather = Trip.trip_weather.values
+    @popular_starting_station = Station.most_starting_rides
+    @popular_ending_station = Station.most_ending_rides
   end
 
   def show

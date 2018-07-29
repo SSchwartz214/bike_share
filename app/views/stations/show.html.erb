@@ -26,7 +26,7 @@
 <p><%= @station.installation_date.to_s %></p>
 
 <% unless @station.start_trips.empty? %>
-  <p><strong>Total rides:</strong></p>
+  <p><strong>Number of rides started at this station:</strong></p>
   <p><%= @total_ride_starts %></p>
   <p><strong>Number of rides ended at this station:</strong></p>
   <p><%= @total_ride_ends %></p>

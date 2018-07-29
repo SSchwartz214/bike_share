@@ -1,0 +1,77 @@
+<head>
+  <script>
+    var accessories = {};
+    <% @accessories.each do |accessory| %>
+      accessories[<%= accessory.id %>] = {};
+      accessories[<%= accessory.id %>].quantity = <%= @cart.contents[accessory.id.to_s] %>
+      accessories[<%= accessory.id %>].price = <%= accessory.price %>
+    <% end %>
+  </script>
+  <%= javascript_include_tag "cart" %>
+</head>
+
+<body onload="display_quantity();" onclick="update();">
+
+<div class="row">
+  <div class="col-sm-8">
+    <h2> Your cart: </h2>
+  </div>
+  <div class="col-sm-4">
+    <h2>Payment:</h2>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-sm-8">
+    <div class="row row-align-center">
+<% @accessories.each do |accessory| %>
+  <div class="col-sm-5">
+    <div class="container text-muted">
+      <div class="card">
+        <div class="card-body card-reset">
+          <p id=<%= "display_#{accessory.id}" %>>
+            <%= image_tag(accessory.image_url, size: "100x100") %>
+            <p>name: <%= accessory.name %></p>
+            <p>price: <%= number_to_currency(accessory.price) %></p>
+            <p>quantity:</p>
+            <button onclick=<%= "decrement(#{accessory.id});" %>>-</button>
+            <nobr id=<%= "#{accessory.id}_quantity" %>></nobr>
+            <button onclick=<%= "increment(#{accessory.id});" %>>+</button>
+            <h4>Subtotal:</h4>
+            <span>$</span><nobr id=<%= "#{accessory.id}_subtotal" %>></nobr>
+            <nobr id=<%= "remove_#{accessory.id}" %> >
+              <%= link_to "Remove", cart_remove_item_path(accessory_id: "#{accessory.id}"), method: :post %>
+            </nobr>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+  </div>
+  </div>
+  <div class="col-4">
+    <h3>Total: $<nobr id="total"></nobr></h3>
+    <p class="credit-card-logos"><i class="fab fa-cc-visa"></i>    <i class="fab fa-cc-amex"></i>    <i class="fab fa-cc-paypal"></i>    <i class="fab fa-cc-apple-pay"></i></p>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <br>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <% if current_user && @cart.total(@accessories) > 0 %>
+      <span><%= link_to "Checkout", orders_path, method: :post, class:"btn btn-primary btn-lg" %>
+        <% end %>
+  </div>
+</div>
+
+
+
+
+
+<form id="exit_values" action="/cart" method="post">
+  <% @accessories.each do |accessory| %>
+    <input type="hidden" id=<%= "update_accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />
+  <% end %>
+</form>
+
+</body>

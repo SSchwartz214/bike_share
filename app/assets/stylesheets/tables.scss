@@ -1,5 +1,20 @@
 @import "shared_values";
 
+.row-align-center {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon-column {
+  display: flex;
+  justify-content: center;
+}
+
+.station-row {
+  display: flex;
+  align-items: center;
+}
+
 .table-heading {
   border-bottom: 1px solid $secondary-color;
 }

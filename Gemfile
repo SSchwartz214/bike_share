@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "chartkick"
+
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'will_paginate', '~> 3.1.0'
@@ -35,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails'
+
+gem 'figaro'
 
 
 # Use Capistrano for deployment

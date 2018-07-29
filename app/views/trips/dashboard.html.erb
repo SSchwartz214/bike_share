@@ -1,0 +1,79 @@
+<h2>Trips Dashboard</h2>
+
+<h3 class="dashboard-heading">Trip duration stats:</h3>
+
+<div class="row table-heading">
+  <div class="col-sm-2">
+    <p>Average duration</p>
+  </div>
+  <div class="col-sm-2">
+    <p>Longest ride</p>
+  </div>
+  <div class="col-sm-2">
+    <p>shortest ride</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">
+    <p><%= distance_of_time_in_words(@average_ride) %></p>
+  </div>
+  <div class="col-sm-2">
+    <p><%= distance_of_time_in_words(@longest_ride) %></p>
+  </div>
+  <div class="col-sm-2">
+    <p><%= distance_of_time_in_words(@shortest_ride) %></p>
+  </div>
+</div>
+
+<h3>Trips by month</h3>
+
+<%= line_chart @trips_by_month %>
+
+<h3>Trips by year</h3>
+
+<%= line_chart @trips_by_year %>
+<div class="row">
+  <div class="col-sm-6">
+    <h3> Most and least ridden bike </h3>
+
+    <%= bar_chart @trips_by_bike, xtitle: "number of trips", ytitle: "bike ID" %>
+  </div>
+  <div class="col-sm-6">
+    <h3>Subscription status</h3>
+
+    <%= pie_chart @subscription_status, colors: ["#002856", "#b8500c"] %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3> Most and least rides by day: </h3>
+
+    <%= bar_chart @trips_by_date, xtitle: "number of trips", ytitle: "date"  %>
+  </div>
+  <div class="col-sm-6">
+    <h3>Weather Conditions</h3>
+    <div class="row">
+      <div class="col-sm-6" id="worst-day">
+        <h4>Worst day:</h4>
+        <p>max temp(f): <%= @trips_weather[0].max_temperature_f %></p>
+        <p>min temp(f): <%= @trips_weather[0].min_temperature_f %></p>
+        <p>average temp(f): <%= @trips_weather[0].mean_temperature_f %></p>
+        <p>mean humidity: <%= @trips_weather[0].mean_humidity %></p>
+        <p>mean visibility(miles): <%= @trips_weather[0].mean_visibility_miles%></p>
+        <p>mean wind speed(mph): <%= @trips_weather[0].mean_wind_speed_mph %></p>
+        <p>precipitation(inches): <%= @trips_weather[0].precipitation_inches%></p>
+      </div>
+      <div class="col-sm-6" id="best-day">
+        <h4>Best day:</h4>
+        <p>max temp(f): <%= @trips_weather[1].max_temperature_f %></p>
+        <p>min temp(f): <%= @trips_weather[1].min_temperature_f %></p>
+        <p>average temp(f): <%= @trips_weather[1].mean_temperature_f %></p>
+        <p>mean humidity: <%= @trips_weather[1].mean_humidity %></p>
+        <p>mean visibility(miles): <%= @trips_weather[1].mean_visibility_miles%></p>
+        <p>mean wind speed(mph): <%= @trips_weather[1].mean_wind_speed_mph %></p>
+        <p>precipitation(inches): <%= @trips_weather[1].precipitation_inches%></p>
+      </div>
+  </div>
+</div>

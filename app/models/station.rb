@@ -51,7 +51,9 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_destination
-    Station.find(start_trips.group(:end_station_id).order(count_id: :desc).limit(1).count(:id).keys.first)
+    start_trips.select('trips.end_station_id, count (trips.end_station_id) AS total')
+    .group('trips.end_station_id')
+    .order('total')
   end
 
   def most_frequent_start
@@ -63,6 +65,6 @@ class Station < ApplicationRecord
   end
 
   def self.most_ending_rides
-    joins(:end_trips).group("stations.id").order('COUNT(stations.id) DESC').firts
+    joins(:end_trips).group("stations.id").order('COUNT(stations.id) DESC').first
   end
 end

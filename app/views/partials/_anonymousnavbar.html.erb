@@ -4,8 +4,27 @@
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon navbar-"></span>
   </button>
+  <p class="nav-link"> | </p>
+  <a class="navbar-brand hvr-skew" href="/bike-shop"><i class="fas fa-bicycle"></i>SHOP</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon navbar-"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <%= link_to cart_path, class:"nav-link hvr-skew", method: :get do %>
+          <p><i class="fas fa-shopping-cart"></i><% if @cart.total_count > 0 %>Items in cart: <%= @cart.total_count %><% end %></p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Stations", stations_path, class:"nav-link hvr-skew" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Trips", trips_path, class:"nav-link hvr-skew" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Conditions", conditions_path, class:"nav-link hvr-skew" %>
+      </li>
       <li class="nav-item">
         <%= link_to "Create Account", new_user_path, class:"nav-link hvr-skew" %>
       </li>

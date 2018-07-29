@@ -1,15 +1,26 @@
 <h2><%= @station.name %></h2>
 
+<% if current_admin? %>
+<div class="button-container">
+  <div class="edit-container">
+    <%= link_to edit_admin_station_path(@station) do %>
+        <i class="far fa-edit link-text">
+        <p class="hidden">Edit</p></i>
+    <% end %>
+  </div>
+  <div class="delete-container">
+    <%= link_to station_path(@station), method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+      <p class="hidden">Delete</p>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+
 <p><strong>City:</strong><p>
 <p><%= @station.city %></p>
 <p><strong>Dock count:</strong><p>
 <p><%= @station.dock_count %></p>
 <p><strong>Installation date:</strong><p>
 <p><%= @station.installation_date.to_s.chomp("00:00:00 UTC") %></p>
-
-<% if current_admin? %>
-
-  <%= button_to "Delete", station_path(@station), method: :delete %>
-  <%= button_to "Edit", edit_admin_station_path(@station), method: :get %>
-
-<% end %>

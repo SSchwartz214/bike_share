@@ -18,11 +18,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.id.to_s != params[:id]
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def update
     @user.update(user_params)
-    if @user.save
+    if @user.save && current_user.admin?
+      flash[:success] = "Your profile has been updated!"
+      redirect_to admin_dashboard_index_path
+    elsif @user.save && !current_user.admin?
       flash[:success] = "Your profile has been updated!"
       redirect_to dashboard_path
     else

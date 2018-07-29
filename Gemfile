@@ -5,7 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'figaro'
+gem "figaro"
+
+gem "chartkick"
 
 gem 'friendly_id', '~> 5.1.0'
 

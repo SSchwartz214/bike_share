@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180729171250) do
+=======
+ActiveRecord::Schema.define(version: 20180729194303) do
+>>>>>>> 268532b4519cbea20ec2f59cb330ddc8aa779c7e
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180729171250) do
     t.string "name"
     t.integer "price"
     t.integer "status", default: 0
-    t.string "image_url"
+    t.string "image_url", default: "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
     t.string "description"
   end
 

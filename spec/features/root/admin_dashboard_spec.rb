@@ -138,7 +138,7 @@ describe "an admin" do
         click_on "Info"
       end
 
-      expect(current_path).to eq(order_path(order_1))
+      expect(current_path).to eq(admin_order_path(order_1))
       expect(page).to have_content(order_1.status)
     end
 
@@ -182,6 +182,59 @@ describe "an admin" do
       within "#display_#{order_2.id}" do
         expect(page).to have_content("completed")
       end
+    end
+
+    it 'can filter by status' do
+      admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1)
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+
+      order_1 = user.orders.create!(status: "ordered")
+      order_2 = user.orders.create!(status: "paid")
+      order_3 = user.orders.create!(status: "cancelled")
+      order_4 = user.orders.create!(status: "completed")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_dashboard_index_path
+
+      expect(page).to have_css("#display_#{order_1.id}")
+      expect(page).to have_css("#display_#{order_2.id}")
+      expect(page).to have_css("#display_#{order_3.id}")
+      expect(page).to have_css("#display_#{order_4.id}")
+
+
+      click_on("Ordered")
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      expect(page).to have_css("#display_#{order_1.id}")
+      expect(page).to_not have_css("#display_#{order_2.id}")
+      expect(page).to_not have_css("#display_#{order_3.id}")
+      expect(page).to_not have_css("#display_#{order_4.id}")
+
+      click_on("Paid")
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      expect(page).to_not have_css("#display_#{order_1.id}")
+      expect(page).to have_css("#display_#{order_2.id}")
+      expect(page).to_not have_css("#display_#{order_3.id}")
+      expect(page).to_not have_css("#display_#{order_4.id}")
+
+      click_on("Cancelled")
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      expect(page).to_not have_css("#display_#{order_1.id}")
+      expect(page).to_not have_css("#display_#{order_2.id}")
+      expect(page).to have_css("#display_#{order_3.id}")
+      expect(page).to_not have_css("#display_#{order_4.id}")
+
+      click_on("Completed")
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      expect(page).to_not have_css("#display_#{order_1.id}")
+      expect(page).to_not have_css("#display_#{order_2.id}")
+      expect(page).to_not have_css("#display_#{order_3.id}")
+      expect(page).to have_css("#display_#{order_4.id}")
+
     end
   end
 end

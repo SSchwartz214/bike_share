@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
-  before_action :update, only: [:checkout, :remove_item]
+  before_action :update, only: [:remove_item]
 
   def create
     accessory = Accessory.find(params[:accessory_id])
@@ -41,14 +41,5 @@ class CartsController < ApplicationController
     @cart.remove_accessory(id)
     flash[:deleted] = "You successfully removed #{name} from your cart"
     redirect_to cart_path
-  end
-
-  def checkout
-
-    accessories = Accessory.where(id: @cart.accessories)
-
-    flash[:success] = "Successfully submitted your order totalling $#{@cart.total(accessories)}"
-
-    redirect_to dashboard_path
   end
 end

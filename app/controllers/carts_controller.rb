@@ -39,7 +39,8 @@ class CartsController < ApplicationController
     id = params["accessory_id"]
     name = Accessory.find(id.to_i).name
     @cart.remove_accessory(id)
-    flash[:deleted] = "You successfully removed #{name} from your cart"
+    flash[:notice] = "You successfully removed #{name} from your cart"
+    # flash[:notice] = "You successfully removed #{view_context.link_to(name, accessory_path(id))} from your cart"
     redirect_to cart_path
   end
 end

@@ -20,24 +20,21 @@
   </div>
   <div class="col-sm-6">
     <h3>Station bike information</h3>
-      <p><strong>Average Bikes Per Station:</strong></p>
-      <p class="hidden"><%= @average_bikes %></p>
+      <p><strong>Average Bikes Per Station: <%= @average_bikes.to_i %></strong></p>
       <p>
           <% @average_bikes.to_i.times do %>
             <i class="fas fa-bicycle"></i>
           <% end %>
 
       </p>
-      <p><strong><%= @most_bikes_station %> has the most bikes:</strong></p>
-      <p class="hidden"><%= @most_bikes %></p>
+      <p><strong><%= @most_bikes_station %> has the most bikes: <%= @most_bikes %></strong></p>
 
       <p>
       <% @most_bikes.times do %>
         <i class="fas fa-bicycle"></i>
       <% end %>
       </p>
-      <p><strong><%= @fewest_bikes_station %> has the least bikes:</strong></p>
-      <p class="hidden"><%= @fewest_bikes%></p>
+      <p><strong><%= @fewest_bikes_station %> has the least bikes: <%= @fewest_bikes%> </strong></p>
 
       <p>
       <% @fewest_bikes.times do %>

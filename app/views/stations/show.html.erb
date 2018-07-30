@@ -1,43 +1,50 @@
-<h2><%= @station.name %></h2>
+<h2><%= @station.name %>
 
 <% if current_admin? %>
-<div class="button-container">
-  <div class="edit-container">
     <%= link_to edit_admin_station_path(@station) do %>
         <i class="far fa-edit link-text">
         <p class="hidden">Edit</p></i>
     <% end %>
-  </div>
-  <div class="delete-container">
+
     <%= link_to admin_station_path(@station), method: :delete do %>
       <i class="far fa-trash-alt"></i>
       <p class="hidden">Delete</p>
     <% end %>
+
+<% end %>
+</h2>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Station information</h3>
+    <p class="important-text"><strong>City:</strong></p>
+    <p><%= @station.city %></p>
+    <p class="important-text"><strong>Dock count: <%= @station.dock_count %></strong><p>
+    <p>
+      <% @station.dock_count.times do %>
+        <i class="fas fa-bicycle"></i>
+      <% end %>
+    </p>
+    <p class="important-text"><strong>Installation date:</strong><p>
+    <p><%= @station.installation_date.to_s %></p>
+  </div>
+  <div class="col-sm-6">
+    <h3>Trip information</h3>
+    <% unless @station.start_trips.empty? %>
+      <p class="important-text"><strong>Number of rides started at this station:</strong></p>
+      <p><%= @total_ride_starts %></p>
+      <p class="important-text"><strong>Number of rides ended at this station:</strong></p>
+      <p><%= @total_ride_ends %></p>
+      <p class="important-text"><strong>Most frequent destination station:</strong></p>
+      <p><%= @most_frequent_destination %></p>
+      <p class="important-text"><strong>Most frequent origination station:</strong></p>
+      <p><%= @most_frequent_start %></p>
+      <p class="important-text"><strong>Date with the highest number of trips:</strong></p>
+      <p><%= @date_with_most_trips %></p>
+      <p class="important-text"><strong>Most frequent zip code for users starting trips at this station:</strong></p>
+      <p><%= @zip_code_with_most_trips %></p>
+      <p class="important-text"><strong>Bike with most trips:</strong></p>
+      <p><%= @bike_with_most_trips %> </p>
+    <% end %>
   </div>
 </div>
-<% end %>
-
-
-<p><strong>City:</strong><p>
-<p><%= @station.city %></p>
-<p><strong>Dock count:</strong><p>
-<p><%= @station.dock_count %></p>
-<p><strong>Installation date:</strong><p>
-<p><%= @station.installation_date.to_s %></p>
-
-<% unless @station.start_trips.empty? %>
-  <p><strong>Number of rides started at this station:</strong></p>
-  <p><%= @total_ride_starts %></p>
-  <p><strong>Number of rides ended at this station:</strong></p>
-  <p><%= @total_ride_ends %></p>
-  <p><strong>Most frequent destination station:</strong></p>
-  <p><%= @most_frequent_destination %></p>
-  <p><strong>Most frequent origination station:</strong></p>
-  <p><%= @most_frequent_start %></p>
-  <p><strong>Date with the highest number of trips:</strong></p>
-  <p><%= @date_with_most_trips %></p>
-  <p><strong>Most frequent zip code for users starting trips at this station:</strong></p>
-  <p><%= @zip_code_with_most_trips %></p>
-  <p><strong>Bike with most trips:</strong></p>
-  <p><%= @bike_with_most_trips %> </p>
-<% end %>

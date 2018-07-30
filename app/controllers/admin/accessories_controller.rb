@@ -12,7 +12,10 @@ class Admin::AccessoriesController < ApplicationController
      @accessory.image_url = "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
    end
    @accessory.id = assign_id(Accessory)
-   if @accessory.save
+   if @accessory.price < 0
+     flash[:warning] = "Price cannot be negative."
+     render :new
+   elsif @accessory.save
      flash[:notice] = "#{@accessory.name} created successfully!"
      redirect_to accessory_path(@accessory)
    else
@@ -34,11 +37,25 @@ class Admin::AccessoriesController < ApplicationController
       @accessory.status = params[:status]
       @accessory.save
       redirect_to admin_bike_shop_path
+    else
+
+      @accessory.update(accessory_params)
+      if @accessory.price < 0
+        flash[:warning] = "Price cannot be negative."
+        render :edit
+      elsif @accessory.save
+        redirect_to accessory_path(@accessory)
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
     acc_name = @accessory.name
+    @accessory.order_accessories.each do |order_accessory|
+      order_accessory.destroy
+    end
     @accessory.destroy
 
     flash[:notice] = "#{acc_name} deleted!"

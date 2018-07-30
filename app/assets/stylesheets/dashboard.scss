@@ -1,5 +1,9 @@
 @import "shared_values";
 
+.bike-holder .fa-bicycle {
+  color: $primary-color;
+}
+
 .dashboard-active {
   border-bottom: 3px solid $warning-color;
 }

@@ -38,8 +38,12 @@ class Admin::AccessoriesController < ApplicationController
       @accessory.save
       redirect_to admin_bike_shop_path
     else
+
       @accessory.update(accessory_params)
-      if @accessory.save
+      if @accessory.price < 0
+        flash[:warning] = "Price cannot be negative."
+        render :edit
+      elsif @accessory.save
         redirect_to accessory_path(@accessory)
       else
         render :edit

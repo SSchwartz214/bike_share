@@ -21,7 +21,7 @@
 <% @stations.each do |station| %>
 <section class="section-index-container" id=<%= "display_#{station.id}" %>>
   <div class="row station-row">
-    <div class="col-sm-1">
+    <div class="col-sm-1 icon-column">
       <% if current_user&.admin? %>
       <%= link_to edit_admin_station_path(station), method: :get do %>
       <i class="far fa-edit"></i>

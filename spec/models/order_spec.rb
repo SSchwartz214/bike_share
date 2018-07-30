@@ -12,7 +12,7 @@ describe Order, type: :model do
 
   describe 'instance methods' do
     it 'returns the total' do
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order = user.orders.create(status: "completed")
 
@@ -29,7 +29,7 @@ describe Order, type: :model do
   end
   describe 'class methods' do
     it '.group_by_status' do
-      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod")
+      user = User.create!(first_name: "wfdsx", last_name: "c", username: "redfscx", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
 
       order_1 = user.orders.create!(status: "ordered")
       order_2 = user.orders.create!(status: "paid")

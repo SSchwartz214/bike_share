@@ -90,6 +90,9 @@ ActiveRecord::Schema.define(version: 20180729202204) do
     t.string "password_digest"
     t.integer "role", default: 0
     t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
   end
 
   add_foreign_key "order_accessories", "accessories"

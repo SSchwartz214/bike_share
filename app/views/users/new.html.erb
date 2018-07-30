@@ -3,7 +3,7 @@
 
 <div class="all-forms">
   <%= form_for @user do |f| %>
-      <%= f.label "first name" %>
+    <%= f.label "first name" %>
     <div class="form-group">
       <%= f.text_field :first_name%>
     </div>
@@ -11,7 +11,23 @@
     <div class="form-group">
       <%= f.text_field :last_name %>
     </div>
-      <%= f.label :username %>
+      <%= f.label "address" %>
+    <div class="form-group">
+      <%= f.text_field :address %>
+    </div>
+      <%= f.label "city" %>
+    <div class="form-group">
+      <%= f.text_field :city %>
+    </div>
+      <%= f.label "state" %>
+    <div class="form-group">
+      <%= f.text_field :state %>
+    </div>
+      <%= f.label "zip_code" %>
+    <div class="form-group">
+      <%= f.number_field :zip_code %>
+    </div>
+      <%= f.label "username" %>
     <div class="form-group">
       <%= f.text_field :username %>
     </div>

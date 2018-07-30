@@ -4,11 +4,6 @@ class Trip < ApplicationRecord
   belongs_to :start_station, class_name: "Station"
   belongs_to :end_station, class_name: "Station"
 
-  def seconds_to_time(seconds)
-    #TODO find ruby method
-    [seconds / 3600, seconds / 60 % 60, seconds % 60].map { |t| t.to_s.rjust(2,'0') }.join(':')
-  end
-
   def self.avg_duration
     average(:duration)
   end
@@ -71,13 +66,10 @@ class Trip < ApplicationRecord
     .select('conditions.*, count(trips.id) AS trip_total')
     .group('conditions.id')
     .order('trip_total')
-    
+
     weather_hash = {}
     weather_hash[weather.first.date] = weather.first
     weather_hash[weather.last.date] = weather.last
-
-
     weather_hash
   end
-
 end

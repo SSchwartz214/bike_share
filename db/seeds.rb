@@ -39,6 +39,7 @@ require 'time'
 # end
 
 Accessory.destroy_all
+User.destroy_all
 
 def to_date_time(date_string)
   unless date_string.nil?
@@ -73,18 +74,18 @@ def seed_data(path, data_type)
   end
 end
 
-seed_data('./data/station.csv', Station)
-seed_data('./data/trip.csv', Trip)
-seed_data('./data/weather.csv', Condition)
+# seed_data('./data/station.csv', Station)
+# seed_data('./data/trip.csv', Trip)
+# seed_data('./data/weather.csv', Condition)
 seed_data('./data/accessory.csv', Accessory)
 
 
-user_1 = User.create!(id:1000, first_name: "Bill", last_name: "Brasky", username: "billy", password:"billy", address:"10 S. Boondoggle St.")
+user_1 = User.create!(id:1000, first_name: "Bill", last_name: "Brasky", username: "billy", password:"billy", address:"10 S. Boondoggle St.", city: "Denver", state: "CO", zip_code: 12345)
 
-user_2 = User.create!(id:1001, first_name: "Debbie", last_name: "Downer", username: "Debbie", password:"Debbie", address:"20 W. Deception Way")
+user_2 = User.create!(id:1001, first_name: "Debbie", last_name: "Downer", username: "Debbie", password:"Debbie", address:"20 W. Deception Way", city: "Denver", state: "CO", zip_code: 12345)
 
-user_3 = User.create!(id:1002, first_name: "Astronaut", last_name: "Jones", username: "jones", password:"jones", address:"2 duplicity ave.")
+user_3 = User.create!(id:1002, first_name: "Astronaut", last_name: "Jones", username: "jones", password:"jones", address:"2 duplicity ave.", city: "Denver", state: "CO", zip_code: 12345)
 
-user_4 = User.create!(id:1003, first_name: "defaulty", last_name: "mcdefault", username: "default", password:"default", address:"28 default default")
+user_4 = User.create!(id:1003, first_name: "defaulty", last_name: "mcdefault", username: "default", password:"default", address:"28 default default", city: "Denver", state: "CO", zip_code: 12345)
 
-User.create!(id:1004, first_name: "admin", last_name: "admin", username: "admin", password:"admin", address: "15 admin way", role: 1)
+User.create!(id:1004, first_name: "admin", last_name: "admin", username: "admin", password:"admin", address: "15 admin way", role: 1, city: "Denver", state: "CO", zip_code: 12345)

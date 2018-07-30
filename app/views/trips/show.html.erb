@@ -1,42 +1,53 @@
-<h2> Trip: <%= @trip.id %></h2>
+<h2> Trip: <%= @trip.id %>
 
 <% if current_admin? %>
-<div class="button-container">
-  <div class="edit-container">
     <%= link_to edit_admin_trip_path(@trip) do %>
         <i class="far fa-edit link-text">
         <p class="hidden">Edit Trip</p></i>
     <% end %>
-  </div>
-  <div class="delete-container">
     <%= link_to admin_trip_path(@trip), method: :delete do %>
       <i class="far fa-trash-alt"></i>
       <p class="hidden">Delete Trip</p>
     <% end %>
-  </div>
-</div>
+
 <% end %>
 
-<p><strong>Duration:</strong><p>
-<p><%= @trip.seconds_to_time(@trip.duration) %></p>
+</h2>
 
-<p><strong>Start Date:</strong></p>
-<%= @trip.start_date %></p>
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Trip information</h3>
+    <p class="important-text"><strong>Duration:</strong><p>
+    <p><%= distance_of_time_in_words(@trip.duration) %></p>
 
-<p><strong>Start Station:</strong></p>
-<p><%= @trip.start_station.name %></p>
+    <p class="important-text"><strong>Bike ID:</strong></p>
+    <p><%= @trip.bike_id %></p>
 
-<p><strong>End Date:</strong></p>
-<p><%= @trip.end_date %></p>
+    <p class="important-text"><strong>Subscription Type:</strong></p>
+    <p><%= @trip.subscription_type %></p>
 
-<p><strong>End Station:</strong></p>
-<p><%= @trip.end_station.name%></p>
+    <p class="important-text"><strong>Zip Code:</strong></p>
+    <p><%= @trip.zip_code %></p>
 
-<p><strong>Bike ID:</strong></p>
-<p><%= @trip.bike_id %></p>
+  </div>
+  <div class="col-sm-4">
+    <h3>Station information</h3>
+    <p class="important-text"><strong>Start Station:</strong></p>
+    <p><%= @trip.start_station.name %></p>
 
-<p><strong>Subscription Type:</strong></p>
-<p><%= @trip.subscription_type %></p>
+    <p class="important-text"><strong>End Station:</strong></p>
+    <p><%= @trip.end_station.name%></p>
 
-<p><strong>Zip Code:</strong></p>
-<p><%= @trip.zip_code %></p>
+
+  </div>
+
+  <div class="col-sm-2">
+    <h3>Dates</h3>
+    <p class="important-text"><strong>Start Date:</strong></p>
+    <%= @trip.start_date %></p>
+
+    <p class="important-text"><strong>End Date:</strong></p>
+    <p><%= @trip.end_date %></p>
+
+  </div>
+</div>

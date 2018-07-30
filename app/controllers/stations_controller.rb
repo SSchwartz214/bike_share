@@ -28,12 +28,6 @@ class StationsController < ApplicationController
     @oldest = Station.oldest.name
   end
 
-  def destroy
-    set_station.destroy
-    flash[:success] = "Station deleted"
-    redirect_to stations_path
-  end
-
   private
 
   def set_station

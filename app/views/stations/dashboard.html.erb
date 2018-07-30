@@ -1,19 +1,45 @@
 <h2> Stations Dashboard</h2>
 
-<p><strong>Total Stations:</strong></p>
-<p><%= @total %></p>
+<div class="row">
+  <div class="col-sm-6">
+  <h3>Station information</h3>
+  <p class="important-text"><strong>Total Stations: <%= @total %></strong></p>
+  <p class="hidden"><%= @total %></p>
+  <p>
+    <% @total.times do %>
+      <i class="fas fa-building dashboard-icon"></i>
+    <% end %>
 
-<p><strong>Average Bikes Per Station:</strong></p>
-<p><%= @average_bikes.to_i %></p>
+  </p>
 
-<p><strong>Highest number of bikes at a station:</strong></p>
-<p><%= @most_bikes %> at <%= @most_bikes_station %></p>
+  <p class="important-text"><strong>Newest station:</strong></p>
+  <p><%= @newest %></p>
 
-<p><strong>Lowest number of bikes at a station:</strong></p>
-<p><%= @fewest_bikes %> at <%= @fewest_bikes_station %></p>
+  <p class="important-text"><strong>Oldest station:</strong></p>
+  <p><%= @oldest %> </p>
+  </div>
+  <div class="col-sm-6">
+    <h3>Station bike information</h3>
+      <p class="important-text"><strong>Average Bikes Per Station: <%= @average_bikes.to_i %></strong></p>
+      <p class="bike-holder">
+          <% @average_bikes.to_i.times do %>
+            <i class="fas fa-bicycle"></i>
+          <% end %>
 
-<p><strong>Newest station:</strong></p>
-<p><%= @newest %></p>
+      </p>
+      <p class="important-text"><strong><%= @most_bikes_station %> has the most bikes: <%= @most_bikes %></strong></p>
 
-<p><strong>Oldest station:</strong></p>
-<p><%= @oldest %> </p>
+      <p class="bike-holder">
+      <% @most_bikes.times do %>
+        <i class="fas fa-bicycle"></i>
+      <% end %>
+      </p>
+      <p class="important-text"><strong><%= @fewest_bikes_station %> has the least bikes: <%= @fewest_bikes%> </strong></p>
+
+      <p class="bike-holder">
+      <% @fewest_bikes.times do %>
+        <i class="fas fa-bicycle"></i>
+      <% end %>
+      </p>
+    </div>
+</div>

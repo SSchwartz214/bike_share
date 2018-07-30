@@ -8,7 +8,7 @@ describe OrderAccessory, type: :model do
 
   describe 'instance methods' do
     it 'can return the subtotal' do
-      user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod")
+      user = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
       order = user.orders.create(status: "completed")
       accessory = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
       order_accessory = order.order_accessories.create(quantity: 5, accessory_id: accessory.id)

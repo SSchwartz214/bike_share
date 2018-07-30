@@ -1,5 +1,12 @@
 <h1> Stations</h1>
 
+
+<% if current_admin? %>
+  <%= link_to new_admin_station_path do %>
+    <h4><i class="fas fa-building dashboard-icon"></i>Create station</h4>
+  <% end %>
+<% end %>
+
 <div class="row table-heading">
   <div class="col-sm-1">
   </div>
@@ -21,13 +28,13 @@
 <% @stations.each do |station| %>
 <section class="section-index-container" id=<%= "display_#{station.id}" %>>
   <div class="row station-row">
-    <div class="col-sm-1">
+    <div class="col-sm-1 icon-column">
       <% if current_user&.admin? %>
       <%= link_to edit_admin_station_path(station), method: :get do %>
       <i class="far fa-edit"></i>
       <p class="hidden">Edit</p>
       <% end %>
-        <%= link_to station_path(station), method:"delete" do %>
+        <%= link_to admin_station_path(station), method:"delete" do %>
           <i class="far fa-trash-alt"></i>
           <p class="hidden">Delete</p>
         <% end %>

@@ -71,7 +71,7 @@ describe Station, type: :model do
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_3, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_4, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
       trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("8/30/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/30/2013 15:19", '%m/%d/%Y %H:%M'), end_station: station_6, subscription_type: "visitor", zip_code: 12446, bike_id: 3)
 
-      expect(Station.most_starting_rides).to eq(station_1)
+      expect(Station.most_starting_rides).to eq(station_1.name)
     end
     it ".most_ending_rides" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
@@ -85,7 +85,7 @@ describe Station, type: :model do
       trip_2 = Trip.create!(duration: 198, start_date: DateTime.strptime("8/28/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_3, end_date: DateTime.strptime("8/29/2013 14:17", '%m/%d/%Y %H:%M'), end_station: station_4, subscription_type: "visitor", zip_code: 12444, bike_id: 2)
       trip_3 = Trip.create!(duration: 300, start_date: DateTime.strptime("8/30/2013 14:19", '%m/%d/%Y %H:%M'), start_station: station_1, end_date: DateTime.strptime("8/30/2013 15:19", '%m/%d/%Y %H:%M'), end_station: station_6, subscription_type: "visitor", zip_code: 12446, bike_id: 3)
 
-      expect(Station.most_starting_rides).to eq(station_1)
+      expect(Station.most_starting_rides).to eq(station_1.name)
     end
 
   end

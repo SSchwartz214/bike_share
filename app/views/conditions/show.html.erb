@@ -1,40 +1,37 @@
-<h2>Weather on <%= @condition.date.to_s.chomp("00:00:00 UTC") %></h2>
+<h2>Weather on <%= @condition.date.to_s.chomp("00:00:00 UTC") %>
 
 <% if current_admin? %>
-<div class="button-container">
-  <div class="edit-container">
     <%= link_to edit_admin_condition_path(@condition) do %>
         <i class="far fa-edit link-text">
         <p class="hidden">Edit</p></i>
     <% end %>
-  </div>
-  <div class="delete-container">
     <%= link_to admin_condition_path(@condition), method: :delete do %>
       <i class="far fa-trash-alt"></i>
       <p class="hidden">Delete</p>
     <% end %>
+<% end %>
+</h2>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Temperature information</h3>
+    <%= bar_chart({"max temp" => @condition.max_temperature_f, "min temp" => @condition.min_temperature_f, "mean temp" => @condition.mean_temperature_f}) %>
+    <p class="hidden"><%= @condition.max_temperature_f %></p>
+    <p class="hidden"><%= @condition.mean_temperature_f %></p>
+    <p class="hidden"><%= @condition.min_temperature_f %></p>
+  </div>
+  <div class="col-sm-6">
+    <h3>Miscellaneous weather information</h3>
+
+    <p class="important-text"><strong>Mean Humidity:</strong></p>
+    <p><%= @condition.mean_humidity %></p>
+
+    <p class="important-text"><strong>Mean Visibility:</strong></p>
+    <p><%= @condition.mean_visibility_miles %></p>
+
+    <p class="important-text"><strong>Mean Wind Speed:</strong></p>
+    <p><%= @condition.mean_wind_speed_mph %></p>
+
+    <p class="important-text"><strong>Precipitation:</strong></p>
+    <p><%= @condition.precipitation_inches %></p>
   </div>
 </div>
-<% end %>
-
-
-<p><strong>Max Temperature:</strong></p>
-<p><%= @condition.max_temperature_f %></p>
-
-<p><strong>Mean Temperature:</strong></p>
-<p><%= @condition.mean_temperature_f %></p>
-
-<p><strong>Min Temperature:</strong></p>
-<p><%= @condition.min_temperature_f %></p>
-
-<p><strong>Mean Humididity:</strong></p>
-<p><%= @condition.mean_humidity %></p>
-
-<p><strong>Mean Visibility:</strong></p>
-<p><%= @condition.mean_visibility_miles %></p>
-
-<p><strong>Mean Wind Speed:</strong></p>
-<p><%= @condition.mean_wind_speed_mph %></p>
-
-<p><strong>Precipitation:</strong></p>
-<p><%= @condition.precipitation_inches %></p>

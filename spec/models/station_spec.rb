@@ -120,6 +120,7 @@ describe Station, type: :model do
 
       expect(station_1.most_frequent_destination).to eq(station_2.name)
     end
+
     it 'can return the most frequent starting station' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -130,7 +131,7 @@ describe Station, type: :model do
 
       expect(station_2.most_frequent_start).to eq(station_1.name)
     end
-    # I see the Date with the highest number of trips started at this station,
+
     it '.date_with_most_trips' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -141,7 +142,7 @@ describe Station, type: :model do
 
       expect(station_1.date_with_most_trips).to eq(trip_2.start_date)
     end
-    # I see the Most frequent zip code for users starting trips at this station,
+
     it '.zip_code_with_most_trips' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -152,7 +153,7 @@ describe Station, type: :model do
 
       expect(station_1.zip_code_with_most_trips).to eq(trip_1.zip_code)
     end
-    # I see the Bike ID most frequently starting a trip at this station.
+
     it '.bike_with_most_trips' do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")

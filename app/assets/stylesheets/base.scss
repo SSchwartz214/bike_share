@@ -1,5 +1,9 @@
 @import "shared_values";
 
+.important-text {
+  color: $warning-color;
+}
+
 html {
   height: 100%;
   box-sizing: border-box;

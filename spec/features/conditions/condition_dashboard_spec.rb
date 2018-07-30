@@ -35,7 +35,7 @@ describe "an admin" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
       visit "/conditions-dashboard"
-
+      
       expect(page).to have_content("Trips by temperature range")
       expect(page).to have_content("Trips by wind speed range")
       expect(page).to have_content("Trips by precipitation range")

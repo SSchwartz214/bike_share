@@ -1,5 +1,12 @@
 <h1>Conditions</h1>
 
+<% if current_admin? %>
+  <%= link_to new_admin_condition_path do %>
+    <h4><i class="fas fa-sun dashboard-icon"></i>Create condition</h4>
+  <% end %>
+<% end %>
+
+
 <div class="row">
   <div class="col-sm-1">
 

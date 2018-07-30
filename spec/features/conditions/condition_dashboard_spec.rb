@@ -39,7 +39,7 @@ describe "an admin" do
       expect(page).to have_content("Trips by temperature range")
       expect(page).to have_content("Trips by wind speed range")
       expect(page).to have_content("Trips by precipitation range")
-      expect(page).to have_content("Trips by humidity range")
+      expect(page).to have_content("Trips by visibility range")
     end
   end
 end

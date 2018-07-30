@@ -1,6 +1,5 @@
 class Admin::TripsController < Admin::BaseController
 
-
   def index
     @trips = Trip.all
   end
@@ -15,6 +14,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip #{@trip.id} created!"
       redirect_to trip_path(@trip)
     else
+      flash[:warning] = "Trip was not created. Please re-enter information."
       render :new
     end
   end

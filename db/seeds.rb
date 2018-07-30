@@ -74,10 +74,10 @@ def seed_data(path, data_type)
   end
 end
 
-# seed_data('./data/station.csv', Station)
+seed_data('./data/station.csv', Station)
 seed_data('./data/trip.csv', Trip)
-# seed_data('./data/weather.csv', Condition)
-# seed_data('./data/accessory.csv', Accessory)
+seed_data('./data/weather.csv', Condition)
+seed_data('./data/accessory.csv', Accessory)
 
 
 user_1 = User.create!(id:1000, first_name: "Bill", last_name: "Brasky", username: "billy", password:"billy", address:"10 S. Boondoggle St.", city: "Denver", state: "CO", zip_code: 12345)

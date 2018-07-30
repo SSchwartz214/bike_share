@@ -1,0 +1,14 @@
+<h2>Conditions Dashboard</h2>
+
+<h3 class="dashboard-heading">Trips by temperature range:</h3>
+
+
+<%= line_chart (@max_temp_trips_by_range)%>
+
+<%= line_chart @max_temp_trips_by_range.map { |key, value|
+    {name: key, data: value }
+} %>
+
+<%= bar_chart (@max_temp_trips_by_range) %>
+
+<%= column_chart @max_temp_trips_by_range, stacked: true %>

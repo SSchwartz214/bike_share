@@ -20,7 +20,7 @@
     <p class="important-text"><strong>City:</strong></p>
     <p><%= @station.city %></p>
     <p class="important-text"><strong>Dock count: <%= @station.dock_count %></strong><p>
-    <p>
+    <p class="bike-holder">
       <% @station.dock_count.times do %>
         <i class="fas fa-bicycle"></i>
       <% end %>

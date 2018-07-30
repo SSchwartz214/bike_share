@@ -1,5 +1,12 @@
 <h1> Stations</h1>
 
+
+<% if current_admin? %>
+  <%= link_to new_admin_station_path do %>
+    <h4><i class="fas fa-building dashboard-icon"></i>Create station</h4>
+  <% end %>
+<% end %>
+
 <div class="row table-heading">
   <div class="col-sm-1">
   </div>

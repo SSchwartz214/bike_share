@@ -11,7 +11,6 @@ class Admin::AccessoriesController < ApplicationController
    if @accessory.image_url.empty?
      @accessory.image_url = "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
    end
-   @accessory.id = assign_id(Accessory)
    if @accessory.price < 0
      flash[:warning] = "Price cannot be negative."
      render :new

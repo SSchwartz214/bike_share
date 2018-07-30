@@ -1,14 +1,21 @@
 <h2>Conditions Dashboard</h2>
 
-<h3 class="dashboard-heading">Trips by temperature range:</h3>
+<h3>Trips by temperature:</h3>
+<%= line_chart [
+{name: "Most Rides", data: @max_temp_trips_by_range.map { |t, key| [t, key[0]] }},
+{name: "Least rides", data: @max_temp_trips_by_range.map { |t, key| [t, key[1]] }} ] %>
 
+<h3>Trips by precipitation:</h3>
+<%= line_chart [
+{name: "Most Rides", data: @prec_trips_by_range.map { |t, key| [t, key[0]] }},
+{name: "Least rides", data: @prec_trips_by_range.map { |t, key| [t, key[1]] }} ] %>
 
-<%= line_chart (@max_temp_trips_by_range)%>
+<h3>Trips by wind speed:</h3>
+<%= line_chart [
+{name: "Most Rides", data: @wind_trips_by_range.map { |t, key| [t, key[0]] }},
+{name: "Least rides", data: @wind_trips_by_range.map { |t, key| [t, key[1]] }} ] %>
 
-<%= line_chart @max_temp_trips_by_range.map { |key, value|
-    {name: key, data: value }
-} %>
-
-<%= bar_chart (@max_temp_trips_by_range) %>
-
-<%= column_chart @max_temp_trips_by_range, stacked: true %>
+<h3>Trips humidity:</h3>
+<%= line_chart [
+{name: "Most Rides", data: @vis_trips_by_range.map { |t, key| [t, key[0]] }},
+{name: "Least rides", data: @vis_trips_by_range.map { |t, key| [t, key[1]] }} ] %>

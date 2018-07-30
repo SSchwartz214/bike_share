@@ -118,10 +118,10 @@ describe "an admin" do
 
       visit admin_dashboard_index_path
 
-      expect(page).to have_content("completed: 1")
-      expect(page).to have_content("paid: 1")
-      expect(page).to have_content("cancelled: 1")
-      expect(page).to have_content("ordered: 1")
+      expect(page).to have_content("Completed (1)")
+      expect(page).to have_content("Paid (1)")
+      expect(page).to have_content("Cancelled (1)")
+      expect(page).to have_content("Ordered (1)")
     end
     it 'shows a link for each order' do
       admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "admin", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)

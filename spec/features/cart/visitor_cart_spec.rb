@@ -77,9 +77,9 @@ describe "a visitor" do
     it "can remove an item" do
       acc_1 = Accessory.create!(name: "oiad", price: 123, status: 0, image_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/Gatling_gun_1862_Type_II_%281%29.jpg", description: "1209390jioas")
 
-      cart = Cart.new(Hash.new(0))
-      allow(Cart).to receive(:new).and_return(cart)
-      cart.add_accessory(acc_1.id)
+      visit accessory_path(acc_1)
+
+      click_on "Add to Cart"
 
       visit "/cart"
 

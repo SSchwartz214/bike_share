@@ -8,6 +8,10 @@ class ConditionsController < ApplicationController
     @prec_trips_by_range = Condition.trip_weather_values("precipitation_inches", Condition.prec_map)
     @wind_trips_by_range = Condition.trip_weather_values("mean_wind_speed_mph", Condition.wind_map)
     @vis_trips_by_range = Condition.trip_weather_values("mean_visibility_miles", Condition.vis_map)
+    @max_temp_average = Condition.trip_weather_average("max_temperature_f", Condition.heat_map)
+    @prec_avg = Condition.trip_weather_average("precipitation_inches", Condition.prec_map)
+    @wind_avg = Condition.trip_weather_average("mean_wind_speed_mph", Condition.wind_map)
+    @vis_avg = Condition.trip_weather_average("mean_visibility_miles", Condition.vis_map)
   end
 
   def show

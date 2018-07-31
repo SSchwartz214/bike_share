@@ -80,5 +80,45 @@ describe Condition, type: :model do
 
       expect(Condition.trip_weather_values(vis, weather_params)).to eq(expected)
     end
+
+    it ".trip_weather_average returns average temp values" do
+      max_temp = "max_temperature_f"
+
+      weather_params = {"80..89f" => [80, 89], "90..99f" => [90, 99]}
+
+      expected = {"80..89f" => 1, "90..99f" => 2.5}
+
+      expect(Condition.trip_weather_average(max_temp, weather_params)).to eq(expected)
+    end
+
+    it ".trip_weather_average returns average prec values" do
+      prec = "precipitation_inches"
+
+      weather_params = { "0.0 - .49in" => [0.0, 0.49], ".50 - .99in" => [0.50, 0.99] }
+
+      expected = { "0.0 - .49in" => 2.5, ".50 - .99in" => 1 }
+
+      expect(Condition.trip_weather_average(prec, weather_params)).to eq(expected)
+    end
+
+    it ".trip_weather_average returns average wind values" do
+      wind = "mean_wind_speed_mph"
+
+      weather_params = { "0 - 3.9mph" => [0, 3.9], "4 - 7.9mph" => [4, 7.9] }
+
+      expected = { "0 - 3.9mph" => 2.5, "4 - 7.9mph" => 1 }
+
+      expect(Condition.trip_weather_average(wind, weather_params)).to eq(expected)
+    end
+
+    it ".trip_weather_average returns average vis values" do
+      vis = "mean_visibility_miles"
+
+      weather_params =   { "0 - 3.9mi" => [0, 3.9], "4 - 7.9mi" => [4, 7.9]}
+
+      expected = { "0 - 3.9mi" => 2.5, "4 - 7.9mi" => 1 }
+
+      expect(Condition.trip_weather_average(vis, weather_params)).to eq(expected)
+    end
   end
 end

@@ -36,10 +36,10 @@
           <p><%= link_to order_accessory.accessory.name, accessory_path(order_accessory.accessory) %></p>
         </div>
         <div class="col-sm-2">
-          <p>Quantity: <%= order_accessory.quantity %></p>
+          <p><%= order_accessory.quantity %></p>
         </div>
         <div class="col-sm-2">
-          <p>Subtotal: <%= number_to_currency(order_accessory.subtotal) %></p>
+          <p><%= number_to_currency(order_accessory.subtotal) %></p>
         </div>
       </div>
     </div>

@@ -12,18 +12,23 @@
 </div>
 </div>
 
-<p><strong>First name:</strong></p>
-<p><%= current_user.first_name %></p>
-<p><strong>Last name:</strong></p>
-<p><%= current_user.last_name %></p>
-<p><strong>Address:</strong></p>
-<p><%= current_user.address %></p>
-<p><strong>City:</strong></p>
-<p><%= current_user.city %></p>
-<p><strong>State:</strong></p>
-<p><%= current_user.state %></p>
-<p><strong>Zip Code:</strong></p>
-<p><%= current_user.zip_code %></p>
+<div class="row">
+  <div class="col-sm-4">
+    <p class="important-text"><strong>First name:</strong></p>
+    <p><%= current_user.first_name %></p>
+
+    <p class="important-text"><strong>Last name:</strong></p>
+    <p><%= current_user.last_name %></p>
+
+
+  </div>
+  <div class="col-sm-4">
+    <p class="important-text"><strong>Address:</strong></p>
+    <p><%= current_user.address %>, <%= current_user.city %></p>
+    <p><%= current_user.state %>, <%= current_user.zip_code %></p>
+
+  </div>
+</div>
 
 <h3 class="dashboard-heading">Your orders:</h3>
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:show, :update, :create]
-  
+
   namespace :admin do
     resources :stations, only: [:edit, :update, :new, :create, :destroy]
     resources :dashboard, only: [:index]
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/conditions-dashboard', to:'conditions#dashboard'
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/trips-dashboard', to: 'trips#dashboard'
   get '/:id', to: 'stations#show', as: :station

@@ -1,4 +1,3 @@
-
 <div class="show-acc-container">
   <div class="col-sm-5">
     <div class="show-acc-container-img">
@@ -15,9 +14,9 @@
     <% if @accessory.status == "retired" %>
       <h4>Accessory Retired</h4>
     <% else %>
-    <%= link_to carts_path(accessory_id: @accessory.id, path: 'show'), method: :post do %>
-      <h4>Add to Cart <i class="fas fa-cart-arrow-down"></i><h4>
-    <% end %>
+      <%= link_to carts_path(accessory_id: @accessory.id, path: 'show'), method: :post do %>
+        <h4>Add to Cart <i class="fas fa-cart-arrow-down"></i><h4>
+      <% end %>
     <% end %>
   </div>
 </div>

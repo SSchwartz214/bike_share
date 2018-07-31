@@ -74,9 +74,9 @@ def seed_data(path, data_type)
   end
 end
 
-# seed_data('./data/station.csv', Station)
-# seed_data('./data/trip.csv', Trip)
-# seed_data('./data/weather.csv', Condition)
+seed_data('./data/station.csv', Station)
+seed_data('./data/trip.csv', Trip)
+seed_data('./data/weather.csv', Condition)
 seed_data('./data/accessory.csv', Accessory)
 
 
@@ -89,3 +89,9 @@ user_3 = User.create!(id:1002, first_name: "Astronaut", last_name: "Jones", user
 user_4 = User.create!(id:1003, first_name: "defaulty", last_name: "mcdefault", username: "default", password:"default", address:"28 default default", city: "Denver", state: "CO", zip_code: 12345)
 
 User.create!(id:1004, first_name: "admin", last_name: "admin", username: "admin", password:"admin", address: "15 admin way", role: 1, city: "Denver", state: "CO", zip_code: 12345)
+
+
+ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+ActiveRecord::Base.connection.reset_pk_sequence!('conditions')
+ActiveRecord::Base.connection.reset_pk_sequence!('accessories')

@@ -41,3 +41,12 @@ function update()
 {
   document.getElementById("exit_values").submit();
 }
+
+function checkFlash()
+{
+  var text_field = document.getElementById("cart-remove");
+  if(text_field)
+  {
+    text_field.innerHTML="<a href='/accessories/" + lastRemoved.toString() + "' >" + lastRemovedName + " </a>";
+  }
+}

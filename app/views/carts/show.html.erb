@@ -6,11 +6,13 @@
       accessories[<%= accessory.id %>].quantity = <%= @cart.contents[accessory.id.to_s] %>
       accessories[<%= accessory.id %>].price = <%= accessory.price %>
     <% end %>
+    var lastRemoved = <%= @cart.last_removed %>
+    var lastRemovedName = "<%= @cart.last_removed_name %>"
   </script>
   <%= javascript_include_tag "cart" %>
 </head>
 
-<body onload="display_quantity();" onclick="update();">
+<body onload="display_quantity(); checkFlash();" onclick="update();">
 
 <div class="row">
   <div class="col-sm-8">

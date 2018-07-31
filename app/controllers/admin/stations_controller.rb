@@ -7,7 +7,6 @@ class Admin::StationsController < Admin::BaseController
 
   def create
     @station = Station.new(station_params)
-    @station.id = assign_id(Station)
     if @station.save
       flash[:success] = "#{@station.name} created!"
       redirect_to station_path(@station)

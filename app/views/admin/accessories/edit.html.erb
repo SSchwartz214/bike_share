@@ -1,0 +1,36 @@
+<h1>Update Accessory</h1>
+
+<div class="all-forms">
+<%= form_for [:admin, @accessory] do |f| %>
+
+  <%= f.label :name %>
+  <div class="form-group">
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.label :description %>
+  <div class="form-group">
+    <%= f.text_field :description %>
+  </div>
+
+  <%= f.label :price %>
+  <div class="form-group">
+    <%= f.number_field :price %>
+  </div>
+
+  <%= f.label :image_url %>
+  <div class="form-group">
+    <%= f.text_field :image_url %>
+  </div>
+
+  <section class="main-button create-account">
+    <a>
+      <%= f.submit "Update Accessory", class:"text reset-button" %>
+      <span class="line -right"></span>
+      <span class="line -top"></span>
+      <span class="line -left"></span>
+      <span class="line -bottom"></span>
+    </a>
+  </section>
+<% end %>
+</div>

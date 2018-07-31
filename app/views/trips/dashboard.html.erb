@@ -69,7 +69,7 @@
     <h3>Weather Conditions</h3>
     <div class="row">
       <div class="col-sm-6" id="worst-day">
-        <h4>Worst day:</h4>
+        <h4><%= @trips_by_date.keys.last%></h4>
         <p>max temp(f): <%= @trips_weather[0].max_temperature_f %></p>
         <p>min temp(f): <%= @trips_weather[0].min_temperature_f %></p>
         <p>average temp(f): <%= @trips_weather[0].mean_temperature_f %></p>
@@ -79,7 +79,7 @@
         <p>precipitation(inches): <%= @trips_weather[0].precipitation_inches%></p>
       </div>
       <div class="col-sm-6" id="best-day">
-        <h4>Best day:</h4>
+        <h4><%= @trips_by_date.keys.first %></h4>
         <p>max temp(f): <%= @trips_weather[1].max_temperature_f %></p>
         <p>min temp(f): <%= @trips_weather[1].min_temperature_f %></p>
         <p>average temp(f): <%= @trips_weather[1].mean_temperature_f %></p>

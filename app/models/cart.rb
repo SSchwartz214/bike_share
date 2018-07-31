@@ -1,8 +1,12 @@
 class Cart
-  attr_reader :contents
+  attr_reader :contents, :last_removed, :last_removed_name
 
   def initialize(content)
     @contents = content || Hash.new(0)
+    @last_removed = @contents["last_removed"].to_i
+    @last_removed_name = @contents["last_removed_name"]
+    @contents.delete("last_removed")
+    @contents.delete("last_removed_name")
   end
 
   def total_count

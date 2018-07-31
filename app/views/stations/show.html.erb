@@ -6,7 +6,7 @@
         <p class="hidden">Edit</p></i>
     <% end %>
 
-    <%= link_to admin_station_path(@station), method: :delete do %>
+    <%= link_to admin_station_path(@station), method: :delete, data: {confirm: "Are you sure you want to delete #{@station.name} Station?"} do %>
       <i class="far fa-trash-alt"></i>
       <p class="hidden">Delete</p>
     <% end %>

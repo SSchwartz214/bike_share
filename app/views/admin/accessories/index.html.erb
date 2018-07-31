@@ -29,7 +29,7 @@
           <i class="far fa-edit link-text">
           <p class="hidden">Edit</p></i>
       <% end %>
-      <%= link_to admin_accessory_path(accessory), method:"delete" do %>
+      <%= link_to admin_accessory_path(accessory), method:"delete", data: {confirm: "Are you sure you want to delete #{accessory.name}?"} do %>
         <i class="far fa-trash-alt"></i>
         <p class="hidden">Delete</p>
       <% end %>

@@ -40,7 +40,6 @@ class Admin::AccessoriesController < ApplicationController
       @accessory.save
       redirect_to admin_bike_shop_path
     else
-
       @accessory.update(accessory_params)
       if @accessory.image_url.empty?
         @accessory.image_url = "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
@@ -54,6 +53,7 @@ class Admin::AccessoriesController < ApplicationController
       elsif @accessory.save
         redirect_to accessory_path(@accessory)
       else
+        flash[:warning] = "Please fill out all fields"
         render :edit
       end
     end

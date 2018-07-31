@@ -1,3 +1,5 @@
+
+
 function display_quantity()
 {
   var total = 0;
@@ -8,8 +10,7 @@ function display_quantity()
       continue;
     }
     document.getElementById(accessory + "_quantity").innerHTML = accessories[accessory].quantity;
-    document.getElementById("accessory_" + accessory).value = accessories[accessory].quantity.toString();
-    document.getElementById("remove_accessory_" + accessory).value = accessories[accessory].quantity.toString();
+    document.getElementById("update_accessory_" + accessory).value = accessories[accessory].quantity.toString();
     subtotal = accessories[accessory].quantity * accessories[accessory].price;
     total += subtotal;
     document.getElementById(accessory + "_subtotal").innerHTML = subtotal;
@@ -25,7 +26,28 @@ function increment(accessory)
 
 function decrement(accessory)
 {
-  accessories[accessory].quantity--;
+  if(accessories[accessory].quantity > 1)
+  {
+    accessories[accessory].quantity--;
+  }
+  else
+  {
+    autoRemove(accessory);
+  }
   display_quantity();
+}
+
+function update()
+{
+  document.getElementById("exit_values").submit();
+}
+
+function checkFlash()
+{
+  var text_field = document.getElementById("cart-remove");
+  if(text_field)
+  {
+    text_field.innerHTML="<a href='/accessories/" + lastRemoved.toString() + "' >" + lastRemovedName + " </a>";
+  }
 }
 ;

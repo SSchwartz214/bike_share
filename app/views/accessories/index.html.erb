@@ -11,7 +11,7 @@
             </div>
             <h3 class="card-title">
               <%= accessory.name %></h3>
-            <p class="card-text">Price: $<%= accessory.price %></p>
+            <p class="card-text">Price: <%= number_to_currency(accessory.price) %></p>
             <p class="card-text">Status: <%= accessory.status %></p>
             <%= link_to "View Details", accessory_path(accessory) %>
             <% if accessory.status == "active" %>

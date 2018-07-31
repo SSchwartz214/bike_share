@@ -14,7 +14,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip #{@trip.id} created!"
       redirect_to trip_path(@trip)
     else
-      flash[:warning] = "Trip was not created. Please re-enter information."
+      flash[:warning] = "Trip was not created. Please include all fields."
       render :new
     end
   end
@@ -30,6 +30,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip #{@trip.id} updated!"
       redirect_to trip_path(@trip)
     else
+      flash[:warning] = "Trip was not updated. Please include all fields."
       render :edit
     end
   end

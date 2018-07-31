@@ -11,8 +11,11 @@ class Admin::AccessoriesController < ApplicationController
    if @accessory.image_url.empty?
      @accessory.image_url = "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
    end
-   if @accessory.price < 0
-     flash[:warning] = "Price cannot be negative."
+   if @accessory.price.nil? || @accessory.price < 0
+     flash[:warning] = "Price must be present and cannot be negative."
+     render :new
+   elsif @accessory.description.nil? || @accessory.description == ""
+     flash[:warning] = "Description must be present"
      render :new
    elsif @accessory.save
      flash[:notice] = "#{@accessory.name} created successfully!"
@@ -37,14 +40,20 @@ class Admin::AccessoriesController < ApplicationController
       @accessory.save
       redirect_to admin_bike_shop_path
     else
-
       @accessory.update(accessory_params)
-      if @accessory.price < 0
-        flash[:warning] = "Price cannot be negative."
+      if @accessory.image_url.empty?
+        @accessory.image_url = "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
+      end
+      if @accessory.price.nil? || @accessory.price < 0
+        flash[:warning] = "Price must be present and cannot be negative."
         render :edit
+      elsif @accessory.description.nil? || @accessory.description == ""
+        flash[:warning] = "Description must be present"
+        render :new
       elsif @accessory.save
         redirect_to accessory_path(@accessory)
       else
+        flash[:warning] = "Please fill out all fields"
         render :edit
       end
     end

@@ -16,7 +16,7 @@ describe 'an admin visits a station index' do
       click_on("Delete")
     end
 
-    expect(page).to_not have_content(station_1.name)
+    expect(page).to_not have_content(station_1.city)
 
   end
 end
@@ -49,7 +49,7 @@ describe 'an admin can edit the station' do
     fill_in :station_name, with: "Gazorpazorp"
 
     click_on "Update Station"
-    
+
     expect(current_path).to eq("/Gazorpazorp")
     expect(page).to have_content("Gazorpazorp")
   end

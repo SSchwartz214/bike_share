@@ -30,6 +30,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip #{@trip.id} updated!"
       redirect_to trip_path(@trip)
     else
+      flash[:warning] = "Trip was not updated. Please re-enter information."
       render :edit
     end
   end

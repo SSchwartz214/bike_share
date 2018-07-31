@@ -17,8 +17,12 @@
     <% end %>
     <main>
     <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
-      <% end %>
+        <% if name != "cart_remove" %>
+          <%= content_tag :div, msg, class: name %>
+        <% else %>
+          <div class=<%= name %> >You successfully removed <nobr id="cart-remove" ></nobr> from your cart</div>
+        <% end %>
+    <% end %>
       <%= yield %>
   </main>
     <%= render partial:"./partials/footer" %>

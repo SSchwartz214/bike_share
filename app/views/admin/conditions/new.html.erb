@@ -33,7 +33,7 @@
     </div>
     <%= f.label "precipitation(inches)" %>
     <div class="form-group">
-      <%= f.number_field :precipitation_inches %>
+      <%= f.number_field :precipitation_inches, {step: 0.01} %>
     </div>
     <section class="main-button create-account">
     <a>

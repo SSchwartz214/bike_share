@@ -42920,9 +42920,13 @@ function increment(accessory)
 
 function decrement(accessory)
 {
-  if(accessories[accessory].quantity > 0)
+  if(accessories[accessory].quantity > 1)
   {
     accessories[accessory].quantity--;
+  }
+  else
+  {
+    autoRemove(accessory);
   }
   display_quantity();
 }
@@ -42930,6 +42934,15 @@ function decrement(accessory)
 function update()
 {
   document.getElementById("exit_values").submit();
+}
+
+function checkFlash()
+{
+  var text_field = document.getElementById("cart-remove");
+  if(text_field)
+  {
+    text_field.innerHTML="<a href='/accessories/" + lastRemoved.toString() + "' >" + lastRemovedName + " </a>";
+  }
 }
 ;
 $(document).ready(function() {

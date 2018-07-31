@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180729202204) do
+ActiveRecord::Schema.define(version: 20180731212730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accessories", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.float "price"
     t.integer "status", default: 0
     t.string "image_url", default: "https://upload.wikimedia.org/wikipedia/commons/6/63/French_horn_front.png"
     t.string "description"

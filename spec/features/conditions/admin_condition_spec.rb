@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 describe "an admin" do
   describe "visits condition show path" do
     it "clicks on delete" do

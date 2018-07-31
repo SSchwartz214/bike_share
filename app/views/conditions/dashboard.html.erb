@@ -1,0 +1,27 @@
+<h2>Conditions Dashboard</h2>
+
+<p> Any ranges not represented in the following graphs are due to an absence of trips during those weather conditions. As new data becomes available the following analysis will be updated accordingly.</p>
+
+<h3><i class="fas fa-thermometer-three-quarters"></i>   Trips by temperature range:</h3>
+<%= line_chart [
+{ name: "Most Rides", data: @max_temp_trips_by_range.map { |t, key| [t, key[0]] }},
+{ name: "Least rides", data: @max_temp_trips_by_range.map { |t, key| [t, key[1]] }},
+{ name: "Average rides", data: @max_temp_average.map { |t, key| [t, key.round(2)] }}], legend: "left" %>
+
+<h3><i class="fas fa-tint"></i>    Trips by precipitation range:</h3>
+<%= line_chart [
+{ name: "Most Rides", data: @prec_trips_by_range.map { |t, key| [t, key[0]] }},
+{ name: "Least rides", data: @prec_trips_by_range.map { |t, key| [t, key[1]] }},
+{ name: "Average rides", data: @prec_avg.map { |t, key| [t, key.round(2)] }}], legend: "left"  %>
+
+<h3><i class="fas fa-feather"></i>    Trips by wind speed range:</h3>
+<%= line_chart [
+{ name: "Most Rides", data: @wind_trips_by_range.map { |t, key| [t, key[0]] }},
+{ name: "Least rides", data: @wind_trips_by_range.map { |t, key| [t, key[1]] }},
+{ name: "Average rides", data: @wind_avg.map { |t, key| [t, key.round(2)] }}], legend: "left"  %>
+
+<h3><i class="fas fa-eye"></i>    Trips by visibility range:</h3>
+<%= line_chart [
+{ name: "Most Rides", data: @vis_trips_by_range.map { |t, key| [t, key[0]] }},
+{ name: "Least rides", data: @vis_trips_by_range.map { |t, key| [t, key[1]] }},
+{ name: "Average rides", data: @vis_avg.map { |t, key| [t, key.round(2)] }}], legend: "left"  %>

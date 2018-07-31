@@ -16,7 +16,6 @@ class Admin::ConditionsController < Admin::BaseController
     end
   end
 
-
   def edit
 
   end

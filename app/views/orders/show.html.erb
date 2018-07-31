@@ -9,8 +9,11 @@
     <% end %>
   </div>
   <div class="col-sm-6">
-    <h4>Name: <%= @order.user.full_name %> </h4>
-    <h4>Address: <%= @order.user.address %> </h4>
+    <p class="important-text"><strong>Name:</strong></p>
+    <p><%= @order.user.full_name %> </p>
+    <p class="important-text"><strong>Address:</strong></p>
+    <p><%= current_user.address %>, <%= current_user.city %></p>
+    <p><%= current_user.state %>, <%= current_user.zip_code %></p>
   </div>
 </div>
 

@@ -1,4 +1,6 @@
 class Admin::TripsController < Admin::BaseController
+
+
   def new
     @trip = Trip.new
   end

@@ -61,9 +61,6 @@ class Admin::AccessoriesController < ApplicationController
 
   def destroy
     acc_name = @accessory.name
-    @accessory.order_accessories.each do |order_accessory|
-      order_accessory.destroy
-    end
     @accessory.destroy
 
     flash[:notice] = "#{acc_name} deleted!"

@@ -4,6 +4,6 @@ class Accessory < ApplicationRecord
 
   enum status: ['active', 'retired']
 
-  has_many :order_accessories
+  has_many :order_accessories, dependent: :destroy
   has_many :orders, through: :order_accessories
 end

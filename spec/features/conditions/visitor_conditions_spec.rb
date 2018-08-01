@@ -15,9 +15,9 @@ describe "a visitor" do
       expect(page).to have_content(condition_1.mean_temperature_f)
       expect(page).to have_content(condition_1.min_temperature_f)
       expect(page).to have_content(condition_1.mean_humidity)
-      expect(page).to have_content(condition_1.mean_visibility_miles) #in miles
-      expect(page).to have_content(condition_1.mean_wind_speed_mph) # in mph
-      expect(page).to have_content(condition_1.precipitation_inches) # in inches
+      expect(page).to have_content(condition_1.mean_visibility_miles)
+      expect(page).to have_content(condition_1.mean_wind_speed_mph)
+      expect(page).to have_content(condition_1.precipitation_inches)
 
       expect(page).to have_content(condition_2.date.to_s.chomp("00:00:00 UTC"))
       expect(page).to have_content(condition_2.max_temperature_f)

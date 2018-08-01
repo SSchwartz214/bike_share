@@ -35,6 +35,7 @@ class Admin::StationsController < Admin::BaseController
   def destroy
     name = set_station.name
     set_station.destroy
+    
     flash[:success] = "#{name} Station deleted"
     redirect_to stations_path
   end

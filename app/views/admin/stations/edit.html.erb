@@ -1,32 +1,4 @@
 
 <h3>Edit a station</h3>
 
-<div class="all-forms">
-  <%= form_for [:admin, @station] do |f| %>
-    <%= f.label :name %>
-    <div class="form-group">
-      <%= f.text_field :name %>
-    </div>
-      <%= f.label :dock_count %>
-    <div class="form-group">
-      <%= f.number_field :dock_count %>
-    </div>
-    <%= f.label :city %>
-    <div class="form-group">
-      <%= f.text_field :city %>
-    </div>
-    <%= f.label :installation_date %>
-    <div class="form-group">
-      <%= f.date_field :installation_date %>
-    </div>
-    <section class="main-button create-account">
-      <a>
-        <%= f.submit "Update Station", class:"text reset-button" %>
-        <span class="line -right"></span>
-        <span class="line -top"></span>
-        <span class="line -left"></span>
-        <span class="line -bottom"></span>
-      </a>
-  </section>
-  <% end %>
-</div>
+<%= render partial: "/partials/station_form" %>

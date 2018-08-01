@@ -6,9 +6,6 @@
   </button>
   <p class="nav-link"> | </p>
   <a class="navbar-brand hvr-skew shop-icon" href="/bike-shop"></i>SHOP</a>
-  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon navbar-"></span>
-  </button>
   <% if !current_admin? %>
     <%= link_to dashboard_path do %>
       <p class="dark-text"> Logged in as <%= current_user.first_name %></p>

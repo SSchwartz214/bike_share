@@ -71,10 +71,6 @@
   </div>
 </div>
 
-
-
-
-
 <form id="exit_values" action="/cart" method="post">
   <% @accessories.each do |accessory| %>
     <input type="hidden" id=<%= "update_accessory_#{accessory.id}" %> name=<%= "accessory_#{accessory.id}" %> value="" />

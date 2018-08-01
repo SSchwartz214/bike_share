@@ -38,7 +38,6 @@ class Condition < ApplicationRecord
     end
   end
 
-
   def self.trip_weather_values(column, weather_params)
     weather_params.inject({}) do |hash, (increments, value)|
       hash[increments] = Condition.weather_during_trip(column, value)

@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
     @cart.clear
 
     flash[:success] = "Successfully submitted your order totalling $#{total}"
-
     redirect_to dashboard_path
   end
 

@@ -57,8 +57,8 @@ describe Station, type: :model do
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
 
       expect(Station.oldest).to eq(station_1)
-
     end
+
     it ".most_starting_rides" do
       station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
       station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
@@ -87,7 +87,6 @@ describe Station, type: :model do
 
       expect(Station.most_starting_rides).to eq(station_1.name)
     end
-
   end
 
   describe 'instance methods' do

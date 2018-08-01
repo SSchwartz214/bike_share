@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
   def create
     accessories = Accessory.where(id: @cart.accessories)
 
-    total = @cart.total(accessories)
+    total = '%.2f' % @cart.total(accessories)
+
     @order = current_user.orders.create
 
     accessories.each do |accessory|

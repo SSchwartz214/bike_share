@@ -74,6 +74,37 @@ describe "an admin" do
       expect(page).to have_content(prec)
     end
 
+    it "will display flash message if condition is created incorrectly" do
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_condition_path
+
+      fill_in "condition[mean_temperature_f]", with: ""
+
+      click_on "Create the weather"
+
+      expect(page).to have_content("Mean temperature f can't be blank")
+    end
+
+    it "will display flash message if condition is filled out incorrectly" do
+      condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
+
+      admin = User.create!(first_name: "keegan", last_name: "c", username: "oijads", password: "oiajsiod", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit edit_admin_condition_path(condition_1)
+
+      fill_in "condition[mean_temperature_f]", with: ""
+
+      click_on "Control the weather"
+
+      expect(page).to have_content("Mean temperature f can't be blank")
+      expect(current_path).to eq(admin_condition_path(condition_1))
+    end
+
     it "can click on delete and remove condition" do
       condition_1 = Condition.create!(date: Date.strptime("8/29/2013", '%m/%d/%Y'), max_temperature_f: 1234, mean_temperature_f: 511, min_temperature_f: 123, mean_humidity: 75, mean_visibility_miles: 10, mean_wind_speed_mph: 27, precipitation_inches: 11)
 

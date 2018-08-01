@@ -50,4 +50,18 @@ describe "User visits trips index page" do
 
     expect(current_path).to eq(trip_path(Trip.last))
   end
+
+  it "creates a trip incorrectly and sees a flash message" do
+    admin = User.create!(first_name: "oijasdioj", last_name: "ijd098jas", username: "ijaidjo", password: "j98jdoas", role: 1, address: "1 maple st.", city: "Denver", state: "CO", zip_code: 12345)
+    station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
+    station_2 = Station.create!(name: "ajsd0jd", dock_count: 20, city: "09190ajsd0j", installation_date: "8/12/2013")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_trip_path
+
+    click_button "Create Trip"
+
+    expect(current_path).to eq(admin_trips_path)
+    expect(page).to have_content("Trip was not created. Please include all fields.")
+  end
 end

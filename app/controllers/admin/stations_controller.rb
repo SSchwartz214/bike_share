@@ -11,6 +11,7 @@ class Admin::StationsController < Admin::BaseController
       flash[:success] = "#{@station.name} created!"
       redirect_to station_path(@station)
     else
+      flash[:warning] = "All fields must be filled out"
       render :new
     end
   end
@@ -26,6 +27,7 @@ class Admin::StationsController < Admin::BaseController
       flash[:success] = "#{@station.name} updated!"
       redirect_to station_path(@station)
     else
+      flash[:warning] = "All fields must be filled out"
       render :edit
     end
   end

@@ -37,9 +37,9 @@ describe "a visitor" do
 
       expect(page).to have_content(trip_1.duration/60)
       expect(page).to have_content(trip_1.start_date.to_s.chomp(":00 UTC"))
-      expect(page).to have_content(station_1.name) #NOT start station ID, the actual station
+      expect(page).to have_content(station_1.name)
       expect(page).to have_content(trip_1.end_date.to_s.chomp(":00 UTC"))
-      expect(page).to have_content(station_2.name) #see above
+      expect(page).to have_content(station_2.name)
       expect(page).to have_content(trip_1.subscription_type)
       expect(page).to have_content(trip_1.zip_code)
     end

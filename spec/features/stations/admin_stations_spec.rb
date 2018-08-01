@@ -73,22 +73,6 @@ describe 'an admin can edit the station' do
     expect(current_path).to eq("/Gazorpazorp")
     expect(page).to have_content("Gazorpazorp")
   end
-
-  it "displays flash message if form is not filled out correctly" do
-    admin = User.create(first_name: "wefwef", last_name: "Fefwfu", username: "Connor", password: "password", role: 1)
-
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
-    station_1 = Station.create!(name: "aiojd", dock_count: 8, city: "0912jeioj", installation_date: "8/6/2013")
-    
-    visit edit_admin_station_path(station_1)
-
-    fill_in :station_name, with: ""
-
-    click_on "Update Station"
-
-    expect(page).to have_content("All fields must be filled out")
-  end
 end
 
 describe 'an admin visits a show page' do

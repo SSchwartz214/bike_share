@@ -1,18 +1,19 @@
-# README
+# BikeShare
 
-### BikeShare
-
-#### Description
+## Description
 
 Bikeshare analyzes publicly available csv data on the Bikeshare program in San Francisco. This application seeks to provide important information on the use of bike share by analyzing trips during weather conditions, trips to and from certain stations, and more. 
 
 This application also includes a sample store with a simple checkout mechanism. You can check this out by clicking on Bike shop in the navbar!
 
+![screen shot 2018-09-29 at 7 03 52 pm](https://user-images.githubusercontent.com/30695131/47807185-16154a80-dd01-11e8-9952-72ef2cf3714b.png)
 
+* To view production version, visit:
+[BikeShare](https://polar-gorge-61101.herokuapp.com/)
 
-#### Rails version: 5.1.6
+## Rails version: 5.1.6
 
-### Configuration
+## Configuration
 
 * Clone the repository:
 ```
@@ -24,7 +25,7 @@ git clone git@github.com:letsdothis64/bike_share.git
 $ bundle install
 $ bundle update
 ```
-##### Special gem notes:
+## Special gem notes:
 
 Bootstrap, jquery, capybara, rspec, chartkick
 
@@ -36,11 +37,6 @@ $ rake db:{create,migrate,seed}
 * How to run the test suite
 ```
 $ rspec
-```
-
-* To view production version, visit:
-```
-https://polar-gorge-61101.herokuapp.com/
 ```
 
 #### Possible additions:
